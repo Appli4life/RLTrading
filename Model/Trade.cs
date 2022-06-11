@@ -4,18 +4,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RLTrading
+namespace RLTrading.Model
 {
+    /// <summary>
+    /// Trade Model
+    /// </summary>
     public class Trade
     {
-        public int ID { get; } = 0;
+        /// <summary>
+        /// Alle erhaltenen Credits
+        /// </summary>
         public int gotCredits { get; set; } = 0;
+
+        /// <summary>
+        /// Alle verlorenen Credits
+        /// </summary>
         public int lostCredits { get; set; } = 0;
 
+        /// <summary>
+        /// Alle verkauften Items
+        /// </summary>
         public List<Item> soldItems = new List<Item>();
 
+
+        /// <summary>
+        /// Alle gekauften Items
+        /// </summary>
         public List<Item> boughtItems = new List<Item>();
 
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public Trade()
         {
 

@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModels="clr-namespace:RLTrading.ViewModel"
         xmlns:local="clr-namespace:RLTrading"
         mc:Ignorable="d"
         Title="Trading Track"  Height="500" Width="800" MinHeight="450" MinWidth="800" Closing="Window_Closing" Icon="pic/logo.png">
+    <Window.DataContext>
+        <ViewModels:ViewModelMainWindow/>
+    </Window.DataContext>
     <Window.Background>
         <ImageBrush ImageSource="pic/hintergrund.png"></ImageBrush>
     </Window.Background>
@@ -15,17 +19,18 @@
             <Image Margin="10" DockPanel.Dock="Right" Source="pic/logo.png" Height="90"></Image>
         </DockPanel>
         <StackPanel Margin="20,0,0,0" DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button x:Name="allTrades" Style="{StaticResource menuBtn}" Content="Alle Trades" Click="allTrades_Click" ></Button>
-            <Button x:Name="NewTrade" Margin="20,0,0,0" Style="{StaticResource menuBtn}" Content="Neuer Trade" Click="NewTrade_Click" ></Button>
+            <Button Style="{StaticResource menuBtn}" Content="Alle Trades" Command="{Binding AllTradeSwitch}" ></Button>
+            <Button Margin="20,0,0,0" Style="{StaticResource menuBtn}" Content="Neuer Trade" Command="{Binding NewTradeSwitch}"></Button>
         </StackPanel>
         <StackPanel Margin="0,0,20,10" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button x:Name="Close"  Style="{StaticResource menuBtn}" Content="Close" Click="Close_Click" ></Button>
+            <Button Margin="0,0,20,0" Style="{StaticResource menuBtn}" Command="{Binding SaveCommand }" Content="Save"></Button>
+            <Button Style="{StaticResource menuBtn}" Content="Close" Command="{Binding CloseApp}"></Button>
         </StackPanel>
-        <ScrollViewer Margin="20,0,20,20">
-            <ContentControl x:Name="main">
 
-            </ContentControl>
-        </ScrollViewer>
-        
+        <ContentControl Margin="20,0,20,20" Content="{Binding Content}">
+
+        </ContentControl>
+
+
     </DockPanel>
 </Window>

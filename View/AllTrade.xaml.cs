@@ -20,12 +20,9 @@ namespace RLTrading
     /// </summary>
     public partial class AllTrade : UserControl
     {
-        public TradeStorage tradeStorage = new TradeStorage();
         public AllTrade()
         {
             InitializeComponent();
-            tradeStorage.loadTrades();
-            allTradesDisplay.ItemsSource = tradeStorage.allTrades;
         }
     }
 }
