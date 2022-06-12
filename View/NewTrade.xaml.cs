@@ -23,9 +23,9 @@ namespace RLTrading
     {
         public NewTrade()
         {
+            InitializeComponent();
             var data = new ViewModelNewTrade();
             DataContext = data;
-
             foreach (var content in data.gegebenContents)
             {
                 content.DataContext = this.DataContext;
@@ -36,7 +36,6 @@ namespace RLTrading
                 content.DataContext = this.DataContext;
             }
 
-            InitializeComponent();
         }
     }
 }

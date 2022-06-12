@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using RLTrading.Model;
 using RLTrading.Utility;
@@ -84,7 +85,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Trade der hinzugefügt wird
         /// </summary>
-        private Trade trade = new();
+        private Trade currentTrade = new();
 
 
         /// <summary>
@@ -92,8 +93,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public Trade EditTrade
         {
-            get => trade;
-            set => SetProperty(ref trade, value);
+            get => currentTrade;
+            set => SetProperty(ref currentTrade, value);
         }
 
         /// <summary>
@@ -110,7 +111,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelNewTrade()
         {
-            
+            SaveTrade = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
+
             gegebenContents.Add(gegebenAlle);
             gegebenContents.Add(gegebenNeues);
             
@@ -127,14 +129,16 @@ namespace RLTrading.ViewModel
 
         public void Execute_SaveTrade()
         {
-            TradeMocking.allTrades.Add(trade);
+            TradeMocking.allTrades.Add(currentTrade);
+            EditTrade = new Trade();
+            
         }
 
         /// <summary>
         /// Ob SaveTrad ausgeführt werden kann
         /// </summary>
         /// <returns>True / False</returns>
-        public bool CanExecute_SaveTrad()
+        public bool CanExecute_SaveTrade()
         {
             if (true)
             {

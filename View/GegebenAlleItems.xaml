@@ -12,10 +12,12 @@
         <StackPanel Orientation="Vertical">
             <DockPanel LastChildFill="False">
                 <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" >Gegeben:</Label>
-                <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" MaxLength="5" Text="{Binding }"></TextBox>
+                <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.lostCredits}" MaxLength="5" ></TextBox>
                 <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>
             </DockPanel>
-            <WrapPanel></WrapPanel>
+            <WrapPanel>
+                <Button Command="{Binding Path=SaveTrade}"> hey</Button>
+            </WrapPanel>
         </StackPanel>
     </Grid>
 </UserControl>
