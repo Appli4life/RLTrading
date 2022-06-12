@@ -4,12 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RLTrading.View"
+             xmlns:viewModel="clr-namespace:RLTrading.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
     <Grid>
         <StackPanel Orientation="Vertical">
-            <Label Background="Transparent" Style="{StaticResource ueberschrift}">Gegeben:</Label>
-
+            <DockPanel LastChildFill="False">
+                <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" >Gegeben:</Label>
+                <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" MaxLength="5" Text="{Binding }"></TextBox>
+                <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>
+            </DockPanel>
+            <WrapPanel></WrapPanel>
         </StackPanel>
     </Grid>
 </UserControl>

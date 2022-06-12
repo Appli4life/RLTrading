@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using RLTrading.Model;
+using RLTrading.Utility;
 using RLTrading.View;
 using RLTrading.ViewModel;
 
@@ -21,7 +22,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Collection von gegeben ContentControls
         /// </summary>
-        private ObservableCollection<ContentControl> gegebenContents = new();
+        public ObservableCollection<ContentControl> gegebenContents = new();
 
         /// <summary>
         /// Aktueller gegeben Content
@@ -31,7 +32,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Collection von bekommen ContentControls
         /// </summary>
-        private ObservableCollection<ContentControl> bekommenContents = new();
+        public ObservableCollection<ContentControl> bekommenContents = new();
 
         /// <summary>
         /// Aktueller bekommen Content
@@ -85,14 +86,20 @@ namespace RLTrading.ViewModel
         /// </summary>
         private Trade trade = new();
 
+
         /// <summary>
         /// Accessor für neuer Trade
         /// </summary>
-        public Trade neuerTrade
+        public Trade EditTrade
         {
             get => trade;
             set => SetProperty(ref trade, value);
         }
+
+        /// <summary>
+        /// Save Trade Command
+        /// </summary>
+        public RelayCommand SaveTrade { get; set; }
 
         #endregion
 
@@ -103,16 +110,40 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelNewTrade()
         {
-
-
+            
             gegebenContents.Add(gegebenAlle);
             gegebenContents.Add(gegebenNeues);
-
+            
             bekommenContents.Add(bekommenAlle);
             bekommenContents.Add(bekommenNeues);
 
             CurrentGegebenContent = gegebenContents[0];
             CurrentBekommenContent = bekommenContents[0];
+        }
+
+        #endregion
+
+        #region Commands
+
+        public void Execute_SaveTrade()
+        {
+            TradeMocking.allTrades.Add(trade);
+        }
+
+        /// <summary>
+        /// Ob SaveTrad ausgeführt werden kann
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_SaveTrad()
+        {
+            if (true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         #endregion

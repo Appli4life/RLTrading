@@ -22,8 +22,6 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Trade> AllTrades
         {
-            //erkennt jetzt änderungen wie add und remove 
-            // Seperates edit feld einfügen, (Der trade der gerade editiert wird binden mit dem trade in der liste und der anzeige)
             get => TradeMocking.allTrades;
             set => TradeMocking.allTrades = value;
         }

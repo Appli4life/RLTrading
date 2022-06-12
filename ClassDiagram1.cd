@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RLTrading.Model.Certification">
+    <Position X="21" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Certification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RLTrading.Model.TradeMocking">
+    <Position X="8" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\TradeMocking.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="TradeSaver" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="allTrades" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RLTrading.Model.Trade">
+    <Position X="5" Y="8.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAIACAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Model\Trade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RLTrading.Model.QualityMocking">
+    <Position X="18" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\QualityMocking.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Qualities" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RLTrading.Model.Quality">
+    <Position X="18" Y="8.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Quality.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RLTrading.Model.JsonSaver" BaseTypeListCollapsed="true">
+    <Position X="10.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAIAAAAAIAAAA=</HashCode>
+      <FileName>Model\JsonSaver.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RLTrading.Model.ColorMocking">
+    <Position X="15.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Model\ColorMocking.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Colors" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RLTrading.Model.CertificationMocking">
+    <Position X="21" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\CertificationMocking.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="Certifications" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RLTrading.Model.Color">
+    <Position X="15.5" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Color.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RLTrading.Item">
+    <Position X="15.5" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAABAAAABAAQAAQAEAACAAAAAgAAAAAA=</HashCode>
+      <FileName>Model\Item.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="certification" />
+      <Field Name="color" />
+      <Field Name="quality" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RLTrading.AllTrade" BaseTypeListCollapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\AllTrade.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RLTrading.NewTrade" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\NewTrade.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RLTrading.ViewModel.ViewModelNewTrade">
+    <Position X="2.75" Y="2" Width="2.25" />
+    <AssociationLine Name="bekommenAlle" Type="RLTrading.View.BekommenAlleItems" FixedToPoint="true">
+      <Path>
+        <Point X="5" Y="3.453" />
+        <Point X="5.438" Y="3.453" />
+        <Point X="5.438" Y="6.25" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAIAKBgAAAAAAAAAAEEAAAAAkiEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelNewTrade.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="gegebenAlle" />
+      <Field Name="gegebenNeues" />
+      <Field Name="bekommenAlle" />
+      <Field Name="bekommenNeues" />
+      <Field Name="trade" />
+      <Property Name="neuerTrade" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RLTrading.ViewModel.ViewModelMainWindow">
+    <Position X="6.75" Y="2.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAQgAAAAAQAECACgIAAAAAAIAAqFAAAAAEAgA=</HashCode>
+      <FileName>ViewModel\ViewModelMainWindow.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="allTrade" />
+      <Field Name="newTrade" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="RLTrading.ViewModel.ViewModelBase" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="RLTrading.ViewModel.ViewModelAllTrade">
+    <Position X="0.5" Y="1.5" Width="1.75" />
+    <InheritanceLine Type="RLTrading.ViewModel.ViewModelBase" FixedToPoint="true">
+      <Path>
+        <Point X="4" Y="1.062" />
+        <Point X="4" Y="1.312" />
+        <Point X="1.438" Y="1.312" />
+        <Point X="1.438" Y="1.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelAllTrade.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="AllTrades" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="RLTrading.View.BekommenAlleItems" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\BekommenAlleItems.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RLTrading.View.BekommenNeuesItem" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="9.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\BekommenNeuesItem.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RLTrading.View.GegebenAlleItems" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="10.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\GegebenAlleItems.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RLTrading.View.GegebenNeuesItem" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\GegebenNeuesItem.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="RLTrading.Model.ISaver">
+    <Position X="10.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAIAAAA=</HashCode>
+      <FileName>Model\ISaver.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
