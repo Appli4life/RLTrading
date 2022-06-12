@@ -12,6 +12,8 @@ namespace RLTrading.Model
     /// </summary>
     public interface ISaver
     {
+        #region Methoden
+
         /// <summary>
         /// Laden aller Trades
         /// </summary>
@@ -24,5 +26,7 @@ namespace RLTrading.Model
         /// <param name="allTrades">Die zu speichernde Trades</param>
         /// <returns>True / False je nach erfolg</returns>
         bool saveTrades(ObservableCollection<Trade> allTrades);
+
+        #endregion
     }
 }

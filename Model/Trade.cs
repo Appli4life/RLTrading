@@ -11,6 +11,8 @@ namespace RLTrading.Model
     /// </summary>
     public class Trade
     {
+        #region Property
+
         /// <summary>
         /// Alle erhaltenen Credits
         /// </summary>
@@ -24,13 +26,17 @@ namespace RLTrading.Model
         /// <summary>
         /// Alle verkauften Items
         /// </summary>
-        public List<Item> soldItems = new List<Item>();
+        public List<Item> soldItems = new();
 
 
         /// <summary>
         /// Alle gekauften Items
         /// </summary>
-        public List<Item> boughtItems = new List<Item>();
+        public List<Item> boughtItems = new();
+
+        #endregion
+
+        #region Ctor
 
         /// <summary>
         /// Ctor
@@ -87,5 +93,7 @@ namespace RLTrading.Model
             this.soldItems = soldItems;
             this.boughtItems = boughtItems;
         }
+
+        #endregion
     }
 }

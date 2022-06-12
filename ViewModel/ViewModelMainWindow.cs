@@ -9,24 +9,74 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using ListBoxMVVM.ViewModels;
+using RLTrading.Model;
 using RLTrading.Utility;
 
 namespace RLTrading.ViewModel
 {
+    /// <summary>
+    /// ViewModel für MainWindow
+    /// </summary>
     public class ViewModelMainWindow : ViewModelBase
     {
+        #region Property
+
+        /// <summary>
+        /// Close Command
+        /// </summary>
         public RelayCommand CloseApp { get; set; }
+
+        /// <summary>
+        /// AllTrade Command
+        /// </summary>
         public RelayCommand AllTradeSwitch { get; set; }
+
+        /// <summary>
+        /// NewTrade Command
+        /// </summary>
         public RelayCommand NewTradeSwitch { get; set; }
+
+        /// <summary>
+        /// Save Command
+        /// </summary>
         public RelayCommand SaveCommand { get; set; }
 
-        private ObservableCollection<ContentControl> contents = new ObservableCollection<ContentControl>();
-        private AllTrade allTrade = new AllTrade();
-        private NewTrade newTrade = new NewTrade();
+        /// <summary>
+        /// Collection von allen ContentControls
+        /// </summary>
+        private ObservableCollection<ContentControl> contents = new();
 
+        /// <summary>
+        /// AllTrade ContentControl
+        /// </summary>
+        private AllTrade allTrade = new();
+
+        /// <summary>
+        /// NewTrade ContentControl
+        /// </summary>
+        private NewTrade newTrade = new();
+
+        /// <summary>
+        /// Aktueller Content im ContentControl
+        /// </summary>
         private ContentControl currentContent;
 
+        /// <summary>
+        /// Accessor für Aktueller ContentControl
+        /// </summary>
+        public ContentControl Content
+        {
+            get => currentContent;
+            set => SetProperty(ref currentContent, value);
+        }
 
+        #endregion
+
+        #region Ctor
+
+        /// <summary>
+        /// Ctor
+        /// </summary>
         public ViewModelMainWindow()
         {
             CloseApp = new RelayCommand(param => Execute_Close(), param => canExecute_Close());
@@ -40,60 +90,106 @@ namespace RLTrading.ViewModel
             currentContent = contents[0];
         }
 
-        public ContentControl Content
-        {
-            get => currentContent;
-            set => SetProperty(ref currentContent, value);
-        }
+        #endregion
 
+        #region Command Methoden
+
+        /// <summary>
+        /// Close Command Execute
+        /// </summary>
         private void Execute_Close()
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Close Command canExecute
+        /// </summary>
+        /// <returns>True / False</returns>
         private bool canExecute_Close()
         {
             if (true)
             {
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
+
+        /// <summary>
+        /// AllTrade Command Execute
+        /// </summary>
         private void Execute_AllTrade()
         {
             Content = contents[0];
         }
 
+        /// <summary>
+        /// AllTrade Command can Execute
+        /// </summary>
+        /// <returns>True / False</returns>
         private bool canExecute_AllTrade()
         {
             if (true)
             {
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
+
+        /// <summary>
+        /// NewTrade Command Execute
+        /// </summary>
         private void Execute_NewTrade()
         {
             Content = contents[1];
         }
 
+        /// <summary>
+        /// NewTrade Command can Execute
+        /// </summary>
+        /// <returns>True / False</returns>
         private bool canExecute_NewTrade()
         {
             if (true)
             {
                 return true;
             }
-        }
-        private void Execute_Save()
-        {
-            ViewModelAllTrade viemodel = (ViewModelAllTrade)allTrade.DataContext;
-            viemodel.TradeSaver.saveTrades(viemodel.AllTrades);
+            else
+            {
+                return false;
+            }
         }
 
+        /// <summary>
+        /// Save Command Execute
+        /// </summary>
+        private void Execute_Save()
+        {
+            TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades);
+        }
+
+        /// <summary>
+        /// Save Command can Execute
+        /// </summary>
+        /// <returns>True / False</returns>
         private bool canExecute_Save()
         {
             if (true)
             {
                 return true;
             }
+            else
+            {
+                return false;
+            }
         }
+
+        #endregion
     }
 }

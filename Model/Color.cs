@@ -11,10 +11,16 @@ namespace RLTrading.Model
     /// </summary>
     public class Color
     {
+        #region Property
+
         /// <summary>
         /// Name der Farbe
         /// </summary>
         public string Name { get; set; }
+
+        #endregion
+
+        #region Ctor
 
         /// <summary>
         /// Ctor
@@ -32,5 +38,7 @@ namespace RLTrading.Model
         {
             Name = name;
         }
+
+        #endregion
     }
 }

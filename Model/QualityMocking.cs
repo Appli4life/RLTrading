@@ -12,6 +12,8 @@ namespace RLTrading.Model
     /// </summary>
     public static class QualityMocking
     {
+        #region Methoden
+
         /// <summary>
         /// Holt Liste von Qualitäten
         /// </summary>
@@ -20,20 +22,22 @@ namespace RLTrading.Model
         {
             List<Quality> list = new List<Quality>
             {
-                new Quality("Common"),
-                new Quality("Uncommon"),
-                new Quality("Rare"),
-                new Quality("Very Rare"),
-                new Quality("Import"),
-                new Quality("Exotic"),
-                new Quality("Black Market"),
-                new Quality("Premium"),
-                new Quality("Limited"),
-                new Quality("Legacy")
+                new("Common"),
+                new("Uncommon"),
+                new("Rare"),
+                new("Very Rare"),
+                new("Import"),
+                new("Exotic"),
+                new("Black Market"),
+                new("Premium"),
+                new("Limited"),
+                new("Legacy")
             };
             return list;
 
         }
+
+        #endregion
     }
 }
 

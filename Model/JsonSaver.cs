@@ -15,10 +15,16 @@ namespace RLTrading.Model
     /// </summary>
     public class JsonSaver : ISaver
     {
+        #region Property
+
         /// <summary>
         /// Pfad zur Json Datei (ab Current Directory)
         /// </summary>
         public static string path = string.Format(Directory.GetCurrentDirectory() + @"\data\Trades.json");
+
+        #endregion
+
+        #region Methoden
 
         /// <summary>
         /// Ladet alle Trades von der Json datei(siehe Property "path") in eine ObservableCollection
@@ -69,5 +75,7 @@ namespace RLTrading.Model
                 return false;
             }
         }
+
+        #endregion
     }
 }

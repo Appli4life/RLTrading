@@ -11,10 +11,16 @@ namespace RLTrading.Model
     /// </summary>
     public class Certification
     {
+        #region Property
+
         /// <summary>
         /// Name der Zertifizierung
         /// </summary>
         public string Name { get; set; }
+
+        #endregion
+
+        #region Ctor
 
         /// <summary>
         /// Ctor
@@ -32,5 +38,7 @@ namespace RLTrading.Model
         {
             Name = name;
         }
+
+        #endregion
     }
 }

@@ -10,36 +10,37 @@ using RLTrading.Utility;
 
 namespace RLTrading.ViewModel
 {
+    /// <summary>
+    /// ViewModel für UserControl: AllTrade
+    /// </summary>
     public class ViewModelAllTrade : ViewModelBase
     {
-        public JsonSaver TradeSaver = new JsonSaver();
-        private ObservableCollection<Trade> allTrades;
-        public RelayCommand SaveCommand { get; set; }
-
-        public ViewModelAllTrade()
-        {
-            allTrades = new ObservableCollection<Trade>(TradeSaver.loadTrades());
-            SaveCommand = new RelayCommand(param => Execute_Save(), param => canExecute_Save());
-        }
-
+        #region Property
+        
+        /// <summary>
+        /// Accessor für alle Trade Collection
+        /// </summary>
         public ObservableCollection<Trade> AllTrades
         {
             //erkennt jetzt änderungen wie add und remove 
             // Seperates edit feld einfügen, (Der trade der gerade editiert wird binden mit dem trade in der liste und der anzeige)
-            get => allTrades;
-            set => allTrades = value;
-        }
-        private void Execute_Save()
-        {
-            TradeSaver.saveTrades(allTrades);
+            get => TradeMocking.allTrades;
+            set => TradeMocking.allTrades = value;
         }
 
-        private bool canExecute_Save()
+        #endregion
+
+        #region Ctor
+
+        /// <summary>
+        /// Ctor
+        /// </summary>
+        public ViewModelAllTrade()
         {
-            if (true)
-            {
-                return true;
-            }
+            
         }
+
+        #endregion
+
     }
 }

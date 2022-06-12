@@ -12,6 +12,8 @@ namespace RLTrading.Model
     /// </summary>
     public static class ColorMocking
     {
+        #region Property
+
         /// <summary>
         /// Holt Liste von Farben
         /// </summary>
@@ -20,23 +22,25 @@ namespace RLTrading.Model
         {
             List<Color> list = new List<Color>
             {
-                new Color("Default"),
-                new Color("Black"),
-                new Color("White"),
-                new Color("Grey"),
-                new Color("Crimson"),
-                new Color("Pink"),
-                new Color("Cobalt"),
-                new Color("Sky Blue"),
-                new Color("Sienna"),
-                new Color("Saffron"),
-                new Color("Lime"),
-                new Color("Green"),
-                new Color("Orange"),
-                new Color("Purple")
+                new("Default"),
+                new("Black"),
+                new("White"),
+                new("Grey"),
+                new("Crimson"),
+                new("Pink"),
+                new("Cobalt"),
+                new("Sky Blue"),
+                new("Sienna"),
+                new("Saffron"),
+                new("Lime"),
+                new("Green"),
+                new("Orange"),
+                new("Purple")
             };
             return list;
 
         }
+
+        #endregion
     }
 }
