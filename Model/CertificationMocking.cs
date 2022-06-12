@@ -11,35 +11,30 @@ namespace RLTrading.Model
     /// </summary>
     public static class CertificationMocking
     {
-        #region Methoden
+        #region Property
 
         /// <summary>
-        /// Holt Liste von Zertifizierungen
+        /// Liste mit Zertifizierungen
         /// </summary>
-        /// <returns>Liste mit Zertifizierungen (neu erstellt)</returns>
-        public static List<Certification> GetCertifications()
-        {
-            List<Certification> list = new List<Certification>()
+        public static List<Certification> Certifications = new()
             {
-                new("None"),
-                new("Striker"),
-                new("Sweeper"),
-                new("Tactician"),
-                new("Acrobat"),
-                new("Aviator"),
-                new("Goalkeeper"),
-                new("Guardian"),
-                new("Juggler"),
-                new("Playmaker"),
-                new("Scorer"),
-                new("Show-Off"),
-                new("Sniper"),
-                new("Turle"),
-                new("Paragon"),
-                new("Victor")
+                new Certification("None"),
+                new Certification("Striker"),
+                new Certification("Sweeper"),
+                new Certification("Tactician"),
+                new Certification("Acrobat"),
+                new Certification("Aviator"),
+                new Certification("Goalkeeper"),
+                new Certification("Guardian"),
+                new Certification("Juggler"),
+                new Certification("Playmaker"),
+                new Certification("Scorer"),
+                new Certification("Show-Off"),
+                new Certification("Sniper"),
+                new Certification("Turle"),
+                new Certification("Paragon"),
+                new Certification("Victor")
             };
-            return list;
-        }
 
         #endregion
     }

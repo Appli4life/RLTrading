@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace RLTrading.Model
 {
@@ -17,6 +18,11 @@ namespace RLTrading.Model
         /// Name der Farbe
         /// </summary>
         public string Name { get; set; }
+
+        /// <summary>
+        /// Farbe zum Namen
+        /// </summary>
+        public SolidColorBrush Brush { get; set; }
 
         #endregion
 
@@ -34,9 +40,10 @@ namespace RLTrading.Model
         /// Ctor
         /// </summary>
         /// <param name="name">Name</param>
-        public Color(string name)
+        public Color(string name, SolidColorBrush brush)
         {
             Name = name;
+            Brush = brush;
         }
 
         #endregion

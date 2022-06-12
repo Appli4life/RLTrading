@@ -8,7 +8,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
-using ListBoxMVVM.ViewModels;
+using RLTrading.ViewModel;
 using RLTrading.Model;
 using RLTrading.Utility;
 

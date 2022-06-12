@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace ListBoxMVVM.ViewModels
+namespace RLTrading.ViewModel
 {
     /// <summary>
     /// Basisklasse für alle ViewModel

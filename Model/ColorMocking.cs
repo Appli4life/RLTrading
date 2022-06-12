@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Navigation;
 
 namespace RLTrading.Model
@@ -15,32 +16,25 @@ namespace RLTrading.Model
         #region Property
 
         /// <summary>
-        /// Holt Liste von Farben
+        /// Liste mit Colors
         /// </summary>
-        /// <returns>Liste mit Farben (neu erstellt)</returns>
-        public static List<Color> GetQualities()
+        public static List<Color> Colors = new()
         {
-            List<Color> list = new List<Color>
-            {
-                new("Default"),
-                new("Black"),
-                new("White"),
-                new("Grey"),
-                new("Crimson"),
-                new("Pink"),
-                new("Cobalt"),
-                new("Sky Blue"),
-                new("Sienna"),
-                new("Saffron"),
-                new("Lime"),
-                new("Green"),
-                new("Orange"),
-                new("Purple")
+                new Color("Default", Brushes.Transparent),
+                new Color("Black", Brushes.Black),
+                new Color("White", Brushes.White),
+                new Color("Grey", Brushes.Gray),
+                new Color("Crimson", Brushes.Crimson),
+                new Color("Pink", Brushes.Pink),
+                new Color("Cobalt", Brushes.Blue),
+                new Color("Sky Blue", Brushes.SkyBlue),
+                new Color("Sienna", Brushes.Sienna),
+                new Color("Saffron", Brushes.Yellow),
+                new Color("Lime", Brushes.Lime),
+                new Color("Green", Brushes.ForestGreen),
+                new Color("Orange", Brushes.Orange),
+                new Color("Purple", Brushes.Purple)
             };
-            return list;
-
-        }
-
         #endregion
     }
 }

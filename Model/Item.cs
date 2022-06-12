@@ -21,6 +21,11 @@ namespace RLTrading
         public bool Blueprint { get; set; }
 
         /// <summary>
+        /// Anzahlt der Items
+        /// </summary>
+        public int Count { get; set; }      
+
+        /// <summary>
         /// Name des Item
         /// </summary>
         private string name;
