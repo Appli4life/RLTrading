@@ -19,5 +19,9 @@
             <Setter Property="BorderThickness" Value="3" />
             <Setter Property="BorderBrush" Value="LightBlue" />
         </Style>
+        
+        <Style TargetType="Label" x:Key="LableCr">
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
     </Application.Resources>
 </Application>
