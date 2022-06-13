@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using System.Windows.Navigation;
 
 namespace RLTrading.Model
@@ -19,17 +20,14 @@ namespace RLTrading.Model
         /// </summary>
         public static List<Quality> Qualities = new()
         {
-                new Quality("Common"),
-                new Quality("Uncommon"),
-                new Quality("Rare"),
-                new Quality("Very Rare"),
-                new Quality("Import"),
-                new Quality("Exotic"),
-                new Quality("Black Market"),
-                new Quality("Premium"),
-                new Quality("Limited"),
-                new Quality("Legacy")
-            };
+                new Quality("Common", Brushes.Gray),
+                new Quality("Uncommon", Brushes.LightBlue),
+                new Quality("Rare", Brushes.Blue),
+                new Quality("Very Rare", Brushes.Purple),
+                new Quality("Import", Brushes.Red),
+                new Quality("Exotic", Brushes.Gold),
+                new Quality("Black Market", Brushes.DeepPink),
+        };
 
         #endregion
     }

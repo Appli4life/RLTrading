@@ -85,7 +85,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Trade der hinzugefügt wird
         /// </summary>
-        private Trade currentTrade = new();
+        private Trade currentTrade = new Trade();
 
 
         /// <summary>
@@ -98,9 +98,42 @@ namespace RLTrading.ViewModel
         }
 
         /// <summary>
+        /// Accessor für alle Verkauften Items
+        /// </summary>
+        public ObservableCollection<Item> SoldItems
+        {
+            get => EditTrade.soldItems;
+            set => SetProperty(ref EditTrade.soldItems, value);
+        }
+
+        /// <summary>
         /// Save Trade Command
         /// </summary>
         public RelayCommand SaveTrade { get; set; }
+
+        /// <summary>
+        /// Gegeben Item Hinzufügen
+        /// </summary>
+        public RelayCommand soldItemAdd { get; set; }
+
+        /// <summary>
+        /// Gegeben Item Löschen
+        /// </summary>
+        public RelayCommand soldItemDelete { get; set; }
+
+        /// <summary>
+        /// Selected item in Listbox
+        /// </summary>
+        private Item selectedItem;
+
+        /// <summary>
+        /// Accessor für Selected Item
+        /// </summary>
+        public Item SelectedItem
+        {
+            get => selectedItem;
+            set => SetProperty(ref selectedItem, value);
+        }
 
         #endregion
 
@@ -111,11 +144,24 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelNewTrade()
         {
+            EditTrade.soldItems.Add(
+                new Item("Fennec",
+                    ColorMocking.Colors[4],
+                    CertificationMocking.Certifications[0],
+                    QualityMocking.Qualities[2]));
+            EditTrade.soldItems.Add(
+                new Item("Fennec",
+                    ColorMocking.Colors[4],
+                    CertificationMocking.Certifications[0],
+                    QualityMocking.Qualities[4]));
+
             SaveTrade = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
+            soldItemAdd = new RelayCommand(param => Execute_soldItemAdd(), param => CanExecute_soldItemAdd());
+            soldItemDelete = new RelayCommand(param => Execute_soldItemDelete(), param => CanExecute_soldItemDelete());
 
             gegebenContents.Add(gegebenAlle);
             gegebenContents.Add(gegebenNeues);
-            
+
             bekommenContents.Add(bekommenAlle);
             bekommenContents.Add(bekommenNeues);
 
@@ -127,11 +173,58 @@ namespace RLTrading.ViewModel
 
         #region Commands
 
+        /// <summary>
+        /// Execute soldItemDelete
+        /// </summary>
+        public void Execute_soldItemDelete()
+        {
+            EditTrade.soldItems.Remove(SelectedItem);
+        }
+
+        /// <summary>
+        /// Ob Item gelöscht werden kann (Gegeben)
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_soldItemDelete()
+        {
+            if (SelectedItem != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Execute soldItemAdd
+        /// </summary>
+        public void Execute_soldItemAdd()
+        {
+            EditTrade.soldItems.Add(new Item());
+        }
+
+        /// <summary>
+        /// Ob Item Hinzugefügt werden kann (Gegeben)
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_soldItemAdd()
+        {
+            if (EditTrade.soldItems.Count < 12)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Execute SaveTrade
+        /// </summary>
         public void Execute_SaveTrade()
         {
             TradeMocking.allTrades.Add(currentTrade);
             EditTrade = new Trade();
-            
+
         }
 
         /// <summary>

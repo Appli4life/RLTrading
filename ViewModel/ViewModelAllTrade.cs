@@ -23,7 +23,7 @@ namespace RLTrading.ViewModel
         public ObservableCollection<Trade> AllTrades
         {
             get => TradeMocking.allTrades;
-            set => TradeMocking.allTrades = value;
+            set => SetProperty(ref TradeMocking.allTrades, value);
         }
 
         #endregion

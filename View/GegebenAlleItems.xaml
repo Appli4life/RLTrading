@@ -3,21 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:RLTrading.View"
-             xmlns:viewModel="clr-namespace:RLTrading.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-
     <Grid>
         <StackPanel Orientation="Vertical">
             <DockPanel LastChildFill="False">
-                <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" >Gegeben:</Label>
+                <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Gegeben:" ></Label>
                 <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.lostCredits}" MaxLength="5" ></TextBox>
                 <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>
             </DockPanel>
-            <WrapPanel>
-                <Button Command="{Binding Path=SaveTrade}"> hey</Button>
-            </WrapPanel>
+            <ListBox SelectionMode="Single" ItemsSource="{Binding Path=SoldItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding Path=SelectedItem}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" IsItemsHost="True"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="80" Height="80">
+                            <StackPanel.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="{Binding Path=Quality.Brush}" Offset="1"/>
+                                    <GradientStop Color="Black" Offset="0"/>
+                                </LinearGradientBrush>
+                            </StackPanel.Background>
+                            <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}"  Content="{Binding Path=Count}"></Label>
+                            <Label Style="{StaticResource Item}" Content="{Binding Path=Name}"></Label>
+                            <Label Style="{StaticResource Item}"  Content="{Binding Path=Certification.Name}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Content="Item Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtmHinzufuegen}"></Button>
+                <Button Content="Item Löschen" Command="{Binding Path=soldItemDelete}" Style="{StaticResource BtmHinzufuegen}" Background="LightCoral"></Button>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </UserControl>

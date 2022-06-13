@@ -13,7 +13,7 @@
     <Grid>
         <ScrollViewer>
 
-        <DataGrid CanUserAddRows="True" IsReadOnly="False" MinColumnWidth="100" ItemsSource="{Binding AllTrades }">
+        <DataGrid IsReadOnly="True" MinColumnWidth="100" ItemsSource="{Binding AllTrades }">
             
         </DataGrid>
         </ScrollViewer>
