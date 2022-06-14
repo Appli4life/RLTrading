@@ -22,7 +22,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Farbe
         /// </summary>
-        public SolidColorBrush Brush { get; set; }
+        public System.Windows.Media.Color Brush { get; set; }
 
         #endregion
 
@@ -40,7 +40,7 @@ namespace RLTrading.Model
         /// Ctor
         /// </summary>
         /// <param name="name">Name</param>
-        public Quality(string name, SolidColorBrush brush)
+        public Quality(string name, System.Windows.Media.Color brush)
         {
             Brush = brush;
             Name = name;

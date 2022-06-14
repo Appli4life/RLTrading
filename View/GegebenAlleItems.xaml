@@ -23,7 +23,7 @@
                         <StackPanel Width="80" Height="80">
                             <StackPanel.Background>
                                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                    <GradientStop Color="Blue" Offset="1"/>
+                                    <GradientStop Color="{Binding Path=Quality.Brush}" Offset="1"/>
                                     <GradientStop Color="Black" Offset="0"/>
                                 </LinearGradientBrush>
                             </StackPanel.Background>

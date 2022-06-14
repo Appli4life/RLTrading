@@ -21,9 +21,24 @@ namespace RLTrading
         public bool Blueprint { get; set; }
 
         /// <summary>
-        /// Anzahlt der Items
+        /// Anzahl
         /// </summary>
-        public int Count { get; set; }      
+        public int count { get; set; }  
+
+        /// <summary>
+        /// Anzahlt der Items Accessor
+        /// </summary>
+        public int Count
+        {
+            get => count;
+            set
+            {
+                if (Count > 0)
+                {
+                    count = value;
+                }
+            }
+        }      
 
         /// <summary>
         /// Name des Item

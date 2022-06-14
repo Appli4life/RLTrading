@@ -20,13 +20,13 @@ namespace RLTrading.Model
         /// </summary>
         public static List<Quality> Qualities = new()
         {
-                new Quality("Common", Brushes.Gray),
-                new Quality("Uncommon", Brushes.LightBlue),
-                new Quality("Rare", Brushes.Blue),
-                new Quality("Very Rare", Brushes.Purple),
-                new Quality("Import", Brushes.Red),
-                new Quality("Exotic", Brushes.Gold),
-                new Quality("Black Market", Brushes.DeepPink),
+                new Quality("Common", System.Windows.Media.Color.FromRgb(136, 136, 136)),
+                new Quality("Uncommon", System.Windows.Media.Color.FromRgb(135, 206, 235)),
+                new Quality("Rare", System.Windows.Media.Color.FromRgb(0,0,250)),
+                new Quality("Very Rare", System.Windows.Media.Color.FromRgb(186,85,211)),
+                new Quality("Import", System.Windows.Media.Color.FromRgb(255,42,4)),
+                new Quality("Exotic", System.Windows.Media.Color.FromRgb(255,215,0)),
+                new Quality("Black Market", System.Windows.Media.Color.FromRgb(242,20,214)),
         };
 
         #endregion
