@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using RLTrading.Model;
 
 
-namespace RLTrading
+namespace RLTrading.Model
 {
     /// <summary>
     /// Item Model
