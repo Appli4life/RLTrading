@@ -144,16 +144,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelNewTrade()
         {
-            EditTrade.soldItems.Add(
-                new Item("Fennec",
-                    ColorMocking.Colors[4],
-                    CertificationMocking.Certifications[0],
-                    QualityMocking.Qualities[2]));
-            EditTrade.soldItems.Add(
-                new Item("Fennec",
-                    ColorMocking.Colors[4],
-                    CertificationMocking.Certifications[0],
-                    QualityMocking.Qualities[4]));
+            EditTrade.soldItems.Add(new Item());
+
 
             SaveTrade = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
             soldItemAdd = new RelayCommand(param => Execute_soldItemAdd(), param => CanExecute_soldItemAdd());

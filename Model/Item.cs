@@ -18,12 +18,12 @@ namespace RLTrading.Model
         /// <summary>
         /// True = Blueprint / False = Kein Blueprint
         /// </summary>
-        public bool Blueprint { get; set; }
+        public bool Blueprint { get; set; } = false;
 
         /// <summary>
         /// Anzahl
         /// </summary>
-        public int count { get; set; }  
+        public int count { get; set; } = 1;
 
         /// <summary>
         /// Anzahlt der Items Accessor
@@ -43,7 +43,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Name des Item
         /// </summary>
-        private string name;
+        private string name = "Fennec";
 
         /// <summary>
         /// Accsessor Name
@@ -57,7 +57,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Farbe des Item
         /// </summary>
-        private Color color;
+        private Color color = ColorMocking.Colors[0];
 
         /// <summary>
         /// Accsessor der Farbe
@@ -71,7 +71,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Zertifizierung des Item
         /// </summary>
-        private Certification certification;
+        private Certification certification = CertificationMocking.Certifications[0];
 
         /// <summary>
         /// Accsessor der Zertifizierung 
@@ -85,7 +85,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Qualität des Item
         /// </summary>
-        private Quality quality;
+        private Quality quality = QualityMocking.Qualities[0];
 
         /// <summary>
         /// Accsessor der Qualität 
@@ -115,13 +115,15 @@ namespace RLTrading.Model
         /// <param name="certification">Zertifizierung</param>
         /// <param name="quality">Qualität</param>
         /// <param name="blueprint">Blueprint Y/N</param>
-        public Item(string name, Color color, Certification certification, Quality quality, bool blueprint = false)
+        /// <param name="count">Anzahl</param>
+        public Item(string name, Color color, Certification certification, Quality quality, int count, bool blueprint = false)
         {
             Name = name;
             Color = color;
             Certification = certification;
             Quality = quality;
             Blueprint = blueprint;
+            Count = count;
         }
 
         #endregion
