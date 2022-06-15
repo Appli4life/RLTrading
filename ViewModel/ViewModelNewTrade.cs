@@ -48,7 +48,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// ContentControl für neue gegebenes Item
         /// </summary>
-        private GegebenNeuesItem gegebenNeues = new();
+        private GegebenEditItem gegebenEdit = new();
 
         /// <summary>
         /// ContentControl für alle bekommenen Items
@@ -58,7 +58,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// ContentControl für neu bekommenes Item
         /// </summary>
-        private BekommenNeuesItem bekommenNeues = new();
+        private BekommenEditItem bekommenEdit = new();
 
         /// <summary>
         /// Accessor für Current gegeben Content
@@ -127,6 +127,16 @@ namespace RLTrading.ViewModel
         private Item selectedItem;
 
         /// <summary>
+        /// Aktuelles Editierts gegeben Item
+        /// </summary>
+        private Item editedGItem;
+
+        /// <summary>
+        /// Aktuelles Editierts gegeben Item
+        /// </summary>
+        private Item editedBItem;
+
+        /// <summary>
         /// Accessor für Selected Item
         /// </summary>
         public Item SelectedItem
@@ -134,6 +144,35 @@ namespace RLTrading.ViewModel
             get => selectedItem;
             set => SetProperty(ref selectedItem, value);
         }
+
+        /// <summary>
+        /// Accessor für GEditItem
+        /// </summary>
+        public Item GEditItem
+        {
+            get => editedGItem;
+            set => SetProperty(ref editedGItem, value);
+        }
+
+        /// <summary>
+        /// Accessor für BEditItem
+        /// </summary>
+        public Item BEditItem
+        {
+            get => editedBItem;
+            set => SetProperty(ref editedBItem, value);
+        }
+
+        /// <summary>
+        /// Traded Editieren mit Button
+        /// </summary>
+        public RelayCommand EditTradeBtn { get; set; }
+        
+        /// <summary>
+        /// Traded Editieren mit Key E
+        /// </summary>
+        public RelayCommand EditTradeKeyE { get; set; }
+
 
         #endregion
 
@@ -146,16 +185,18 @@ namespace RLTrading.ViewModel
         {
             EditTrade.soldItems.Add(new Item());
 
+            EditTradeBtn = new RelayCommand(param => Execute_editTrade(), param => CanExecute_editTrade());
+            EditTradeKeyE = new RelayCommand(param => Execute_editTrade(), param => CanExecute_editTrade());
 
             SaveTrade = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
             soldItemAdd = new RelayCommand(param => Execute_soldItemAdd(), param => CanExecute_soldItemAdd());
             soldItemDelete = new RelayCommand(param => Execute_soldItemDelete(), param => CanExecute_soldItemDelete());
 
             gegebenContents.Add(gegebenAlle);
-            gegebenContents.Add(gegebenNeues);
+            gegebenContents.Add(gegebenEdit);
 
             bekommenContents.Add(bekommenAlle);
-            bekommenContents.Add(bekommenNeues);
+            bekommenContents.Add(bekommenEdit);
 
             CurrentGegebenContent = gegebenContents[0];
             CurrentBekommenContent = bekommenContents[0];
@@ -164,6 +205,28 @@ namespace RLTrading.ViewModel
         #endregion
 
         #region Commands
+
+        /// <summary>
+        /// Execute Edit Trade
+        /// </summary>
+        public void Execute_editTrade()
+        {
+
+        }
+
+        /// <summary>
+        /// Can Execute Edit Trade
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_editTrade()
+        {
+            if (SelectedItem != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         /// <summary>
         /// Execute soldItemDelete

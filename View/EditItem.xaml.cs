@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace RLTrading.View
 {
     /// <summary>
-    /// Interaction logic for GegebenNeuesItem.xaml
+    /// Interaction logic for EditItem.xaml
     /// </summary>
-    public partial class GegebenNeuesItem : UserControl
+    public partial class EditItem : UserControl
     {
-        public GegebenNeuesItem()
+        public EditItem()
         {
             InitializeComponent();
         }

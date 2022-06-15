@@ -38,8 +38,9 @@
                 </ListBox.ItemTemplate>
             </ListBox>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Content="Item Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtmHinzufuegen}"></Button>
-                <Button Content="Item Löschen" Command="{Binding Path=soldItemDelete}" Style="{StaticResource BtmHinzufuegen}" Background="LightCoral"></Button>
+                <Button Command=""></Button>
+                <Button Content="Item Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
+                <Button Content="Item Löschen" Command="{Binding Path=soldItemDelete}" Style="{StaticResource BtnHinzufuegen}" Background="LightCoral"></Button>
             </StackPanel>
 
         </StackPanel>

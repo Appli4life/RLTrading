@@ -79,14 +79,14 @@
     <Compile Include="View\BekommenAlleItems.xaml.cs">
       <DependentUpon>BekommenAlleItems.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\BekommenNeuesItem.xaml.cs">
-      <DependentUpon>BekommenNeuesItem.xaml</DependentUpon>
+    <Compile Include="View\BekommenEditItem.xaml.cs">
+      <DependentUpon>BekommenEditItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\GegebenAlleItems.xaml.cs">
       <DependentUpon>GegebenAlleItems.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GegebenNeuesItem.xaml.cs">
-      <DependentUpon>GegebenNeuesItem.xaml</DependentUpon>
+    <Compile Include="View\GegebenEditItem.xaml.cs">
+      <DependentUpon>GegebenEditItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NewTrade.xaml.cs">
       <DependentUpon>NewTrade.xaml</DependentUpon>
@@ -115,7 +115,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\BekommenNeuesItem.xaml">
+    <Page Include="View\BekommenEditItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,7 +123,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\GegebenNeuesItem.xaml">
+    <Page Include="View\GegebenEditItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
