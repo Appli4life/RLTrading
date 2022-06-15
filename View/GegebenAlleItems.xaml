@@ -6,8 +6,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <StackPanel Orientation="Vertical">
-            <DockPanel LastChildFill="False">
+        <StackPanel>
+            <DockPanel DockPanel.Dock="Top" LastChildFill="False">
                 <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Gegeben:" ></Label>
                 <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.lostCredits}" MaxLength="5" ></TextBox>
                 <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>
@@ -15,12 +15,12 @@
             <ListBox Background="Transparent" BorderBrush="Transparent" SelectionMode="Single" ItemsSource="{Binding Path=SoldItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding Path=SelectedItem}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal" IsItemsHost="True" Background="Transparent"></WrapPanel>
+                        <WrapPanel Orientation="Horizontal"  IsItemsHost="True" Background="Transparent"></WrapPanel>
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="80" Height="80">
+                        <StackPanel Width="80" Height="80" Margin="6">
                             <StackPanel.Background>
                                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                                     <GradientStop Color="{Binding Path=Quality.Brush}" Offset="1"/>
@@ -37,12 +37,9 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <Button Command=""></Button>
-                <Button Content="Item Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
-                <Button Content="Item Löschen" Command="{Binding Path=soldItemDelete}" Style="{StaticResource BtnHinzufuegen}" Background="LightCoral"></Button>
-            </StackPanel>
-
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
+            <Button Content="Item Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
         </StackPanel>
     </Grid>
 </UserControl>

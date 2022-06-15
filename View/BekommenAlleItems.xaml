@@ -7,7 +7,51 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Label>alle</Label>
-            
+        <StackPanel>
+            <DockPanel LastChildFill="False">
+                <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Bekommen:" ></Label>
+                <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.gotCredits}" MaxLength="5" ></TextBox>
+                <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>
+            </DockPanel>
+            <ListBox Background="Transparent" BorderBrush="Transparent" SelectionMode="Single" ItemsSource="{Binding Path=GotItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding Path=SelectedItem}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" IsItemsHost="True" Background="Transparent"></WrapPanel>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="80" Height="80" Margin="6">
+                            <StackPanel.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="{Binding Path=Quality.Brush}" Offset="1"/>
+                                    <GradientStop Color="Black" Offset="0"/>
+                                </LinearGradientBrush>
+                            </StackPanel.Background>
+                            <DockPanel>
+                                <Ellipse ToolTip="{Binding Path=Color.Name}" DockPanel.Dock="Right" Margin="0,2,5,0"  Height="15" Width="15" Fill="{Binding Path=Color.Brush}"></Ellipse>
+                                <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}" Margin="5,0,0,0"  Content="{Binding Path=Count}"></Label>
+                            </DockPanel>
+                            <Label Style="{StaticResource Item}" Content="{Binding Path=Name}"></Label>
+                            <Label Style="{StaticResource Item}"  Content="{Binding Path=Certification.Name}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Content="Item Bearbeiten" Command="{Binding Path=EditItemBtn}" Style="{StaticResource BtnHinzufuegen}" Background="Yellow">
+                <Button.InputBindings>
+                    <KeyBinding Key="E" Command="{Binding Path=EditItemKeyE}"></KeyBinding>
+                </Button.InputBindings>
+            </Button>
+            <Button Content="Item Hinzufügen" Command="{Binding Path=gotItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
+            <Button Content="Item Löschen" Command="{Binding Path=ItemDelete}" Style="{StaticResource BtnHinzufuegen}" Background="LightCoral">
+                <Button.InputBindings>
+                    <KeyBinding Key="Delete" Command="{Binding Path=ItemDelete}"/>
+                </Button.InputBindings>
+            </Button>
+        </StackPanel>
+
     </Grid>
 </UserControl>

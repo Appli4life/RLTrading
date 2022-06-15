@@ -107,6 +107,15 @@ namespace RLTrading.ViewModel
         }
 
         /// <summary>
+        /// Accessor für alle Gekauften Items
+        /// </summary>
+        public ObservableCollection<Item> GotItems
+        {
+            get => EditTrade.boughtItems;
+            set => SetProperty(ref EditTrade.boughtItems, value);
+        }
+
+        /// <summary>
         /// Save Trade Command
         /// </summary>
         public RelayCommand SaveTrade { get; set; }
@@ -117,12 +126,17 @@ namespace RLTrading.ViewModel
         public RelayCommand soldItemAdd { get; set; }
 
         /// <summary>
-        /// Gegeben Item Löschen
+        /// Bekommen Item Hinzufügen
         /// </summary>
-        public RelayCommand soldItemDelete { get; set; }
+        public RelayCommand gotItemAdd { get; set; }
 
         /// <summary>
-        /// Selected item in Listbox
+        /// Item Löschen
+        /// </summary>
+        public RelayCommand ItemDelete { get; set; }
+
+        /// <summary>
+        /// Selected item in Listbox ( für beide )
         /// </summary>
         private Item selectedItem;
 
@@ -164,14 +178,14 @@ namespace RLTrading.ViewModel
         }
 
         /// <summary>
-        /// Traded Editieren mit Button
+        /// Item Editieren mit Button
         /// </summary>
-        public RelayCommand EditTradeBtn { get; set; }
-        
+        public RelayCommand EditItemBtn { get; set; }
+
         /// <summary>
-        /// Traded Editieren mit Key E
+        /// Item Editieren mit Key E
         /// </summary>
-        public RelayCommand EditTradeKeyE { get; set; }
+        public RelayCommand EditItemKeyE { get; set; }
 
 
         #endregion
@@ -183,23 +197,29 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelNewTrade()
         {
-            EditTrade.soldItems.Add(new Item());
+            SoldItems.Add(new Item());
+            GotItems.Add(new Item());
 
-            EditTradeBtn = new RelayCommand(param => Execute_editTrade(), param => CanExecute_editTrade());
-            EditTradeKeyE = new RelayCommand(param => Execute_editTrade(), param => CanExecute_editTrade());
+            EditItemKeyE = new RelayCommand(param => Execute_editItem(), param => CanExecute_editItem());
+            EditItemBtn = new RelayCommand(param => Execute_editItem(), param => CanExecute_editItem());
+            ItemDelete = new RelayCommand(param => Execute_ItemDelete(), param => CanExecute_ItemDelete());
 
             SaveTrade = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
-            soldItemAdd = new RelayCommand(param => Execute_soldItemAdd(), param => CanExecute_soldItemAdd());
-            soldItemDelete = new RelayCommand(param => Execute_soldItemDelete(), param => CanExecute_soldItemDelete());
 
+            //Sold
+            soldItemAdd = new RelayCommand(param => Execute_soldItemAdd(), param => CanExecute_soldItemAdd());
+
+            //Got
+            gotItemAdd = new RelayCommand(param => Execute_gotItemAdd(), param => CanExecute_gotItemAdd());
+            
             gegebenContents.Add(gegebenAlle);
             gegebenContents.Add(gegebenEdit);
 
             bekommenContents.Add(bekommenAlle);
             bekommenContents.Add(bekommenEdit);
 
-            CurrentGegebenContent = gegebenContents[0];
-            CurrentBekommenContent = bekommenContents[0];
+            CurrentGContent = gegebenContents[0];
+            CurrentBContent = bekommenContents[0];
         }
 
         #endregion
@@ -209,38 +229,23 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Execute Edit Trade
         /// </summary>
-        public void Execute_editTrade()
+        public void Execute_editItem()
         {
-
+            if (EditTrade.soldItems.Contains(selectedItem))
+            {
+                CurrentGContent.Content = editedGItem;
+            }
+            else
+            {
+                CurrentBContent.Content = editedBItem;
+            }
         }
 
         /// <summary>
         /// Can Execute Edit Trade
         /// </summary>
         /// <returns>True / False</returns>
-        public bool CanExecute_editTrade()
-        {
-            if (SelectedItem != null)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Execute soldItemDelete
-        /// </summary>
-        public void Execute_soldItemDelete()
-        {
-            EditTrade.soldItems.Remove(SelectedItem);
-        }
-
-        /// <summary>
-        /// Ob Item gelöscht werden kann (Gegeben)
-        /// </summary>
-        /// <returns>True / False</returns>
-        public bool CanExecute_soldItemDelete()
+        public bool CanExecute_editItem()
         {
             if (SelectedItem != null)
             {
@@ -292,10 +297,53 @@ namespace RLTrading.ViewModel
             {
                 return true;
             }
-            else
+            return false;
+        }
+
+
+        /// <summary>
+        /// Execute gotItemDelete
+        /// </summary>
+        public void Execute_ItemDelete()
+        {
+            EditTrade.boughtItems.Remove(SelectedItem);
+            EditTrade.soldItems.Remove(SelectedItem);
+        }
+
+        /// <summary>
+        /// Ob Item gelöscht werden kann (Bekommen)
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_ItemDelete()
+        {
+            if (SelectedItem != null)
             {
-                return false;
+                return true;
             }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Execute gotItemAdd
+        /// </summary>
+        public void Execute_gotItemAdd()
+        {
+            EditTrade.boughtItems.Add(new Item());
+        }
+
+        /// <summary>
+        /// Ob Item Hinzugefügt werden kann (Bekommen)
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_gotItemAdd()
+        {
+            if (EditTrade.boughtItems.Count < 12)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         #endregion
