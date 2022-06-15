@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RLTrading.Model;
 using RLTrading.ViewModel;
 
 namespace RLTrading
@@ -24,6 +26,11 @@ namespace RLTrading
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MainWindow_OnClosing(object sender, CancelEventArgs e)
+        {
+            TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades);
         }
     }
 }

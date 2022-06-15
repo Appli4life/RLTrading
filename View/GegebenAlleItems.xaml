@@ -38,8 +38,9 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Orientation="Horizontal">
-            <Button Content="Item Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
-        </StackPanel>
+        <DockPanel VerticalAlignment="Bottom" LastChildFill="False">
+            <Button DockPanel.Dock="Right" Content="Item Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
+            <Button DockPanel.Dock="Left" Content="Trade Speichern" Command="{Binding Path=SaveTrade}" Style="{StaticResource BtnSpeichern}"></Button>
+        </DockPanel>
     </Grid>
 </UserControl>

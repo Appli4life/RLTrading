@@ -260,7 +260,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_soldItemAdd()
         {
-            EditTrade.soldItems.Add(new Item());
+            SoldItems.Add(new Item());
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace RLTrading.ViewModel
         /// <returns>True / False</returns>
         public bool CanExecute_soldItemAdd()
         {
-            if (EditTrade.soldItems.Count < 12)
+            if (SoldItems.Count < 12)
             {
                 return true;
             }
@@ -282,9 +282,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_SaveTrade()
         {
-            TradeMocking.allTrades.Add(currentTrade);
+            TradeMocking.allTrades.Add(EditTrade);
             EditTrade = new Trade();
-
         }
 
         /// <summary>
@@ -306,8 +305,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_ItemDelete()
         {
-            EditTrade.boughtItems.Remove(SelectedItem);
-            EditTrade.soldItems.Remove(SelectedItem);
+            GotItems.Remove(SelectedItem);
+            SoldItems.Remove(SelectedItem);
         }
 
         /// <summary>
@@ -329,7 +328,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_gotItemAdd()
         {
-            EditTrade.boughtItems.Add(new Item());
+            GotItems.Add(new Item());
         }
 
         /// <summary>
@@ -338,7 +337,7 @@ namespace RLTrading.ViewModel
         /// <returns>True / False</returns>
         public bool CanExecute_gotItemAdd()
         {
-            if (EditTrade.boughtItems.Count < 12)
+            if (GotItems.Count < 12)
             {
                 return true;
             }
