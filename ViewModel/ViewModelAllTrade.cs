@@ -20,11 +20,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Accessor für alle Trade Collection
         /// </summary>
-        public ObservableCollection<Trade> AllTrades
-        {
-            get => TradeMocking.allTrades;
-            set => SetProperty(ref TradeMocking.allTrades, value);
-        }
+        public ObservableCollection<Trade> AllTrades => TradeMocking.allTrades;
 
         #endregion
 

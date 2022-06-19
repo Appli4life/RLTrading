@@ -17,12 +17,12 @@ namespace RLTrading.Model
         /// <summary>
         /// Name der Farbe
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Farbe zum Namen
         /// </summary>
-        public SolidColorBrush Brush { get; set; }
+        public SolidColorBrush Brush { get; private set; }
 
         #endregion
 

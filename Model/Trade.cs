@@ -59,7 +59,7 @@ namespace RLTrading.Model
         /// <returns>Eine Kopie von dem aktuellen Trade</returns>
         public Trade Clone()
         {
-            var json = JsonConvert.SerializeObject(this);
+            string json = JsonConvert.SerializeObject(this);
             return JsonConvert.DeserializeObject<Trade>(json);
         }
 

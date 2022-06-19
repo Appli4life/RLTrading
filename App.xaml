@@ -17,7 +17,7 @@
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
         </Style>
         <Style TargetType="UserControl" x:Key="uc">
-            <Setter Property="BorderThickness" Value="3" />
+            <Setter Property="BorderThickness" Value="0" />
             <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
         

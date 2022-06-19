@@ -17,12 +17,12 @@ namespace RLTrading.Model
         /// <summary>
         /// Name der Qualität
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Farbe
         /// </summary>
-        public System.Windows.Media.Color Brush { get; set; }
+        public System.Windows.Media.Color Brush { get; private set; }
 
         #endregion
 

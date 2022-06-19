@@ -18,7 +18,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Liste mit Colors
         /// </summary>
-        public static List<Color> Colors = new()
+        public static readonly List<Color> Colors = new()
         {
                 new Color("Default", Brushes.Transparent),
                 new Color("Black", Brushes.Black),
@@ -34,7 +34,7 @@ namespace RLTrading.Model
                 new Color("Green", Brushes.ForestGreen),
                 new Color("Orange", Brushes.Orange),
                 new Color("Purple", Brushes.Purple),
-                new Color("Gold", Brushes.Gold)
+                new Color("Gold", Brushes.Gold),
             };
         #endregion
     }

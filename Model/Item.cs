@@ -50,8 +50,8 @@ namespace RLTrading.Model
         /// </summary>
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get => name;
+            set => name = value;
         }
 
         /// <summary>
@@ -64,8 +64,8 @@ namespace RLTrading.Model
         /// </summary>
         public Color Color
         {
-            get { return color; }
-            set { color = value; }
+            get => color;
+            set => color = value;
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace RLTrading.Model
         /// </summary>
         public Certification Certification
         {
-            get { return certification; }
-            set { certification = value; }
+            get => certification;
+            set => certification = value;
         }
 
         /// <summary>
@@ -92,8 +92,8 @@ namespace RLTrading.Model
         /// </summary>
         public Quality Quality
         {
-            get { return quality; }
-            set { quality = value; }
+            get => quality;
+            set => quality = value;
         }
 
         #endregion

@@ -7,15 +7,33 @@
              xmlns:local="clr-namespace:RLTrading"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Style="{StaticResource uc}">
-    <UserControl.DataContext>
-        <ViewModel:ViewModelAllTrade/>
-    </UserControl.DataContext>
-    <Grid>
-        <ScrollViewer>
 
-        <DataGrid IsReadOnly="True" MinColumnWidth="100" ItemsSource="{Binding AllTrades }">
-            
+    <UserControl.DataContext>
+        <ViewModel:ViewModelAllTrade></ViewModel:ViewModelAllTrade>
+    </UserControl.DataContext>
+
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="SkyBlue"/>
+            <GradientStop Color="Transparent" Offset="2"/>
+        </LinearGradientBrush>
+    </UserControl.Background>
+    <Grid>
+        <DataGrid ScrollViewer.HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" ItemsSource="{Binding AllTrades, Mode=OneWay}" Background="Transparent">
+            <DataGrid.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" IsItemsHost="True" Background="Transparent"></WrapPanel>
+                </ItemsPanelTemplate>
+            </DataGrid.ItemsPanel>
+            <DataGrid.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Height="10" Width="10" Content="{Binding lostCredits}"></Label>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </DataGrid.ItemTemplate>
         </DataGrid>
-        </ScrollViewer>
+
     </Grid>
 </UserControl>

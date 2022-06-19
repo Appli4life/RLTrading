@@ -13,7 +13,7 @@
             </DockPanel>
             <DockPanel Margin="10" LastChildFill="True">
                 <Label Width="140" Content="Farbe / Zert:" Style="{StaticResource LableCr}"/>
-                <ComboBox SelectedValuePath="Name" TextSearch.TextPath="Name" Height="33" Width="100" IsTextSearchEnabled="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" IsSelected="True" IsReadOnly="True" SelectedItem="{Binding Path=GEditItem.Color}" ItemsSource="{Binding Path=AllBrushes, Mode=OneTime}">
+                <ComboBox TextSearch.TextPath="Name" Height="33" Width="100" IsTextSearchEnabled="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" IsReadOnly="True" SelectedItem="{Binding Path=GEditItem.Color, Mode=TwoWay}" ItemsSource="{Binding Path=AllBrushes, Mode=OneWay}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
@@ -23,16 +23,20 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <ComboBox DisplayMemberPath="Name" Height="33" Margin="5,0,0,0" Width="100" IsTextSearchEnabled="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsSelected="True" IsReadOnly="True" SelectedItem="{Binding Path=GEditItem.Certification}" ItemsSource="{Binding Path=AllCertifications, Mode=OneTime}"/>
+                <ComboBox DisplayMemberPath="Name" Height="33" Margin="5,0,0,0" Width="100" IsTextSearchEnabled="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" SelectedItem="{Binding Path=GEditItem.Certification, Mode=TwoWay}" ItemsSource="{Binding Path=AllCertifications, Mode=OneWay}"/>
             </DockPanel>
 
             <DockPanel Margin="10" LastChildFill="True">
                 <Label Width="140" Content="Qualität:" Style="{StaticResource LableCr}"/>
-                <ComboBox DisplayMemberPath="Name" Height="33" IsTextSearchEnabled="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" SelectedItem="{Binding Path=GEditItem.Quality}" ItemsSource="{Binding Path=AllQualities, Mode=OneTime}"/>
+                <ComboBox DisplayMemberPath="Name" Height="33" IsTextSearchEnabled="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" SelectedItem="{Binding Path=GEditItem.Quality, Mode=TwoWay}" ItemsSource="{Binding Path=AllQualities, Mode=OneWay}"/>
             </DockPanel>
             <DockPanel Margin="10" LastChildFill="False">
                 <Label Width="140" Style="{StaticResource LableCr}" Content="Anzahl:"/>
                 <TextBox Width="100" DockPanel.Dock="Right" Height="30"  FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Path=GEditItem.Count}"/>
+            </DockPanel>
+            <DockPanel Margin="10" LastChildFill="False">
+                <Label Width="140" Style="{StaticResource LableCr}" Content="Blueprint:"/>
+                <CheckBox DockPanel.Dock="Right" IsChecked="{Binding Path=GEditItem.Blueprint, Mode=TwoWay}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </DockPanel>
         </StackPanel>
         <Button Content="_Anwenden" Command="{Binding Path=AnwendenG}" Style="{StaticResource BtnSpeichern}" VerticalAlignment="Bottom"/>

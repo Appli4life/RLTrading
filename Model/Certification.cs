@@ -16,7 +16,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Name der Zertifizierung
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         #endregion
 

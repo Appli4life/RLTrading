@@ -18,7 +18,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Liste von Qualitäten
         /// </summary>
-        public static List<Quality> Qualities = new()
+        public static readonly List<Quality> Qualities = new()
         {
                 new Quality("Common", System.Windows.Media.Color.FromRgb(136, 136, 136)),
                 new Quality("Uncommon", System.Windows.Media.Color.FromRgb(135, 206, 235)),

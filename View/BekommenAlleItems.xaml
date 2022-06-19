@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel>
-            <DockPanel LastChildFill="False">
+            <DockPanel Margin="0,5,0,0" LastChildFill="False">
                 <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Bekommen:" ></Label>
                 <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right" Margin="0,0,7,0"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.gotCredits}" MaxLength="5" ></TextBox>
                 <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>

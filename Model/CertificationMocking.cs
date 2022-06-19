@@ -16,7 +16,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Liste mit Zertifizierungen
         /// </summary>
-        public static List<Certification> Certifications = new()
+        public static readonly List<Certification> Certifications = new()
             {
                 new Certification("None"),
                 new Certification("Striker"),

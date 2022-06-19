@@ -361,12 +361,10 @@ namespace RLTrading.ViewModel
         {
             currentTrade.Date = DateTime.Now;
             TradeMocking.allTrades.Add(currentTrade.Clone());
-            EditTrade.gotCredits = 0;
-            EditTrade.lostCredits = 0;
             SoldItems.Clear();
             GotItems.Clear();
 
-            MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
+            //MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
         /// <summary>
