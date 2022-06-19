@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -118,8 +119,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> SoldItems
         {
-            get => currentTrade.soldItems;
-            set => SetProperty(ref currentTrade.soldItems, value);
+            get => EditTrade.soldItems;
+            set => SetProperty(ref EditTrade.soldItems, value);
         }
 
         /// <summary>
@@ -127,9 +128,11 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> GotItems
         {
-            get => currentTrade.boughtItems;
-            set => SetProperty(ref currentTrade.boughtItems, value);
+            get => EditTrade.boughtItems;
+            set => SetProperty(ref EditTrade.boughtItems, value);
         }
+
+        
 
         /// <summary>
         /// Save Trade Command
@@ -260,7 +263,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_editItem()
         {
-            if (currentTrade.soldItems.Contains(selectedItem))
+            if (SoldItems.Contains(selectedItem))
             {
                 CurrentGContent = gegebenContents[1];
                 GEditItem = selectedItem;
@@ -359,12 +362,16 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_SaveTrade()
         {
-            currentTrade.Date = DateTime.Now;
-            TradeMocking.allTrades.Add(currentTrade.Clone());
-            SoldItems.Clear();
-            GotItems.Clear();
+            EditTrade.Date = DateTime.Now;
+            TradeMocking.allTrades.Add(currentTrade);
 
-            //MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
+            EditTrade = new Trade();
+            SoldItems = new ObservableCollection<Item>();
+            GotItems = new ObservableCollection<Item>();
+            SoldItems.Add(new Item());
+            GotItems.Add(new Item());
+
+            MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
         /// <summary>

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RLTrading.ViewModel;
 
 namespace RLTrading.View
 {
@@ -23,6 +24,19 @@ namespace RLTrading.View
         public BekommenAlleItems()
         {
             InitializeComponent();
+        }
+
+        private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dataContext = (ViewModelNewTrade)this.DataContext;
+            dataContext.CurrentBContent = dataContext.bekommenContents[1];
+            dataContext.BEditItem = dataContext.SelectedItem;
+        }
+
+        private void MenuItem_OnClick2(object sender, RoutedEventArgs e)
+        {
+            var dataContext = (ViewModelNewTrade)this.DataContext;
+            dataContext.GotItems.Remove(dataContext.SelectedItem);
         }
     }
 }

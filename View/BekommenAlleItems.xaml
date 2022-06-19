@@ -22,6 +22,20 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Width="80" Height="80" Margin="6">
+                            <StackPanel.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Bearbeiten" Click="MenuItem_OnClick">
+                                        <MenuItem.Icon>
+                                            <Image Source="../../../pic/edit.png"></Image>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="Löschen" Click="MenuItem_OnClick2">
+                                        <MenuItem.Icon>
+                                            <Image Source="../../../pic/delete.png"></Image>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
                             <StackPanel.Background>
                                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                                     <GradientStop Color="Black" Offset="0"/>
@@ -40,17 +54,7 @@
             </ListBox>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Content="_Bearbeiten" Command="{Binding Path=EditItemBtn}" Style="{StaticResource BtnHinzufuegen}" Background="Yellow">
-                <Button.InputBindings>
-                    <KeyBinding Key="E" Command="{Binding Path=EditItemKeyE}"></KeyBinding>
-                </Button.InputBindings>
-            </Button>
             <Button Content="_Hinzufügen" Command="{Binding Path=gotItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
-            <Button Content="_Löschen" Command="{Binding Path=ItemDelete}" Style="{StaticResource BtnHinzufuegen}" Background="LightCoral">
-                <Button.InputBindings>
-                    <KeyBinding Key="Delete" Command="{Binding Path=ItemDelete}"/>
-                </Button.InputBindings>
-            </Button>
         </StackPanel>
 
     </Grid>

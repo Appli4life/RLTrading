@@ -21,6 +21,20 @@
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Width="80" Height="80" Margin="6">
+                            <StackPanel.ContextMenu >
+                                <ContextMenu>
+                                    <MenuItem Header="Bearbeiten" Click="MenuItem_OnClick">
+                                        <MenuItem.Icon>
+                                            <Image Source="../../../pic/edit.png"></Image>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                    <MenuItem Header="Löschen" Click="MenuItem_OnClick2">
+                                        <MenuItem.Icon>
+                                            <Image Source="../../../pic/delete.png"></Image>
+                                        </MenuItem.Icon>
+                                    </MenuItem>
+                                </ContextMenu>
+                            </StackPanel.ContextMenu>
                             <StackPanel.Background>
                                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                                     <GradientStop Color="Black" Offset="0"/>

@@ -20,12 +20,11 @@
             <Image Margin="10" DockPanel.Dock="Right" Source="pic/logo.png" Height="90"></Image>
         </DockPanel>
         <StackPanel Margin="20,0,0,0" DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Style="{StaticResource menuBtn}" Content="Alle Trades" Command="{Binding  Path=AllTradeSwitch}" ></Button>
-            <Button Margin="20,0,0,0" Style="{StaticResource menuBtn}" Content="Neuer Trade" Command="{Binding Path=NewTradeSwitch}"></Button>
+            <Button Style="{StaticResource menuBtn}" Content="_Alle Trades" Command="{Binding  Path=AllTradeSwitch}" ></Button>
+            <Button Margin="20,0,0,0" Style="{StaticResource menuBtn}" Content="_Neuer Trade" Command="{Binding Path=NewTradeSwitch}"></Button>
         </StackPanel>
         <StackPanel Margin="0,0,20,10" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Margin="0,0,20,0" Style="{StaticResource menuBtn}" Command="{Binding SaveCommand }" Content="Save"></Button>
-            <Button Style="{StaticResource menuBtn}" Content="Close" Command="{Binding Path=CloseApp}"></Button>
+            <Button Style="{StaticResource menuBtn}" Content="_Schliessen" Command="{Binding Path=CloseApp}"></Button>
         </StackPanel>
 
         <ContentControl Margin="20,0,20,20" Content="{Binding Path=Content}">

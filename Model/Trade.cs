@@ -33,13 +33,13 @@ namespace RLTrading.Model
         /// <summary>
         /// Alle verkauften Items
         /// </summary>
-        public ObservableCollection<Item> soldItems = new ObservableCollection<Item>();
+        public ObservableCollection<Item> soldItems = new();
 
 
         /// <summary>
         /// Alle gekauften Items
         /// </summary>
-        public ObservableCollection<Item> boughtItems = new ObservableCollection<Item>();
+        public ObservableCollection<Item> boughtItems = new();
 
         #endregion
 
