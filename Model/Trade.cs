@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace RLTrading.Model
 {
@@ -13,6 +14,11 @@ namespace RLTrading.Model
     public class Trade
     {
         #region Property
+
+        /// <summary>
+        /// Datum des Trade
+        /// </summary>
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// Alle erhaltenen Credits
@@ -53,56 +59,9 @@ namespace RLTrading.Model
         /// <returns>Eine Kopie von dem aktuellen Trade</returns>
         public Trade Clone()
         {
-            return (Trade)MemberwiseClone();
+            var json = JsonConvert.SerializeObject(this);
+            return JsonConvert.DeserializeObject<Trade>(json);
         }
-
-        ///// <summary>
-        ///// Ctor (Items für Items Trade)
-        ///// </summary>
-        ///// <param name="soldItems">Verkaufte Items</param>
-        ///// <param name="boughtItems">Gekaufte Items</param>
-        //public Trade(ObservableCollection<Item> soldItems, ObservableCollection<Item> boughtItems)
-        //{          
-        //    this.soldItems = soldItems;
-        //    this.boughtItems = boughtItems;
-        //}
-
-        ///// <summary>
-        ///// Ctor (Item für Credits gekauft)
-        ///// </summary>
-        ///// <param name="boughtItem">Gekauftes Item</param>
-        ///// <param name="lostCredits">Credits bezahlt</param>
-        //public Trade(Item boughtItem, int lostCredits)
-        //{
-        //    this.lostCredits = lostCredits;
-        //    boughtItems.Add(boughtItem);
-        //}
-
-        ///// <summary>
-        ///// Ctor (Item für Credits verkauft
-        ///// </summary>
-        ///// <param name="gotCredits">Erhaltene Credits</param>
-        ///// <param name="soldItem">Verkauftes Item</param>
-        //public Trade(int gotCredits, Item soldItem)
-        //{
-        //    this.gotCredits = gotCredits;
-        //    soldItems.Add(soldItem);
-        //}
-
-        ///// <summary>
-        ///// Ctor (Grosser Trade)
-        ///// </summary>
-        ///// <param name="gotCredits">Erhaltene Credits</param>
-        ///// <param name="lostCredits">Credits bezahlt</param>
-        ///// <param name="soldItems">Verkaufte Items</param>
-        ///// <param name="boughtItems">Gekaufte Items</param>
-        //public Trade(int gotCredits, int lostCredits, ObservableCollection<Item> soldItems, ObservableCollection<Item> boughtItems)
-        //{
-        //    this.gotCredits = gotCredits;
-        //    this.lostCredits = lostCredits;
-        //    this.soldItems = soldItems;
-        //    this.boughtItems = boughtItems;
-        //}
 
         #endregion
     }

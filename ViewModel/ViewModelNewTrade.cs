@@ -6,10 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using RLTrading.Model;
 using RLTrading.Utility;
 using RLTrading.View;
 using RLTrading.ViewModel;
+using Color = RLTrading.Model.Color;
 
 namespace RLTrading.ViewModel
 {
@@ -85,8 +87,22 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Trade der hinzugefügt wird
         /// </summary>
-        private Trade currentTrade = new Trade();
+        private Trade currentTrade = new();
 
+        /// <summary>
+        /// Alle Farben für Items
+        /// </summary>
+        public ObservableCollection<Color> AllBrushes => new(ColorMocking.Colors);
+
+        /// <summary>
+        /// Alle Zertifizierungen für Items
+        /// </summary>
+        public ObservableCollection<Certification> AllCertifications => new(CertificationMocking.Certifications);
+
+        /// <summary>
+        /// Alle Qualitäten für Items
+        /// </summary>
+        public ObservableCollection<Quality> AllQualities => new(QualityMocking.Qualities);
 
         /// <summary>
         /// Accessor für neuer Trade
@@ -343,11 +359,13 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_SaveTrade()
         {
+            currentTrade.Date = DateTime.Now;
             TradeMocking.allTrades.Add(currentTrade.Clone());
-            SoldItems.Clear();
-            GotItems.Clear();
             EditTrade.gotCredits = 0;
             EditTrade.lostCredits = 0;
+            SoldItems.Clear();
+            GotItems.Clear();
+
             MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
         }
 

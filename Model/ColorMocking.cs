@@ -33,7 +33,8 @@ namespace RLTrading.Model
                 new Color("Lime", Brushes.Lime),
                 new Color("Green", Brushes.ForestGreen),
                 new Color("Orange", Brushes.Orange),
-                new Color("Purple", Brushes.Purple)
+                new Color("Purple", Brushes.Purple),
+                new Color("Gold", Brushes.Gold)
             };
         #endregion
     }

@@ -31,7 +31,7 @@ namespace RLTrading.Model
                 new Certification("Scorer"),
                 new Certification("Show-Off"),
                 new Certification("Sniper"),
-                new Certification("Turle"),
+                new Certification("Turtle"),
                 new Certification("Paragon"),
                 new Certification("Victor")
             };

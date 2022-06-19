@@ -23,12 +23,12 @@
                         <StackPanel Width="80" Height="80" Margin="6">
                             <StackPanel.Background>
                                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                                    <GradientStop Color="{Binding Path=Quality.Brush}" Offset="1"/>
                                     <GradientStop Color="Black" Offset="0"/>
+                                    <GradientStop Color="{Binding Path=Quality.Brush}" Offset="0.6"/>
                                 </LinearGradientBrush>
                             </StackPanel.Background>
                             <DockPanel>
-                                <Ellipse ToolTip="{Binding Path=Color.Name}" DockPanel.Dock="Right" Margin="0,2,5,0"  Height="15" Width="15" Fill="{Binding Path=Color.Brush}"></Ellipse>
+                                <Ellipse ToolTip="{Binding Path=Color.Name}" DockPanel.Dock="Right" Margin="0,2,5,0"  Height="15" Width="15" Fill="{Binding Path=Color.Brush}" Stroke="Gray"></Ellipse>
                                 <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}" Margin="5,0,0,0"  Content="{Binding Path=Count}"></Label>
                             </DockPanel>
                             <Label Style="{StaticResource Item}" Content="{Binding Path=Name}"></Label>

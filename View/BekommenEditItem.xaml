@@ -6,9 +6,37 @@
              xmlns:local="clr-namespace:RLTrading.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <DockPanel LastChildFill="False">
-        
-        <Button DockPanel.Dock="Bottom" Content="_Anwenden" Command="{Binding Path=AnwendenB}" Style="{StaticResource BtnSpeichern}"></Button>
-    </DockPanel>
 
+    <Grid>
+        <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Vertical">
+            <DockPanel Margin="10" LastChildFill="True">
+                <Label Width="140" Style="{StaticResource LableCr}" Content="Name:"/>
+                <TextBox Width="205" DockPanel.Dock="Right" Height="30"  FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Path=BEditItem.Name}"/>
+            </DockPanel>
+            <DockPanel Margin="10" LastChildFill="True">
+                <Label Width="140" Content="Farbe / Zert:" Style="{StaticResource LableCr}"/>
+                <ComboBox SelectedValuePath="Name" TextSearch.TextPath="Name" Height="33" Width="100" IsTextSearchEnabled="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" IsSelected="True" IsReadOnly="True" SelectedItem="{Binding Path=BEditItem.Color}" ItemsSource="{Binding Path=AllBrushes, Mode=OneTime}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                                <Ellipse Height="12" Width="12" Fill="{Binding Path=Brush}"/>
+                                <Label  Content="{Binding Path=Name}" Height="26.8" FontSize="12"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox DisplayMemberPath="Name" Height="33" Margin="5,0,0,0" Width="100" IsTextSearchEnabled="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsSelected="True" IsReadOnly="True" SelectedItem="{Binding Path=BEditItem.Certification}" ItemsSource="{Binding Path=AllCertifications, Mode=OneTime}"/>
+            </DockPanel>
+
+            <DockPanel Margin="10" LastChildFill="True">
+                <Label Width="140" Content="Qualität:" Style="{StaticResource LableCr}"/>
+                <ComboBox DisplayMemberPath="Name" Height="33" IsTextSearchEnabled="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" SelectedItem="{Binding Path=BEditItem.Quality}" ItemsSource="{Binding Path=AllQualities, Mode=OneTime}"/>
+            </DockPanel>
+            <DockPanel Margin="10" LastChildFill="False">
+                <Label Width="140" Style="{StaticResource LableCr}" Content="Anzahl:"/>
+                <TextBox Width="100" DockPanel.Dock="Right" Height="30"  FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Path=BEditItem.Count}"/>
+            </DockPanel>
+        </StackPanel>
+        <Button Content="_Anwenden" Command="{Binding Path=AnwendenB}" Style="{StaticResource BtnSpeichern}" VerticalAlignment="Bottom"/>
+    </Grid>
 </UserControl>
