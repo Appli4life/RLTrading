@@ -44,7 +44,16 @@ namespace RLTrading.Model
         /// </summary>
         public Trade()
         {
+            
+        }
 
+        /// <summary>
+        /// Clone erstellen
+        /// </summary>
+        /// <returns>Eine Kopie von dem aktuellen Trade</returns>
+        public Trade Clone()
+        {
+            return (Trade)MemberwiseClone();
         }
 
         ///// <summary>

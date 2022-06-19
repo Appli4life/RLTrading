@@ -102,8 +102,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> SoldItems
         {
-            get => EditTrade.soldItems;
-            set => SetProperty(ref EditTrade.soldItems, value);
+            get => currentTrade.soldItems;
+            set => SetProperty(ref currentTrade.soldItems, value);
         }
 
         /// <summary>
@@ -111,8 +111,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> GotItems
         {
-            get => EditTrade.boughtItems;
-            set => SetProperty(ref EditTrade.boughtItems, value);
+            get => currentTrade.boughtItems;
+            set => SetProperty(ref currentTrade.boughtItems, value);
         }
 
         /// <summary>
@@ -187,6 +187,16 @@ namespace RLTrading.ViewModel
         /// </summary>
         public RelayCommand EditItemKeyE { get; set; }
 
+        /// <summary>
+        /// Item Editieren Anwenden Bekommen
+        /// </summary>
+        public RelayCommand AnwendenB { get; set; }
+
+        /// <summary>
+        /// Item Editieren Anwenden Gegeben
+        /// </summary>
+        public RelayCommand AnwendenG { get; set; }
+
 
         #endregion
 
@@ -204,6 +214,9 @@ namespace RLTrading.ViewModel
             EditItemBtn = new RelayCommand(param => Execute_editItem(), param => CanExecute_editItem());
             ItemDelete = new RelayCommand(param => Execute_ItemDelete(), param => CanExecute_ItemDelete());
 
+            AnwendenB = new RelayCommand(param => Execute_AnwendenB(), param => CanExecute_AnwendenB());
+            AnwendenG = new RelayCommand(param => Execute_AnwendenG(), param => CanExecute_AnwendenG());
+
             SaveTrade = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
 
             //Sold
@@ -211,7 +224,7 @@ namespace RLTrading.ViewModel
 
             //Got
             gotItemAdd = new RelayCommand(param => Execute_gotItemAdd(), param => CanExecute_gotItemAdd());
-            
+
             gegebenContents.Add(gegebenAlle);
             gegebenContents.Add(gegebenEdit);
 
@@ -231,14 +244,18 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_editItem()
         {
-            if (EditTrade.soldItems.Contains(selectedItem))
+            if (currentTrade.soldItems.Contains(selectedItem))
             {
-                CurrentGContent.Content = editedGItem;
+                CurrentGContent = gegebenContents[1];
+                GEditItem = selectedItem;
             }
             else
             {
-                CurrentBContent.Content = editedBItem;
+                CurrentBContent = bekommenContents[1];
+                BEditItem = selectedItem;
             }
+
+            SelectedItem = null;
         }
 
         /// <summary>
@@ -248,6 +265,50 @@ namespace RLTrading.ViewModel
         public bool CanExecute_editItem()
         {
             if (SelectedItem != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Execute AnwendenB
+        /// </summary>
+        public void Execute_AnwendenB()
+        {
+            CurrentBContent = bekommenContents[0];
+        }
+
+        /// <summary>
+        /// Can Execute AnwendenB
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_AnwendenB()
+        {
+            if (true)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Execute AnwendenG
+        /// </summary>
+        public void Execute_AnwendenG()
+        {
+            CurrentGContent = gegebenContents[0];
+        }
+
+        /// <summary>
+        /// Can Execute AnwendenG
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_AnwendenG()
+        {
+            if (true)
             {
                 return true;
             }
@@ -282,8 +343,12 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_SaveTrade()
         {
-            TradeMocking.allTrades.Add(EditTrade);
-            EditTrade = new Trade();
+            TradeMocking.allTrades.Add(currentTrade.Clone());
+            SoldItems.Clear();
+            GotItems.Clear();
+            EditTrade.gotCredits = 0;
+            EditTrade.lostCredits = 0;
+            MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
         /// <summary>

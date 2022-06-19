@@ -8,7 +8,7 @@
     <Grid>
         <StackPanel>
             <DockPanel DockPanel.Dock="Top" LastChildFill="False">
-                <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Gegeben:" ></Label>
+                <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Gegeben:"></Label>
                 <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.lostCredits}" MaxLength="5" ></TextBox>
                 <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>
             </DockPanel>
@@ -39,8 +39,8 @@
             </ListBox>
         </StackPanel>
         <DockPanel VerticalAlignment="Bottom" LastChildFill="False">
-            <Button DockPanel.Dock="Right" Content="Item Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
-            <Button DockPanel.Dock="Left" Content="Trade Speichern" Command="{Binding Path=SaveTrade}" Style="{StaticResource BtnSpeichern}"></Button>
+            <Button DockPanel.Dock="Right" Content="_Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
+            <Button DockPanel.Dock="Left" Content="_Speichern" Command="{Binding Path=SaveTrade}" Style="{StaticResource BtnSpeichern}"></Button>
         </DockPanel>
     </Grid>
 </UserControl>

@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:RLTrading.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
-    </Grid>
+    <DockPanel LastChildFill="False">
+        
+        <Button DockPanel.Dock="Bottom" Content="_Anwenden" Command="{Binding Path=AnwendenB}" Style="{StaticResource BtnSpeichern}"></Button>
+    </DockPanel>
+
 </UserControl>

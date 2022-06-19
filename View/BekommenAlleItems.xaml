@@ -10,7 +10,7 @@
         <StackPanel>
             <DockPanel LastChildFill="False">
                 <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Bekommen:" ></Label>
-                <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.gotCredits}" MaxLength="5" ></TextBox>
+                <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right" Margin="0,0,7,0"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.gotCredits}" MaxLength="5" ></TextBox>
                 <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>
             </DockPanel>
             <ListBox Background="Transparent" BorderBrush="Transparent" SelectionMode="Single" ItemsSource="{Binding Path=GotItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding Path=SelectedItem}">
@@ -40,13 +40,13 @@
             </ListBox>
         </StackPanel>
         <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Content="Item Bearbeiten" Command="{Binding Path=EditItemBtn}" Style="{StaticResource BtnHinzufuegen}" Background="Yellow">
+            <Button Content="_Bearbeiten" Command="{Binding Path=EditItemBtn}" Style="{StaticResource BtnHinzufuegen}" Background="Yellow">
                 <Button.InputBindings>
                     <KeyBinding Key="E" Command="{Binding Path=EditItemKeyE}"></KeyBinding>
                 </Button.InputBindings>
             </Button>
-            <Button Content="Item Hinzufügen" Command="{Binding Path=gotItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
-            <Button Content="Item Löschen" Command="{Binding Path=ItemDelete}" Style="{StaticResource BtnHinzufuegen}" Background="LightCoral">
+            <Button Content="_Hinzufügen" Command="{Binding Path=gotItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
+            <Button Content="_Löschen" Command="{Binding Path=ItemDelete}" Style="{StaticResource BtnHinzufuegen}" Background="LightCoral">
                 <Button.InputBindings>
                     <KeyBinding Key="Delete" Command="{Binding Path=ItemDelete}"/>
                 </Button.InputBindings>

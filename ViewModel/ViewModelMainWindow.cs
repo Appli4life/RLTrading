@@ -172,6 +172,7 @@ namespace RLTrading.ViewModel
         private void Execute_Save()
         {
             TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades);
+            MessageBox.Show("Erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
         }
 
         /// <summary>

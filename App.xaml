@@ -11,13 +11,14 @@
             <Setter Property="Background" Value="LightBlue" />
         </Style>
         <Style TargetType="Button" x:Key="menuBtn">
-            <Setter Property="Width" Value="90" />
-            <Setter Property="BorderBrush" Value="Blue" />
+            <Setter Property="Width" Value="95" />
+            <Setter Property="Height" Value="25"></Setter>
             <Setter Property="Background" Value="LightBlue" />
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
         </Style>
         <Style TargetType="UserControl" x:Key="uc">
             <Setter Property="BorderThickness" Value="3" />
-            <Setter Property="BorderBrush" Value="LightBlue" />
+            <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
         
         <Style TargetType="Label" x:Key="LableCr">
@@ -32,12 +33,14 @@
             <Setter Property="Margin" Value="10,10,10,10"></Setter>
             <Setter Property="Background" Value="LightGreen"></Setter>
             <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
         <Style TargetType="Button" x:Key="BtnSpeichern">
             <Setter Property="Margin" Value="10,0,0,10"></Setter>
             <Setter Property="Background" Value="GreenYellow"></Setter>
             <Setter Property="Width" Value="100"></Setter>
             <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
 
     </Application.Resources>
