@@ -79,10 +79,11 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelMainWindow()
         {
+            
             CloseApp = new RelayCommand(param => Execute_Close(), param => canExecute_Close());
             AllTradeSwitch = new RelayCommand(param => Execute_AllTrade(), param => canExecute_AllTrade());
             NewTradeSwitch = new RelayCommand(param => Execute_NewTrade(), param => canExecute_NewTrade());
-            SaveCommand = new RelayCommand(param => Execute_Save(), param => canExecute_Save());
+            SaveCommand = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
 
             contents.Add(allTrade);
             contents.Add(newTrade);
@@ -93,6 +94,36 @@ namespace RLTrading.ViewModel
         #endregion
 
         #region Command Methoden
+
+        /// <summary>
+        /// Execute SaveTrade
+        /// </summary>
+        public void Execute_SaveTrade()
+        {
+            var datacontext = (ViewModelNewTrade)newTrade.DataContext;
+            TradeMocking.allTrades.Add(datacontext.EditTrade);
+
+            datacontext.EditTrade = new Trade();
+            datacontext.SoldItems = new ObservableCollection<Item>();
+            datacontext.GotItems = new ObservableCollection<Item>();
+            datacontext.SoldItems.Add(new Item());
+            datacontext.GotItems.Add(new Item());
+
+            MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
+        }
+
+        /// <summary>
+        /// Ob SaveTrad ausgeführt werden kann
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_SaveTrade()
+        {
+            if (currentContent == newTrade)
+            {
+                return true;
+            }
+            return false;
+        }
 
         /// <summary>
         /// Close Command Execute

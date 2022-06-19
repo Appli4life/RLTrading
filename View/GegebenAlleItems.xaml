@@ -54,7 +54,6 @@
         </StackPanel>
         <DockPanel VerticalAlignment="Bottom" LastChildFill="False">
             <Button DockPanel.Dock="Right" Content="_Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
-            <Button DockPanel.Dock="Left" Content="_Speichern" Command="{Binding Path=SaveTrade}" Style="{StaticResource BtnSpeichern}"></Button>
         </DockPanel>
     </Grid>
 </UserControl>

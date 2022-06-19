@@ -24,6 +24,7 @@
             <Button Margin="20,0,0,0" Style="{StaticResource menuBtn}" Content="_Neuer Trade" Command="{Binding Path=NewTradeSwitch}"></Button>
         </StackPanel>
         <StackPanel Margin="0,0,20,10" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Button Margin="0,0,20,0" Style="{StaticResource menuBtn}" Command="{Binding SaveCommand }" Content="_Speichern"></Button>
             <Button Style="{StaticResource menuBtn}" Content="_Schliessen" Command="{Binding Path=CloseApp}"></Button>
         </StackPanel>
 

@@ -132,13 +132,6 @@ namespace RLTrading.ViewModel
             set => SetProperty(ref EditTrade.boughtItems, value);
         }
 
-        
-
-        /// <summary>
-        /// Save Trade Command
-        /// </summary>
-        public RelayCommand SaveTrade { get; set; }
-
         /// <summary>
         /// Gegeben Item Hinzufügen
         /// </summary>
@@ -197,16 +190,6 @@ namespace RLTrading.ViewModel
         }
 
         /// <summary>
-        /// Item Editieren mit Button
-        /// </summary>
-        public RelayCommand EditItemBtn { get; set; }
-
-        /// <summary>
-        /// Item Editieren mit Key E
-        /// </summary>
-        public RelayCommand EditItemKeyE { get; set; }
-
-        /// <summary>
         /// Item Editieren Anwenden Bekommen
         /// </summary>
         public RelayCommand AnwendenB { get; set; }
@@ -229,14 +212,8 @@ namespace RLTrading.ViewModel
             SoldItems.Add(new Item());
             GotItems.Add(new Item());
 
-            EditItemKeyE = new RelayCommand(param => Execute_editItem(), param => CanExecute_editItem());
-            EditItemBtn = new RelayCommand(param => Execute_editItem(), param => CanExecute_editItem());
-            ItemDelete = new RelayCommand(param => Execute_ItemDelete(), param => CanExecute_ItemDelete());
-
             AnwendenB = new RelayCommand(param => Execute_AnwendenB(), param => CanExecute_AnwendenB());
             AnwendenG = new RelayCommand(param => Execute_AnwendenG(), param => CanExecute_AnwendenG());
-
-            SaveTrade = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
 
             //Sold
             soldItemAdd = new RelayCommand(param => Execute_soldItemAdd(), param => CanExecute_soldItemAdd());
@@ -257,39 +234,6 @@ namespace RLTrading.ViewModel
         #endregion
 
         #region Commands
-
-        /// <summary>
-        /// Execute Edit Trade
-        /// </summary>
-        public void Execute_editItem()
-        {
-            if (SoldItems.Contains(selectedItem))
-            {
-                CurrentGContent = gegebenContents[1];
-                GEditItem = selectedItem;
-            }
-            else
-            {
-                CurrentBContent = bekommenContents[1];
-                BEditItem = selectedItem;
-            }
-
-            SelectedItem = null;
-        }
-
-        /// <summary>
-        /// Can Execute Edit Trade
-        /// </summary>
-        /// <returns>True / False</returns>
-        public bool CanExecute_editItem()
-        {
-            if (SelectedItem != null)
-            {
-                return true;
-            }
-
-            return false;
-        }
 
         /// <summary>
         /// Execute AnwendenB
@@ -387,29 +331,6 @@ namespace RLTrading.ViewModel
             return false;
         }
 
-
-        /// <summary>
-        /// Execute gotItemDelete
-        /// </summary>
-        public void Execute_ItemDelete()
-        {
-            GotItems.Remove(SelectedItem);
-            SoldItems.Remove(SelectedItem);
-        }
-
-        /// <summary>
-        /// Ob Item gelöscht werden kann (Bekommen)
-        /// </summary>
-        /// <returns>True / False</returns>
-        public bool CanExecute_ItemDelete()
-        {
-            if (SelectedItem != null)
-            {
-                return true;
-            }
-
-            return false;
-        }
 
         /// <summary>
         /// Execute gotItemAdd
