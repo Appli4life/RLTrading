@@ -12,36 +12,46 @@
         </Style>
         <Style TargetType="Button" x:Key="menuBtn">
             <Setter Property="Width" Value="95" />
-            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Height" Value="25" />
             <Setter Property="Background" Value="LightBlue" />
-            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
         <Style TargetType="UserControl" x:Key="uc">
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
-        
+
         <Style TargetType="Label" x:Key="LableCr">
-            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontSize" Value="20" />
+        </Style>
+
+        <Style TargetType="Ellipse" x:Key="Itemelips">
+            <Setter Property="Width" Value="15"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="Margin" Value="0,2,5,0"/>
+            <Setter Property="DockPanel.Dock" Value="Right"/>
+            <Setter Property="Fill" Value="{Binding Path=Color.Brush}"/>
+            <Setter Property="Stroke" Value="Gray"/>
+            <Setter Property="ToolTip" Value="{Binding Path=Color.Name}"/>
         </Style>
 
         <Style TargetType="Label" x:Key="Item">
-            <Setter Property="Foreground" Value="White"></Setter>
-            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
-            <Setter Property="FontWeight" Value="Bold"></Setter>
-            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="12" />
         </Style>
         <Style TargetType="Button" x:Key="BtnHinzufuegen">
-            <Setter Property="Margin" Value="10,10,10,10"></Setter>
-            <Setter Property="Background" Value="LightGreen"></Setter>
-            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Margin" Value="10,10,10,10" />
+            <Setter Property="Background" Value="LightGreen" />
+            <Setter Property="Width" Value="100" />
             <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
         <Style TargetType="Button" x:Key="BtnSpeichern">
-            <Setter Property="Margin" Value="10,0,0,10"></Setter>
-            <Setter Property="Background" Value="GreenYellow"></Setter>
-            <Setter Property="Width" Value="100"></Setter>
-            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Margin" Value="10,0,0,10" />
+            <Setter Property="Background" Value="GreenYellow" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="30" />
             <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
 

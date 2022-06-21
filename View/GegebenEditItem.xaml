@@ -9,7 +9,7 @@
         <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Vertical">
             <DockPanel Margin="10" LastChildFill="True">
                 <Label Width="140" Style="{StaticResource LableCr}" Content="Name:"/>
-                <TextBox Width="205" DockPanel.Dock="Right" Height="30"  FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Path=GEditItem.Name}"/>
+                <TextBox MaxLength="20" Width="205" DockPanel.Dock="Right" Height="30"  FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Path=GEditItem.Name}"/>
             </DockPanel>
             <DockPanel Margin="10" LastChildFill="True">
                 <Label Width="140" Content="Farbe / Zert:" Style="{StaticResource LableCr}"/>
@@ -18,7 +18,7 @@
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
                                 <Ellipse Height="12" Width="12" Fill="{Binding Path=Brush}"/>
-                                <Label  Content="{Binding Path=Name}" Height="26.8" FontSize="12"/>
+                                <Label Content="{Binding Path=Name}" Height="26.8" FontSize="12"/>
                             </StackPanel>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>

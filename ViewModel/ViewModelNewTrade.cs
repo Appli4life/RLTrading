@@ -302,37 +302,6 @@ namespace RLTrading.ViewModel
         }
 
         /// <summary>
-        /// Execute SaveTrade
-        /// </summary>
-        public void Execute_SaveTrade()
-        {
-            EditTrade.Date = DateTime.Now;
-            TradeMocking.allTrades.Add(currentTrade);
-
-            EditTrade = new Trade();
-            SoldItems = new ObservableCollection<Item>();
-            GotItems = new ObservableCollection<Item>();
-            SoldItems.Add(new Item());
-            GotItems.Add(new Item());
-
-            MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
-        }
-
-        /// <summary>
-        /// Ob SaveTrad ausgeführt werden kann
-        /// </summary>
-        /// <returns>True / False</returns>
-        public bool CanExecute_SaveTrade()
-        {
-            if (true)
-            {
-                return true;
-            }
-            return false;
-        }
-
-
-        /// <summary>
         /// Execute gotItemAdd
         /// </summary>
         public void Execute_gotItemAdd()

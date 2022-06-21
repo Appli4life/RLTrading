@@ -16,6 +16,11 @@ namespace RLTrading.Model
         #region Property
 
         /// <summary>
+        /// Epic Name der Person mit der man den Trade gemacht hat
+        /// </summary>
+        public string Trader { get; set; }
+
+        /// <summary>
         /// Datum des Trade
         /// </summary>
         public DateTime Date { get; set; }

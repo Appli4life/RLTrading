@@ -12,25 +12,23 @@
     </Window.DataContext>
 
     <Window.Background>
-        <ImageBrush ImageSource="pic/hintergrund.png"></ImageBrush>
+        <ImageBrush ImageSource="pic/hintergrund.png" />
     </Window.Background>
     <DockPanel LastChildFill="True">
         <DockPanel DockPanel.Dock="Top" LastChildFill="False">
-            <Label DockPanel.Dock="Left" Height="50" Style="{StaticResource ueberschrift}" Content="Rocket League Trading Track"></Label>
-            <Image Margin="10" DockPanel.Dock="Right" Source="pic/logo.png" Height="90"></Image>
+            <Label DockPanel.Dock="Left" Height="50" Style="{StaticResource ueberschrift}" Content="Rocket League Trading Track" />
+            <Image Margin="10" DockPanel.Dock="Right" Source="pic/logo.png" Height="90" />
         </DockPanel>
         <StackPanel Margin="20,0,0,0" DockPanel.Dock="Top" Orientation="Horizontal" HorizontalAlignment="Left">
-            <Button Style="{StaticResource menuBtn}" Content="_Alle Trades" Command="{Binding  Path=AllTradeSwitch}" ></Button>
-            <Button Margin="20,0,0,0" Style="{StaticResource menuBtn}" Content="_Neuer Trade" Command="{Binding Path=NewTradeSwitch}"></Button>
+            <Button Style="{StaticResource menuBtn}" Content="_Alle Trades" Command="{Binding  Path=AllTradeSwitch}" />
+            <Button Margin="20,0,0,0" Style="{StaticResource menuBtn}" Content="_Neuer Trade" Command="{Binding Path=NewTradeSwitch}" />
         </StackPanel>
         <StackPanel Margin="0,0,20,10" DockPanel.Dock="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
-            <Button Margin="0,0,20,0" Style="{StaticResource menuBtn}" Command="{Binding SaveCommand }" Content="_Speichern"></Button>
-            <Button Style="{StaticResource menuBtn}" Content="_Schliessen" Command="{Binding Path=CloseApp}"></Button>
+            <Button Margin="0,0,20,0" Style="{StaticResource menuBtn}" Command="{Binding SaveCommand }" Content="_Speichern" />
+            <Button Style="{StaticResource menuBtn}" Content="_Schliessen" Command="{Binding Path=CloseApp}" />
         </StackPanel>
 
-        <ContentControl Margin="20,0,20,20" Content="{Binding Path=Content}">
-
-        </ContentControl>
+        <ContentControl Margin="20,0,20,20" Content="{Binding Path=Content}" />
 
 
     </DockPanel>

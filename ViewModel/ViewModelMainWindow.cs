@@ -1,5 +1,6 @@
 ﻿
 
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -11,6 +12,7 @@ using System.Windows.Navigation;
 using RLTrading.ViewModel;
 using RLTrading.Model;
 using RLTrading.Utility;
+using RLTrading.View;
 
 namespace RLTrading.ViewModel
 {
@@ -20,6 +22,20 @@ namespace RLTrading.ViewModel
     public class ViewModelMainWindow : ViewModelBase
     {
         #region Property
+
+        /// <summary>
+        /// Selected Trade in datagrid
+        /// </summary>
+        private Trade selectedTrade;
+
+        /// <summary>
+        /// Accessor für Selected Trade
+        /// </summary>
+        public Trade SelectedTrade
+        {
+            get => selectedTrade;
+            set => SetProperty(ref selectedTrade, value);
+        }
 
         /// <summary>
         /// Close Command
@@ -42,6 +58,12 @@ namespace RLTrading.ViewModel
         public RelayCommand SaveCommand { get; set; }
 
         /// <summary>
+        /// Detail Trade Command
+        /// </summary>
+        public RelayCommand DetailTrade { get; set; }
+
+
+        /// <summary>
         /// Collection von allen ContentControls
         /// </summary>
         private ObservableCollection<ContentControl> contents = new();
@@ -55,6 +77,11 @@ namespace RLTrading.ViewModel
         /// NewTrade ContentControl
         /// </summary>
         private NewTrade newTrade = new();
+
+        /// <summary>
+        /// DetailTrade ContentControl
+        /// </summary>
+        private DetailTrade detailTrade;
 
         /// <summary>
         /// Aktueller Content im ContentControl
@@ -87,6 +114,7 @@ namespace RLTrading.ViewModel
 
             contents.Add(allTrade);
             contents.Add(newTrade);
+            contents.Add(detailTrade);
 
             currentContent = contents[0];
         }
@@ -101,6 +129,7 @@ namespace RLTrading.ViewModel
         public void Execute_SaveTrade()
         {
             var datacontext = (ViewModelNewTrade)newTrade.DataContext;
+            datacontext.EditTrade.Date = DateTime.Now;
             TradeMocking.allTrades.Add(datacontext.EditTrade);
 
             datacontext.EditTrade = new Trade();
@@ -109,7 +138,7 @@ namespace RLTrading.ViewModel
             datacontext.SoldItems.Add(new Item());
             datacontext.GotItems.Add(new Item());
 
-            MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
+            MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>

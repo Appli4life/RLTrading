@@ -8,29 +8,29 @@
     <Grid>
         <StackPanel>
             <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top" LastChildFill="False">
-                <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Gegeben:"></Label>
-                <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.lostCredits}" MaxLength="5" ></TextBox>
-                <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center"></Label>
+                <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Gegeben:" />
+                <TextBox VerticalContentAlignment="Center" FontSize="20" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Text="{Binding Path=EditTrade.lostCredits}" MaxLength="5" />
+                <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center" />
             </DockPanel>
             <ListBox Background="Transparent" BorderBrush="Transparent" SelectionMode="Single" ItemsSource="{Binding Path=SoldItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding Path=SelectedItem}">
                 <ListBox.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel Orientation="Horizontal"  IsItemsHost="True" Background="Transparent"></WrapPanel>
+                        <WrapPanel Orientation="Horizontal"  IsItemsHost="True" Background="Transparent" />
                     </ItemsPanelTemplate>
                 </ListBox.ItemsPanel>
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="80" Height="80" Margin="6">
+                        <StackPanel Width="87" Height="89" Margin="6">
                             <StackPanel.ContextMenu >
                                 <ContextMenu>
                                     <MenuItem Header="Bearbeiten" Click="MenuItem_OnClick">
                                         <MenuItem.Icon>
-                                            <Image Source="../../../pic/edit.png"></Image>
+                                            <Image Source="../../../pic/edit.png" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                     <MenuItem Header="Löschen" Click="MenuItem_OnClick2">
                                         <MenuItem.Icon>
-                                            <Image Source="../../../pic/delete.png"></Image>
+                                            <Image Source="../../../pic/delete.png" />
                                         </MenuItem.Icon>
                                     </MenuItem>
                                 </ContextMenu>
@@ -42,18 +42,22 @@
                                 </LinearGradientBrush>
                             </StackPanel.Background>
                             <DockPanel>
-                                <Ellipse ToolTip="{Binding Path=Color.Name}" DockPanel.Dock="Right" Margin="0,2,5,0"  Height="15" Width="15" Fill="{Binding Path=Color.Brush}" Stroke="Gray"></Ellipse>
-                                <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}" Margin="5,0,0,0"  Content="{Binding Path=Count}"></Label>
+                                <Ellipse Style="{StaticResource Itemelips}" />
+                                <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}" Margin="5,0,0,0"  Content="{Binding Path=Count}" />
                             </DockPanel>
-                            <Label Style="{StaticResource Item}" Content="{Binding Path=Name}"></Label>
-                            <Label Style="{StaticResource Item}"  Content="{Binding Path=Certification.Name}"></Label>
+                            <Label Style="{StaticResource Item}">
+                                <Label.Content>
+                                    <AccessText TextWrapping="Wrap" Text="{Binding Path=Name}"/>
+                                </Label.Content>
+                            </Label>
+                            <Label Style="{StaticResource Item}"  Content="{Binding Path=Certification.Name}" />
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
         <DockPanel VerticalAlignment="Bottom" LastChildFill="False">
-            <Button DockPanel.Dock="Right" Content="_Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}"></Button>
+            <Button DockPanel.Dock="Right" Content="_Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}" />
         </DockPanel>
     </Grid>
 </UserControl>

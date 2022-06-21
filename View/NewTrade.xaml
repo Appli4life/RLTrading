@@ -23,10 +23,8 @@
         </Grid.ColumnDefinitions>
         
         
-        <ContentControl Content="{Binding Path=CurrentGContent}" Margin="0,0,10,0"></ContentControl>
-        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch">
-            
-        </GridSplitter>
-        <ContentControl Grid.Column="2" Content="{Binding Path=CurrentBContent}" Margin="10,0,0,0"></ContentControl>
+        <ContentControl Content="{Binding Path=CurrentGContent}" Margin="0,0,10,0" />
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
+        <ContentControl Grid.Column="2" Content="{Binding Path=CurrentBContent}" Margin="10,0,0,0" />
     </Grid>
 </UserControl>

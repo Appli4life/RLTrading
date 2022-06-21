@@ -68,6 +68,7 @@
     <Compile Include="Utility\IDeepCloneable.cs" />
     <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="ViewModel\ViewModelAllTrade.cs" />
+    <Compile Include="ViewModel\ViewModelDetailTrade.cs" />
     <Compile Include="ViewModel\ViewModelMainWindow.cs" />
     <Compile Include="ViewModel\ViewModelNewTrade.cs" />
     <Compile Include="View\AllTrade.xaml.cs">
@@ -82,6 +83,9 @@
     </Compile>
     <Compile Include="View\BekommenEditItem.xaml.cs">
       <DependentUpon>BekommenEditItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\DetailTrade.xaml.cs">
+      <DependentUpon>DetailTrade.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\GegebenAlleItems.xaml.cs">
       <DependentUpon>GegebenAlleItems.xaml</DependentUpon>
@@ -117,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BekommenEditItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\DetailTrade.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
