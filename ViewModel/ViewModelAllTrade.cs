@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using RLTrading.ViewModel;
 using RLTrading.Model;
 using RLTrading.Utility;
+using RLTrading.View;
 
 namespace RLTrading.ViewModel
 {
@@ -16,7 +17,27 @@ namespace RLTrading.ViewModel
     public class ViewModelAllTrade : ViewModelBase
     {
         #region Property
-        
+
+        /// <summary>
+        /// Selected Trade in datagrid
+        /// </summary>
+        private Trade selectedTrade;
+
+
+        /// <summary>
+        /// Accessor für Selected Trade
+        /// </summary>
+        public Trade SelectedTrade
+        {
+            get => selectedTrade;
+            set => SetProperty(ref selectedTrade, value);
+        }
+
+        /// <summary>
+        /// Detail Trade Command
+        /// </summary>
+        public RelayCommand DetailTrade { get; set; }
+
         /// <summary>
         /// Accessor für alle Trade Collection
         /// </summary>
@@ -31,7 +52,32 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelAllTrade()
         {
+            DetailTrade = new RelayCommand(param => Execute_DetailTrade(), param => CanExecute_DetailTrade());
+        }
+
+        #endregion
+
+        #region Command Methoden
+
+        /// <summary>
+        /// Detail Trade Command Execute
+        /// </summary>
+        private void Execute_DetailTrade()
+        {
             
+        }
+
+        /// <summary>
+        /// Ob Detail Trade ausgeführt werden kann
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_DetailTrade()
+        {
+            if (SelectedTrade != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         #endregion

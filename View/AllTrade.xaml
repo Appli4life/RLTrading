@@ -19,7 +19,7 @@
         </LinearGradientBrush>
     </UserControl.Background>
     <Grid>
-        <DataGrid x:Name="Selected" SelectionMode="Single" SelectedItem="{Binding Path=SelectedTrade}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding AllTrades, Mode=OneWay}" AutoGenerateColumns="False" IsReadOnly="True"  Background="Transparent" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid SelectionMode="Single" SelectedItem="{Binding SelectedTrade}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding AllTrades, Mode=OneWay}" AutoGenerateColumns="False" IsReadOnly="True"  Background="Transparent" CanUserResizeColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Trader GT" Binding="{Binding Trader}"/>
                 <DataGridTextColumn Header="Datum" Binding="{Binding Date, StringFormat='{}{0:dd. MMMM yyyy}', ConverterCulture=de}"/>
@@ -30,7 +30,7 @@
                 <DataGridTextColumn Header="Gegebenes Item" Binding="{Binding }" Foreground="Red"/>
             </DataGrid.Columns>
             <DataGrid.InputBindings>
-                <MouseBinding MouseAction="LeftDoubleClick" Command="DetailTrade"/>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DetailTrade}"/>
             </DataGrid.InputBindings>
         </DataGrid>
     </Grid>

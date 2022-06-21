@@ -17,7 +17,11 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Accsessor für Trade
         /// </summary>
-        public Trade Trade => trade;
+        public Trade Trade
+        {
+            get => trade;
+            set => SetProperty(ref trade, value);
+        }
 
         /// <summary>
         /// Ctor
@@ -26,6 +30,5 @@ namespace RLTrading.ViewModel
         {
 
         }
-
     }
 }

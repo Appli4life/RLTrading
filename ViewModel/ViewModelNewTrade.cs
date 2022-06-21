@@ -143,11 +143,6 @@ namespace RLTrading.ViewModel
         public RelayCommand gotItemAdd { get; set; }
 
         /// <summary>
-        /// Item Löschen
-        /// </summary>
-        public RelayCommand ItemDelete { get; set; }
-
-        /// <summary>
         /// Selected item in Listbox ( für beide )
         /// </summary>
         private Item selectedItem;

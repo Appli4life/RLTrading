@@ -24,20 +24,6 @@ namespace RLTrading.ViewModel
         #region Property
 
         /// <summary>
-        /// Selected Trade in datagrid
-        /// </summary>
-        private Trade selectedTrade;
-
-        /// <summary>
-        /// Accessor für Selected Trade
-        /// </summary>
-        public Trade SelectedTrade
-        {
-            get => selectedTrade;
-            set => SetProperty(ref selectedTrade, value);
-        }
-
-        /// <summary>
         /// Close Command
         /// </summary>
         public RelayCommand CloseApp { get; set; }
@@ -56,12 +42,6 @@ namespace RLTrading.ViewModel
         /// Save Command
         /// </summary>
         public RelayCommand SaveCommand { get; set; }
-
-        /// <summary>
-        /// Detail Trade Command
-        /// </summary>
-        public RelayCommand DetailTrade { get; set; }
-
 
         /// <summary>
         /// Collection von allen ContentControls
@@ -116,7 +96,7 @@ namespace RLTrading.ViewModel
             contents.Add(newTrade);
             contents.Add(detailTrade);
 
-            currentContent = contents[0];
+            Content = contents[0];
         }
 
         #endregion
@@ -138,6 +118,8 @@ namespace RLTrading.ViewModel
             datacontext.SoldItems.Add(new Item());
             datacontext.GotItems.Add(new Item());
 
+            Content = contents[0];
+
             MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -153,6 +135,8 @@ namespace RLTrading.ViewModel
             }
             return false;
         }
+
+       
 
         /// <summary>
         /// Close Command Execute
