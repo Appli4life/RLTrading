@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using RLTrading.ViewModel;
 using RLTrading.Model;
 using RLTrading.Utility;
@@ -64,7 +65,10 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_DetailTrade()
         {
-            
+            var dataContext = (ViewModelMainWindow)Application.Current.MainWindow.DataContext;
+            var data = (ViewModelDetailTrade)dataContext.detailTrade.DataContext;
+            dataContext.Content = dataContext.contents[2];
+            data.Trade = SelectedTrade;
         }
 
         /// <summary>

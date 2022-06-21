@@ -10,7 +10,63 @@
     <UserControl.DataContext>
         <ViewModel:ViewModelDetailTrade/>
     </UserControl.DataContext>
+
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="SkyBlue"/>
+            <GradientStop Color="Transparent" Offset="2"/>
+        </LinearGradientBrush>
+    </UserControl.Background>
+
     <Grid>
-            
-    </Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid Margin="0,0,10,0">
+            <StackPanel>
+                <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top" LastChildFill="False">
+                    <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Gegeben:" />
+                    <Label VerticalContentAlignment="Center" FontSize="15" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Content="{Binding Path=Trade.lostCredits, Mode=OneWay}" />
+                    <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center" />
+                </DockPanel>
+                <ListBox Background="Transparent" BorderBrush="Transparent" SelectionMode="Single" ItemsSource="{Binding Path=SoldItems, Mode=OneWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"  IsItemsHost="True" Background="Transparent" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="87" Height="89" Margin="6">
+                                <StackPanel.Background>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="{Binding Path=Quality.Brush}" Offset="0.6"/>
+                                    </LinearGradientBrush>
+                                </StackPanel.Background>
+                                <DockPanel>
+                                    <Ellipse Style="{StaticResource Itemelips}" />
+                                    <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}" Margin="5,0,0,0"  Content="{Binding Path=Count}" />
+                                </DockPanel>
+                                <Label Style="{StaticResource Item}">
+                                    <Label.Content>
+                                        <AccessText TextWrapping="Wrap" Text="{Binding Path=Name}"/>
+                                    </Label.Content>
+                                </Label>
+                                <Label Style="{StaticResource Item}"  Content="{Binding Path=Certification.Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
+        <Grid Grid.Column="2" Margin="10,0,0,0" >
+
+        </Grid>
+        </Grid>
 </UserControl>

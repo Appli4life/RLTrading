@@ -46,7 +46,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Collection von allen ContentControls
         /// </summary>
-        private ObservableCollection<ContentControl> contents = new();
+        public ObservableCollection<ContentControl> contents = new();
 
         /// <summary>
         /// AllTrade ContentControl
@@ -61,7 +61,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// DetailTrade ContentControl
         /// </summary>
-        private DetailTrade detailTrade;
+        public DetailTrade detailTrade = new();
 
         /// <summary>
         /// Aktueller Content im ContentControl
