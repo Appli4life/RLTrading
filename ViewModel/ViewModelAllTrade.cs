@@ -69,6 +69,8 @@ namespace RLTrading.ViewModel
             var data = (ViewModelDetailTrade)dataContext.detailTrade.DataContext;
             dataContext.Content = dataContext.contents[2];
             data.Trade = SelectedTrade;
+            data.GotItems = new ObservableCollection<Item>(SelectedTrade.boughtItems);
+            data.SoldItems = new ObservableCollection<Item>(SelectedTrade.soldItems);
         }
 
         /// <summary>

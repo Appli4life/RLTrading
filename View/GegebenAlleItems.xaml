@@ -56,8 +56,10 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </StackPanel>
-        <DockPanel VerticalAlignment="Bottom" LastChildFill="False">
-            <Button DockPanel.Dock="Right" Content="_Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}" />
-        </DockPanel>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Label Background="White" Height="22.5" Style="{StaticResource LableCr}" FontSize="10" VerticalContentAlignment="Center" Content="Name:"></Label>
+            <TextBox MaxLength="20" Text="{Binding Path=EditTrade.Name, Mode=TwoWay}" Height="24" FontSize="15" Width="200" VerticalContentAlignment="Center"/>
+            <Button Content="_Hinzufügen" Command="{Binding Path=soldItemAdd}" Style="{StaticResource BtnHinzufuegen}" />
+        </StackPanel>
     </Grid>
 </UserControl>

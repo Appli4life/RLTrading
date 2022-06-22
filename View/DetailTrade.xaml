@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:ViewModel="clr-namespace:RLTrading.ViewModel"
-             xmlns:local="clr-namespace:RLTrading.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
@@ -24,7 +23,6 @@
             <ColumnDefinition Width="5"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
 
         <Grid Margin="0,0,10,0">
             <StackPanel>
@@ -64,9 +62,44 @@
                 </ListBox>
             </StackPanel>
         </Grid>
-            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
         <Grid Grid.Column="2" Margin="10,0,0,0" >
-
+            <StackPanel>
+                <DockPanel Margin="0,5,0,0" LastChildFill="False">
+                    <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Erhalten:" />
+                    <Label VerticalContentAlignment="Center" FontSize="15" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Content="{Binding Path=Trade.gotCredits, Mode=OneWay}" />
+                    <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center" />
+                </DockPanel>
+                <ListBox Background="Transparent" BorderBrush="Transparent" SelectionMode="Single" ItemsSource="{Binding Path=GotItems, Mode=OneWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal" IsItemsHost="True" Background="Transparent" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="87" Height="89" Margin="6">
+                                <StackPanel.Background>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="{Binding Path=Quality.Brush}" Offset="0.6"/>
+                                    </LinearGradientBrush>
+                                </StackPanel.Background>
+                                <DockPanel>
+                                    <Ellipse ToolTip="{Binding Path=Color.Name}" DockPanel.Dock="Right" Margin="0,2,5,0"  Height="15" Width="15" Fill="{Binding Path=Color.Brush}" Stroke="Gray" />
+                                    <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}" Margin="5,0,0,0"  Content="{Binding Path=Count}" />
+                                </DockPanel>
+                                <Label Style="{StaticResource Item}" Content="{Binding Path=Name}" />
+                                <Label Style="{StaticResource Item}"  Content="{Binding Path=Certification.Name}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right" Orientation="Horizontal">
+                <Label Height="22.5" Style="{StaticResource LableCr}" FontSize="10" VerticalContentAlignment="Center" Content="Trader (GT):"></Label>
+                <Label Content="{Binding Path=Trade.Trader, Mode=OneWay}" Height="24" FontSize="12" Width="200" VerticalContentAlignment="Center"/>
+            </StackPanel>
         </Grid>
-        </Grid>
+    </Grid>
 </UserControl>

@@ -16,6 +16,11 @@ namespace RLTrading.Model
         #region Property
 
         /// <summary>
+        /// Name für den Trade
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Epic Name der Person mit der man den Trade gemacht hat
         /// </summary>
         public string Trader { get; set; }
@@ -56,16 +61,6 @@ namespace RLTrading.Model
         public Trade()
         {
             
-        }
-
-        /// <summary>
-        /// Clone erstellen
-        /// </summary>
-        /// <returns>Eine Kopie von dem aktuellen Trade</returns>
-        public Trade Clone()
-        {
-            string json = JsonConvert.SerializeObject(this);
-            return JsonConvert.DeserializeObject<Trade>(json);
         }
 
         #endregion

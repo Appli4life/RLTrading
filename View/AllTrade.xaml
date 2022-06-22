@@ -19,15 +19,16 @@
         </LinearGradientBrush>
     </UserControl.Background>
     <Grid>
-        <DataGrid SelectionMode="Single" SelectedItem="{Binding SelectedTrade}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding AllTrades, Mode=OneWay}" AutoGenerateColumns="False" IsReadOnly="True"  Background="Transparent" CanUserResizeColumns="False" CanUserResizeRows="False">
+        <DataGrid SelectionMode="Single" SelectedItem="{Binding SelectedTrade, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding AllTrades, Mode=OneWay}" AutoGenerateColumns="False" IsReadOnly="True"  Background="Transparent" CanUserResizeColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
+                <DataGridTextColumn Header="Trade Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Trader GT" Binding="{Binding Trader}"/>
                 <DataGridTextColumn Header="Datum" Binding="{Binding Date, StringFormat='{}{0:dd. MMMM yyyy}', ConverterCulture=de}"/>
 
                 <DataGridTextColumn Header="Credits erhalten" Binding="{Binding gotCredits}" Foreground="Green"/>
-                <DataGridTextColumn Header="Erhaltenes Item" Binding="{Binding }" Foreground="Green"/>
+                <DataGridTextColumn Header="Erhaltenes Item" Binding="{Binding Path=boughtItems[0].Name}" Foreground="Green"/>
                 <DataGridTextColumn Header="Credits gegeben" Binding="{Binding lostCredits}" Foreground="Red" />
-                <DataGridTextColumn Header="Gegebenes Item" Binding="{Binding }" Foreground="Red"/>
+                <DataGridTextColumn Header="Gegebenes Item" Binding="{Binding soldItems[0].Name}" Foreground="Red"/>
             </DataGrid.Columns>
             <DataGrid.InputBindings>
                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DetailTrade}"/>

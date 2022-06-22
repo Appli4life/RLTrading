@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RLTrading.Model;
+using RLTrading.Utility;
 
 namespace RLTrading.ViewModel
 {
@@ -15,7 +16,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Der Trades
         /// </summary>
-        private Trade trade = new Trade();
+        private Trade trade = new();
 
         /// <summary>
         /// Accsessor für Trade
@@ -55,6 +56,10 @@ namespace RLTrading.ViewModel
         {
 
         }
+
+        #endregion
+
+        #region Command Methoden
 
         #endregion
     }
