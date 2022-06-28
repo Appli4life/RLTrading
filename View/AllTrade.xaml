@@ -18,10 +18,35 @@
             <GradientStop Color="Transparent" Offset="2"/>
         </LinearGradientBrush>
     </UserControl.Background>
-    <Grid>
+    <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Horizontal">
+            <Label Style="{StaticResource Item}" Foreground="Black" Content="Nach Item suchen"></Label>
+            <Expander VerticalAlignment="Center">
+                <WrapPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" VerticalContentAlignment="Center" Content="Name:"></Label>
+                        <TextBox Text="{Binding SearchItem.Name}" Style="{StaticResource Searchbox}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label FontWeight="Bold" VerticalContentAlignment="Center" Content="Farbe:"></Label>
+                        <ComboBox SelectedItem="{Binding SearchItem.Color}" Style="{StaticResource allColorComboBox}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">
+                                        <Ellipse Height="12" Width="12" Fill="{Binding Path=Brush}"/>
+                                        <Label Content="{Binding Path=Name}" Height="26.8" FontSize="12"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </StackPanel>
+                    <Button Style="{StaticResource BtnSpeichern}" Content="Suchen" Command="{Binding SearchItemBtn}"></Button>
+                    <Button Style="{StaticResource BtnSpeichern}" Background="LightGray" Content="Zurücksetzen" Command="{Binding SearchClear}"></Button>
+                </WrapPanel>
+            </Expander>
+        </StackPanel>
         <DataGrid SelectionMode="Single" SelectedItem="{Binding SelectedTrade, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding AllTrades, Mode=OneWay}" AutoGenerateColumns="False" IsReadOnly="True"  Background="Transparent" CanUserResizeColumns="False" CanUserResizeRows="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Trade Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Trader GT" Binding="{Binding Trader}"/>
                 <DataGridTextColumn Header="Datum" Binding="{Binding Date, StringFormat='{}{0:dd. MMMM yyyy}', ConverterCulture=de}"/>
 
@@ -34,5 +59,5 @@
                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DetailTrade}"/>
             </DataGrid.InputBindings>
         </DataGrid>
-    </Grid>
+    </StackPanel>
 </UserControl>

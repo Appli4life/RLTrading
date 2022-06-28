@@ -13,7 +13,7 @@
             </DockPanel>
             <DockPanel Margin="10" LastChildFill="True">
                 <Label Width="140" Content="Farbe / Zert:" Style="{StaticResource LableCr}"/>
-                <ComboBox TextSearch.TextPath="Name" Height="33" Width="100" IsTextSearchEnabled="True" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" IsReadOnly="True" SelectedItem="{Binding Path=GEditItem.Color, Mode=TwoWay}" ItemsSource="{Binding Path=AllBrushes, Mode=OneWay}">
+                <ComboBox SelectedItem="{Binding Path=GEditItem.Color, Mode=TwoWay}" Style="{StaticResource allColorComboBox}">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight">

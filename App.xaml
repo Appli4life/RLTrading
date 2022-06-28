@@ -48,11 +48,29 @@
             <Setter Property="BorderBrush" Value="Transparent" />
         </Style>
         <Style TargetType="Button" x:Key="BtnSpeichern">
-            <Setter Property="Margin" Value="10,0,0,10" />
             <Setter Property="Background" Value="GreenYellow" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="90" />
+            <Setter Property="Height" Value="33" />
             <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10,0,0,0"></Setter>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="Searchbox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Height" Value="33"></Setter>
+        </Style>
+
+        <Style TargetType="ComboBox" x:Key="allColorComboBox">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="TextSearch.TextPath" Value="Name"/>
+            <Setter Property="Height" Value="33"/>
+            <Setter Property="IsTextSearchEnabled" Value="True"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="ItemsSource" Value="{Binding Path=AllBrushes, Mode=OneWay}"/>
         </Style>
 
     </Application.Resources>

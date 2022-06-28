@@ -19,11 +19,26 @@ namespace RLTrading.ViewModel
     {
         #region Property
 
+        public ObservableCollection<Color> AllBrushes => new(ColorMocking.Colors);
+
         /// <summary>
         /// Selected Trade in datagrid
         /// </summary>
         private Trade selectedTrade;
 
+        /// <summary>
+        /// Das zu suchende Item
+        /// </summary>
+        private Item searchItem;
+
+        /// <summary>
+        /// Accessor für Suchendes Item
+        /// </summary>
+        public Item SearchItem
+        {
+            get => searchItem;
+            set => SetProperty(ref searchItem, value);
+        }
 
         /// <summary>
         /// Accessor für Selected Trade
@@ -40,9 +55,20 @@ namespace RLTrading.ViewModel
         public RelayCommand DetailTrade { get; set; }
 
         /// <summary>
+        /// Search Item Command
+        /// </summary>
+        public RelayCommand SearchItemBtn { get; set; }
+
+        /// <summary>
+        /// Search zurücksetzen Command
+        /// </summary>
+        public RelayCommand SearchClear{ get; set; }
+
+        /// <summary>
         /// Accessor für alle Trade Collection
         /// </summary>
-        public ObservableCollection<Trade> AllTrades => TradeMocking.allTrades;
+        public ObservableCollection<Trade> AllTrades = new ObservableCollection<Trade>(TradeMocking.allTrades);
+       
 
         #endregion
 
@@ -54,6 +80,10 @@ namespace RLTrading.ViewModel
         public ViewModelAllTrade()
         {
             DetailTrade = new RelayCommand(param => Execute_DetailTrade(), param => CanExecute_DetailTrade());
+            SearchItemBtn = new RelayCommand(param => Execute_SearchItem(), param => CanExecute_SearchItem());
+            SearchClear = new RelayCommand(param => Execute_SearchClear(), param => CanExecute_SearchClear());
+            AllBrushes.Add(new Color("Any", null));
+
         }
 
         #endregion
@@ -80,6 +110,55 @@ namespace RLTrading.ViewModel
         public bool CanExecute_DetailTrade()
         {
             if (SelectedTrade != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search Item Command Execute
+        /// </summary>
+        private void Execute_SearchItem()
+        {
+            // Trades speichern
+            //TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades);
+
+            //AllTrades.Clear();
+
+            //var result = TradeMocking.allTrades.Where(trade => trade.soldItems.Where(item => item.Name == searchItem.Name)) as ObservableCollection<Trade>;
+
+
+        }
+
+        /// <summary>
+        /// Ob Search Item ausgeführt werden kann
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_SearchItem()
+        {
+            if (true)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Search zurücksetzen Command Execute
+        /// </summary>
+        private void Execute_SearchClear()
+        {
+
+        }
+
+        /// <summary>
+        /// Ob search zurücksetzen ausgeführt werden kann
+        /// </summary>
+        /// <returns>True / False</returns>
+        public bool CanExecute_SearchClear()
+        {
+            if (true)
             {
                 return true;
             }
