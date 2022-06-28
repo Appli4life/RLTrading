@@ -56,7 +56,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// NewTrade ContentControl
         /// </summary>
-        private NewTrade newTrade = new();
+        public NewTrade newTrade = new();
 
         /// <summary>
         /// DetailTrade ContentControl
@@ -101,7 +101,7 @@ namespace RLTrading.ViewModel
 
         #endregion
 
-        #region Command Methoden
+        #region Methoden
 
         /// <summary>
         /// Execute SaveTrade
@@ -136,15 +136,26 @@ namespace RLTrading.ViewModel
             return false;
         }
 
-       
+        private void WantSave()
+        {
+            if (Content == newTrade)
+            {
+                if (MessageBoxResult.Yes == MessageBox.Show("Möchten Sie den Aktuellen Trade Speichern?\nAchtung, beim Bearbeiten von einem Trade geht der Trade verloren!", "Trade offen", MessageBoxButton.YesNoCancel,MessageBoxImage.Question))
+                {
+                    Execute_SaveTrade();
+                }
+            }
+        }
 
         /// <summary>
         /// Close Command Execute
         /// </summary>
         private void Execute_Close()
         {
+            WantSave();
             Application.Current.Shutdown();
         }
+
 
         /// <summary>
         /// Close Command canExecute
@@ -167,6 +178,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_AllTrade()
         {
+            WantSave();
             Content = contents[0];
         }
 

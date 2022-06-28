@@ -67,7 +67,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Accessor für alle Trade Collection
         /// </summary>
-        public ObservableCollection<Trade> AllTrades = new ObservableCollection<Trade>(TradeMocking.allTrades);
+        public ObservableCollection<Trade> AllTrades => TradeMocking.allTrades;
        
 
         #endregion

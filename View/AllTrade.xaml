@@ -51,13 +51,27 @@
                 <DataGridTextColumn Header="Datum" Binding="{Binding Date, StringFormat='{}{0:dd. MMMM yyyy}', ConverterCulture=de}"/>
 
                 <DataGridTextColumn Header="Credits erhalten" Binding="{Binding gotCredits}" Foreground="Green"/>
-                <DataGridTextColumn Header="Erhaltenes Item" Binding="{Binding Path=boughtItems[0].Name}" Foreground="Green"/>
+                <DataGridTextColumn Header="Erhaltenes Item" Binding="{Binding boughtItems[0].Name}" Foreground="Green"/>
                 <DataGridTextColumn Header="Credits gegeben" Binding="{Binding lostCredits}" Foreground="Red" />
                 <DataGridTextColumn Header="Gegebenes Item" Binding="{Binding soldItems[0].Name}" Foreground="Red"/>
             </DataGrid.Columns>
             <DataGrid.InputBindings>
                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DetailTrade}"/>
             </DataGrid.InputBindings>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Bearbeiten" Click="MenuItem_OnClick">
+                        <MenuItem.Icon>
+                            <Image Source="../../../pic/edit.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Löschen" Click="MenuItem_OnClick2">
+                        <MenuItem.Icon>
+                            <Image Source="../../../pic/delete.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
     </StackPanel>
 </UserControl>
