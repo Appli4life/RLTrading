@@ -20,7 +20,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Pfad zur Json Datei (ab Current Directory)
         /// </summary>
-        public static string path = string.Format(Directory.GetCurrentDirectory() + @"\data\Trades.json");
+        public static string Path = @"data\Trades.json";
 
         #endregion
 
@@ -34,7 +34,11 @@ namespace RLTrading.Model
         {
             try
             {
-                using (StreamReader r = new StreamReader(path))
+                if (!File.Exists(Path))
+                {
+                    File.Open(Path, FileMode.Create);
+                }
+                using (StreamReader r = new StreamReader(Path))
                 {
                     string json = r.ReadToEnd();
                     if (json == "")
@@ -61,7 +65,7 @@ namespace RLTrading.Model
         {
             try
             {
-                using (StreamWriter w = new StreamWriter(path, false))
+                using (StreamWriter w = new StreamWriter(Path, false))
                 {
                     string json = JsonConvert.SerializeObject(allTrades);
                     w.Write(json);
