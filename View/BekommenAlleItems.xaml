@@ -46,7 +46,11 @@
                                 <Ellipse ToolTip="{Binding Path=Color.Name}" DockPanel.Dock="Right" Margin="0,2,5,0"  Height="15" Width="15" Fill="{Binding Path=Color.Brush}" Stroke="Gray" />
                                 <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}" Margin="5,0,0,0"  Content="{Binding Path=Count}" />
                             </DockPanel>
-                            <Label Style="{StaticResource Item}" Content="{Binding Path=Name}" />
+                            <Label Style="{StaticResource Item}">
+                                <Label.Content>
+                                    <AccessText TextWrapping="Wrap" Text="{Binding Path=Name}"/>
+                                </Label.Content>
+                            </Label>
                             <Label Style="{StaticResource Item}"  Content="{Binding Path=Certification.Name}" />
                         </StackPanel>
                     </DataTemplate>

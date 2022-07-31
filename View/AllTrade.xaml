@@ -45,20 +45,56 @@
                 </WrapPanel>
             </Expander>
         </StackPanel>
-        <DataGrid SelectionMode="Single" SelectedItem="{Binding SelectedTrade, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding AllTrades, Mode=OneWay}" AutoGenerateColumns="False" IsReadOnly="True"  Background="Transparent" CanUserResizeColumns="False" CanUserResizeRows="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Trader GT" Binding="{Binding Trader}"/>
-                <DataGridTextColumn Header="Datum" Binding="{Binding Date, StringFormat='{}{0:dd. MMMM yyyy}', ConverterCulture=de}"/>
+        <ListBox BorderBrush="Transparent" SelectionMode="Single" SelectedItem="{Binding SelectedTrade, Mode=OneWayToSource}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding AllTrades, Mode=OneWay}" Background="Transparent">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical" IsItemsHost="True" Background="Transparent"></StackPanel>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Background="Transparent" Orientation="Horizontal">
+                        <Image Width="30" Height="30" Source="../pic/logo.png"></Image>
+                        <Label Style="{StaticResource LableCr}" Content="{Binding Trader}"/>
 
-                <DataGridTextColumn Header="Credits erhalten" Binding="{Binding gotCredits}" Foreground="Green"/>
-                <DataGridTextColumn Header="Erhaltenes Item" Binding="{Binding boughtItems[0].Name}" Foreground="Green"/>
-                <DataGridTextColumn Header="Credits gegeben" Binding="{Binding lostCredits}" Foreground="Red" />
-                <DataGridTextColumn Header="Gegebenes Item" Binding="{Binding soldItems[0].Name}" Foreground="Red"/>
-            </DataGrid.Columns>
-            <DataGrid.InputBindings>
-                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding Path=DetailTrade}"/>
-            </DataGrid.InputBindings>
-            <DataGrid.ContextMenu>
+                        <ListBox Background="Transparent" BorderBrush="Transparent" ItemsSource="{Binding Path=boughtItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal"  IsItemsHost="True" Background="Transparent" />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Width="87" Height="89" Margin="6">
+                                        <StackPanel.Background>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="Black" Offset="0"/>
+                                                <GradientStop Color="{Binding Path=Quality.Brush}" Offset="0.6"/>
+                                            </LinearGradientBrush>
+                                        </StackPanel.Background>
+                                        <DockPanel>
+                                            <Ellipse Style="{StaticResource Itemelips}" />
+                                            <Label HorizontalContentAlignment="Left" Style="{StaticResource Item}" Margin="5,0,0,0"  Content="{Binding Path=Count}" />
+                                        </DockPanel>
+                                        <Label Style="{StaticResource Item}">
+                                            <Label.Content>
+                                                <AccessText TextWrapping="Wrap" Text="{Binding Path=Name}"/>
+                                            </Label.Content>
+                                        </Label>
+                                        <Label Style="{StaticResource Item}"  Content="{Binding Path=Certification.Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+
+                        <ListBox Background="Transparent" ItemsSource="{Binding Path=soldItems}">
+
+                        </ListBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+            <ListBox.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Bearbeiten" Click="MenuItem_OnClick">
                         <MenuItem.Icon>
@@ -71,7 +107,7 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </ContextMenu>
-            </DataGrid.ContextMenu>
-        </DataGrid>
+            </ListBox.ContextMenu>
+        </ListBox>
     </StackPanel>
 </UserControl>

@@ -120,7 +120,6 @@ namespace RLTrading.ViewModel
 
             Content = contents[0];
 
-            MessageBox.Show("Trade gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -140,7 +139,7 @@ namespace RLTrading.ViewModel
         {
             if (Content == newTrade)
             {
-                if (MessageBoxResult.Yes == MessageBox.Show("Möchten Sie den Aktuellen Trade Speichern?\nAchtung, beim Bearbeiten von einem Trade geht der Trade verloren!", "Trade offen", MessageBoxButton.YesNoCancel, MessageBoxImage.Question))
+                if (MessageBoxResult.Yes == MessageBox.Show("Möchten Sie den Aktuellen Trade Speichern?\nDer Trade wird gelöscht, wenn Sie diesen gerade bearbeiten!", "Trade offen", MessageBoxButton.YesNoCancel, MessageBoxImage.Question))
                 {
                     Execute_SaveTrade();
                 }

@@ -85,7 +85,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Qualität des Item
         /// </summary>
-        private Quality quality = QualityMocking.Qualities[0];
+        private Quality quality = QualityMocking.Qualities[4];
 
         /// <summary>
         /// Accsessor der Qualität 

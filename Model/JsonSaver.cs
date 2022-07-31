@@ -46,10 +46,11 @@ namespace RLTrading.Model
                 if (!File.Exists(PathWithFile))
                 {
                     GrantAccess(Path);
-                    File.Create(PathWithFile);
+                    var f= File.Create(PathWithFile);
+                    f.Close();
                 }
                 using (StreamReader r = new StreamReader(PathWithFile))
-                {
+                { 
                     string json = r.ReadToEnd();
                     if (json == "")
                     {
