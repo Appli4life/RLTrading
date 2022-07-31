@@ -4,8 +4,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Security.AccessControl;
+using System.Security.Authentication;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 
 namespace RLTrading.Model
@@ -18,10 +22,15 @@ namespace RLTrading.Model
         #region Property
 
         /// <summary>
-        /// Pfad zur Json Datei (ab Current Directory)
+        /// Pfad bis Json Datei
         /// </summary>
-        public static string Path = @"data\Trades.json";
-
+        public static string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+                                    @"\RLTrading\data";
+        /// <summary>
+        /// Pfad bis und mit Json Datei
+        /// </summary>
+        public static string PathWithFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+                                            @"\RLTrading\data\Trades.json";
         #endregion
 
         #region Methoden
@@ -34,50 +43,71 @@ namespace RLTrading.Model
         {
             try
             {
-                if (!File.Exists(Path))
+                if (!File.Exists(PathWithFile))
                 {
-                    File.Open(Path, FileMode.Create);
+                    GrantAccess(Path);
+                    File.Create(PathWithFile);
                 }
-                using (StreamReader r = new StreamReader(Path))
+                using (StreamReader r = new StreamReader(PathWithFile))
                 {
                     string json = r.ReadToEnd();
                     if (json == "")
                     {
                         return new ObservableCollection<Trade>();
                     }
-                    r.Close();
+
                     return JsonConvert.DeserializeObject<ObservableCollection<Trade>>(json);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return new ObservableCollection<Trade>();
+                MessageBox.Show(e.Message + "\nApplikation wird beendet!", "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                Application.Current.Shutdown();
+                return null;
+            }
+        }
+    
+
+    /// <summary>
+    /// Speicher alle Trades in der Json Datei(siehe Property "path")
+    /// </summary>
+    /// <param name="allTrades">ObservableCollection mit den zu speichernden Trades</param>
+    /// <returns>True / False je nach erfolg</returns>
+    public bool saveTrades(ObservableCollection<Trade> allTrades)
+    {
+        try
+        {
+            using (StreamWriter w = new StreamWriter(PathWithFile, false))
+            {
+                string json = JsonConvert.SerializeObject(allTrades);
+                w.Write(json);
             }
 
+            return true;
         }
+        catch (AuthenticationException ae)
+        {
+            MessageBox.Show(ae.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            return false;
+        }
+    }
 
         /// <summary>
-        /// Speicher alle Trades in der Json Datei(siehe Property "path")
+        /// Set full Control to Everyone
         /// </summary>
-        /// <param name="allTrades">ObservableCollection mit den zu speichernden Trades</param>
-        /// <returns>True / False je nach erfolg</returns>
-        public bool saveTrades(ObservableCollection<Trade> allTrades)
+        /// <param name="file">Zu welchem file</param>
+        private void GrantAccess(string file)
         {
-            try
-            {
-                using (StreamWriter w = new StreamWriter(Path, false))
-                {
-                    string json = JsonConvert.SerializeObject(allTrades);
-                    w.Write(json);
-                    w.Close();
-                }
-
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            DirectoryInfo di = System.IO.Directory.CreateDirectory(file);
+            DirectoryInfo dInfo = new DirectoryInfo(file);
+            DirectorySecurity dSecurity = dInfo.GetAccessControl();
+            dSecurity.AddAccessRule(new FileSystemAccessRule(new SecurityIdentifier(WellKnownSidType.WorldSid, null), FileSystemRights.Modify, InheritanceFlags.ObjectInherit | InheritanceFlags.ContainerInherit, PropagationFlags.NoPropagateInherit, AccessControlType.Allow));
+            dInfo.SetAccessControl(dSecurity);
         }
 
         #endregion

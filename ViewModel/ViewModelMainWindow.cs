@@ -86,7 +86,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelMainWindow()
         {
-            
+
             CloseApp = new RelayCommand(param => Execute_Close(), param => canExecute_Close());
             AllTradeSwitch = new RelayCommand(param => Execute_AllTrade(), param => canExecute_AllTrade());
             NewTradeSwitch = new RelayCommand(param => Execute_NewTrade(), param => canExecute_NewTrade());
@@ -140,7 +140,7 @@ namespace RLTrading.ViewModel
         {
             if (Content == newTrade)
             {
-                if (MessageBoxResult.Yes == MessageBox.Show("Möchten Sie den Aktuellen Trade Speichern?\nAchtung, beim Bearbeiten von einem Trade geht der Trade verloren!", "Trade offen", MessageBoxButton.YesNoCancel,MessageBoxImage.Question))
+                if (MessageBoxResult.Yes == MessageBox.Show("Möchten Sie den Aktuellen Trade Speichern?\nAchtung, beim Bearbeiten von einem Trade geht der Trade verloren!", "Trade offen", MessageBoxButton.YesNoCancel, MessageBoxImage.Question))
                 {
                     Execute_SaveTrade();
                 }
@@ -227,8 +227,10 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_Save()
         {
-            TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades);
-            MessageBox.Show("Erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
+            if (TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades))
+            {
+                MessageBox.Show("Erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
+            }
         }
 
         /// <summary>
