@@ -17,7 +17,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Neuer JsonSaver
         /// </summary>
-        public static JsonSaver TradeSaver = new();
+        public static ISaver TradeSaver = new JsonSaver();
 
         /// <summary>
         /// Neue Collection mit allen Trades
