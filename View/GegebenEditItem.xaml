@@ -32,7 +32,7 @@
             </DockPanel>
             <DockPanel Margin="10" LastChildFill="False">
                 <Label Width="140" Style="{StaticResource LableCr}" Content="Anzahl:"/>
-                <TextBox Width="100" DockPanel.Dock="Right" Height="30"  FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Path=GEditItem.Count}"/>
+                <TextBox Width="100" DockPanel.Dock="Right" Height="30"  FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="{Binding Path=GEditItem.Count, Mode=TwoWay}"/>
             </DockPanel>
             <DockPanel Margin="10" LastChildFill="False">
                 <Label Width="140" Style="{StaticResource LableCr}" Content="Blueprint:"/>

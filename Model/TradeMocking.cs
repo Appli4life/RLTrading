@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace RLTrading.Model
@@ -10,20 +6,31 @@ namespace RLTrading.Model
     /// <summary>
     /// Klasse zur Statischen Speicherung aller Trades
     /// </summary>
-    public static class TradeMocking
+    public class TradeMocking
     {
+        public TradeMocking()
+        {
+            this.TradeSaver = new JsonSaver();
+            this.allTrades = this.TradeSaver.loadTrades();
+        }
+
         #region Property
 
         /// <summary>
         /// Neuer JsonSaver
         /// </summary>
-        public static ISaver TradeSaver = new JsonSaver();
+        public ISaver TradeSaver;
 
         /// <summary>
         /// Neue Collection mit allen Trades
         /// </summary>
-        public static ObservableCollection<Trade> allTrades = TradeSaver.loadTrades();
-        
+        public ObservableCollection<Trade> allTrades;
+
+        public async Task<bool> SaveTrades()
+        {
+            return await this.TradeSaver.saveTradesAsync(this.allTrades);
+        }
+
         #endregion
     }
 }

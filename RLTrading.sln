@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RLTrading", "RLTrading.cspr
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "RLTrading Installer", "..\RLTrading Installer\RLTrading Installer.wapproj", "{36A04FDA-9045-40E3-A9D1-D470CFF920C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RLTrading.Tests", "..\RLTrading.Tests\RLTrading.Tests.csproj", "{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B2975E61-5DA8-4209-B2EA-FDF0A58EFCDA}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,6 +78,26 @@ Global
 		{36A04FDA-9045-40E3-A9D1-D470CFF920C5}.Release|x86.ActiveCfg = Release|x86
 		{36A04FDA-9045-40E3-A9D1-D470CFF920C5}.Release|x86.Build.0 = Release|x86
 		{36A04FDA-9045-40E3-A9D1-D470CFF920C5}.Release|x86.Deploy.0 = Release|x86
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|ARM.Build.0 = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|x64.Build.0 = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Debug|x86.Build.0 = Debug|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|ARM.ActiveCfg = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|ARM.Build.0 = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|ARM64.Build.0 = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|x64.ActiveCfg = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|x64.Build.0 = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|x86.ActiveCfg = Release|Any CPU
+		{87E839FC-BEB1-4418-BFE8-D0587E25CDFD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

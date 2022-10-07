@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace RLTrading.Model
@@ -25,7 +21,7 @@ namespace RLTrading.Model
         /// </summary>
         /// <param name="allTrades">Die zu speichernde Trades</param>
         /// <returns>True / False je nach erfolg</returns>
-        bool saveTrades(ObservableCollection<Trade> allTrades);
+        Task<bool> saveTradesAsync(ObservableCollection<Trade> allTrades);
 
         #endregion
     }

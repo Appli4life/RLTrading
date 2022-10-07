@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-
-namespace RLTrading.Model
+﻿namespace RLTrading.Model
 {
     /// <summary>
     /// Model Qualität
@@ -42,8 +35,8 @@ namespace RLTrading.Model
         /// <param name="name">Name</param>
         public Quality(string name, System.Windows.Media.Color brush)
         {
-            Brush = brush;
-            Name = name;
+            this.Brush = brush;
+            this.Name = name;
         }
 
         #endregion

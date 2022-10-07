@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using System.Windows;
-using RLTrading.ViewModel;
 using RLTrading.Model;
 using RLTrading.Utility;
-using RLTrading.View;
 
 namespace RLTrading.ViewModel
 {
@@ -30,14 +23,15 @@ namespace RLTrading.ViewModel
         /// Das zu suchende Item
         /// </summary>
         private Item searchItem;
+        private TradeMocking tradeMocking;
 
         /// <summary>
         /// Accessor für Suchendes Item
         /// </summary>
         public Item SearchItem
         {
-            get => searchItem;
-            set => SetProperty(ref searchItem, value);
+            get => this.searchItem;
+            set => this.SetProperty(ref this.searchItem, value);
         }
 
         /// <summary>
@@ -45,8 +39,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public Trade SelectedTrade
         {
-            get => selectedTrade;
-            set => SetProperty(ref selectedTrade, value);
+            get => this.selectedTrade;
+            set => this.SetProperty(ref this.selectedTrade, value);
         }
 
         /// <summary>
@@ -62,13 +56,12 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Search zurücksetzen Command
         /// </summary>
-        public RelayCommand SearchClear{ get; set; }
+        public RelayCommand SearchClear { get; set; }
 
         /// <summary>
         /// Accessor für alle Trade Collection
         /// </summary>
-        public ObservableCollection<Trade> AllTrades => TradeMocking.allTrades;
-       
+        public ObservableCollection<Trade> AllTrades => this.tradeMocking.allTrades;
 
         #endregion
 
@@ -79,11 +72,11 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelAllTrade()
         {
-            DetailTrade = new RelayCommand(param => Execute_DetailTrade(), param => CanExecute_DetailTrade());
-            SearchItemBtn = new RelayCommand(param => Execute_SearchItem(), param => CanExecute_SearchItem());
-            SearchClear = new RelayCommand(param => Execute_SearchClear(), param => CanExecute_SearchClear());
-            AllBrushes.Add(new Color("Any", null));
-
+            this.DetailTrade = new RelayCommand(param => this.Execute_DetailTrade(), param => this.CanExecute_DetailTrade());
+            this.SearchItemBtn = new RelayCommand(param => this.Execute_SearchItem(), param => this.CanExecute_SearchItem());
+            this.SearchClear = new RelayCommand(param => this.Execute_SearchClear(), param => this.CanExecute_SearchClear());
+            this.AllBrushes.Add(new Color("Any", null));
+            this.tradeMocking = new TradeMocking();
         }
 
         #endregion
@@ -98,9 +91,9 @@ namespace RLTrading.ViewModel
             var dataContext = (ViewModelMainWindow)Application.Current.MainWindow.DataContext;
             var data = (ViewModelDetailTrade)dataContext.detailTrade.DataContext;
             dataContext.Content = dataContext.contents[2];
-            data.Trade = SelectedTrade;
-            data.GotItems = new ObservableCollection<Item>(SelectedTrade.boughtItems);
-            data.SoldItems = new ObservableCollection<Item>(SelectedTrade.soldItems);
+            data.Trade = this.SelectedTrade;
+            data.GotItems = new ObservableCollection<Item>(this.SelectedTrade.boughtItems);
+            data.SoldItems = new ObservableCollection<Item>(this.SelectedTrade.soldItems);
         }
 
         /// <summary>
@@ -109,7 +102,7 @@ namespace RLTrading.ViewModel
         /// <returns>True / False</returns>
         public bool CanExecute_DetailTrade()
         {
-            if (SelectedTrade != null)
+            if (this.SelectedTrade != null)
             {
                 return true;
             }

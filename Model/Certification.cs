@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RLTrading.Model
+﻿namespace RLTrading.Model
 {
     /// <summary>
     /// Zertifizierung Model
@@ -36,7 +30,7 @@ namespace RLTrading.Model
         /// <param name="name">Name</param>
         public Certification(string name)
         {
-            Name = name;
+            this.Name = name;
         }
 
         #endregion

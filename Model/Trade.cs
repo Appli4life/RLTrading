@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
 
 namespace RLTrading.Model
 {
@@ -60,7 +55,6 @@ namespace RLTrading.Model
         /// </summary>
         public Trade()
         {
-            
         }
 
         #endregion

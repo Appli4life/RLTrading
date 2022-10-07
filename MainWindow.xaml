@@ -6,7 +6,7 @@
         xmlns:ViewModels="clr-namespace:RLTrading.ViewModel"
         xmlns:local="clr-namespace:RLTrading"
         mc:Ignorable="d"
-        Title="Trading Track"  Height="500" Width="800" MinHeight="600" MinWidth="920" Icon="pic/logo.png" Closing="MainWindow_OnClosing">
+        Title="Trading Track"  Height="500" Width="800" MinHeight="600" MinWidth="920" Icon="pic/logo.png" >
     <Window.DataContext>
         <ViewModels:ViewModelMainWindow/>
     </Window.DataContext>

@@ -1,15 +1,9 @@
 ﻿
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Net.Mime;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
-using RLTrading.ViewModel;
 using RLTrading.Model;
 using RLTrading.Utility;
 using RLTrading.View;
@@ -23,6 +17,7 @@ namespace RLTrading.ViewModel
     {
         #region Property
 
+        private TradeMocking tradeMocking;
         /// <summary>
         /// Close Command
         /// </summary>
@@ -73,8 +68,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ContentControl Content
         {
-            get => currentContent;
-            set => SetProperty(ref currentContent, value);
+            get => this.currentContent;
+            set => this.SetProperty(ref this.currentContent, value);
         }
 
         #endregion
@@ -86,17 +81,18 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelMainWindow()
         {
+            this.tradeMocking = new TradeMocking();
 
-            CloseApp = new RelayCommand(param => Execute_Close(), param => canExecute_Close());
-            AllTradeSwitch = new RelayCommand(param => Execute_AllTrade(), param => canExecute_AllTrade());
-            NewTradeSwitch = new RelayCommand(param => Execute_NewTrade(), param => canExecute_NewTrade());
-            SaveCommand = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
+            this.CloseApp = new RelayCommand(param => this.Execute_Close(), param => this.canExecute_Close());
+            this.AllTradeSwitch = new RelayCommand(param => this.Execute_AllTrade(), param => this.canExecute_AllTrade());
+            this.NewTradeSwitch = new RelayCommand(param => this.Execute_NewTrade(), param => this.canExecute_NewTrade());
+            this.SaveCommand = new RelayCommand(param => this.Execute_SaveTrade(), param => this.CanExecute_SaveTrade());
 
-            contents.Add(allTrade);
-            contents.Add(newTrade);
-            contents.Add(detailTrade);
+            this.contents.Add(this.allTrade);
+            this.contents.Add(this.newTrade);
+            this.contents.Add(this.detailTrade);
 
-            Content = contents[0];
+            this.Content = this.contents[0];
         }
 
         #endregion
@@ -106,11 +102,12 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Execute SaveTrade
         /// </summary>
-        public void Execute_SaveTrade()
+        public async void Execute_SaveTrade()
         {
-            var datacontext = (ViewModelNewTrade)newTrade.DataContext;
+            var datacontext = (ViewModelNewTrade)this.newTrade.DataContext;
             datacontext.EditTrade.Date = DateTime.Now;
-            TradeMocking.allTrades.Add(datacontext.EditTrade);
+            this.tradeMocking.allTrades.Add(datacontext.EditTrade);
+            await this.tradeMocking.SaveTrades();
 
             datacontext.EditTrade = new Trade();
             datacontext.SoldItems = new ObservableCollection<Item>();
@@ -118,7 +115,7 @@ namespace RLTrading.ViewModel
             datacontext.SoldItems.Add(new Item());
             datacontext.GotItems.Add(new Item());
 
-            Content = contents[0];
+            this.Content = this.contents[0];
 
         }
 
@@ -128,7 +125,7 @@ namespace RLTrading.ViewModel
         /// <returns>True / False</returns>
         public bool CanExecute_SaveTrade()
         {
-            if (currentContent == newTrade)
+            if (this.currentContent == this.newTrade)
             {
                 return true;
             }
@@ -137,11 +134,11 @@ namespace RLTrading.ViewModel
 
         private void WantSave()
         {
-            if (Content == newTrade)
+            if (this.Content == this.newTrade)
             {
                 if (MessageBoxResult.Yes == MessageBox.Show("Möchten Sie den Aktuellen Trade Speichern?\nDer Trade wird gelöscht, wenn Sie diesen gerade bearbeiten!", "Trade offen", MessageBoxButton.YesNoCancel, MessageBoxImage.Question))
                 {
-                    Execute_SaveTrade();
+                    this.Execute_SaveTrade();
                 }
             }
         }
@@ -151,7 +148,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_Close()
         {
-            WantSave();
+            this.WantSave();
             Application.Current.Shutdown();
         }
 
@@ -177,8 +174,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_AllTrade()
         {
-            WantSave();
-            Content = contents[0];
+            this.WantSave();
+            this.Content = this.contents[0];
         }
 
         /// <summary>
@@ -202,7 +199,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_NewTrade()
         {
-            Content = contents[1];
+            this.Content = this.contents[1];
         }
 
         /// <summary>
@@ -224,9 +221,9 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Save Command Execute
         /// </summary>
-        private void Execute_Save()
+        private async void Execute_Save()
         {
-            if (TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades))
+            if (await this.tradeMocking.SaveTrades())
             {
                 MessageBox.Show("Erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
             }

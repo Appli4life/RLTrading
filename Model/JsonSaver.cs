@@ -1,16 +1,13 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Authentication;
 using System.Security.Principal;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace RLTrading.Model
 {
@@ -45,19 +42,20 @@ namespace RLTrading.Model
             {
                 if (!File.Exists(PathWithFile))
                 {
-                    GrantAccess(Path);
-                    var f= File.Create(PathWithFile);
+                    this.GrantAccess(Path);
+                    var f = File.Create(PathWithFile);
                     f.Close();
                 }
                 using (StreamReader r = new StreamReader(PathWithFile))
-                { 
+                {
                     string json = r.ReadToEnd();
                     if (json == "")
                     {
                         return new ObservableCollection<Trade>();
                     }
 
-                    return JsonConvert.DeserializeObject<ObservableCollection<Trade>>(json);
+                    var jsonresult = JsonConvert.DeserializeObject<ObservableCollection<Trade>>(json);
+                    return jsonresult;
                 }
             }
             catch (Exception e)
@@ -67,36 +65,35 @@ namespace RLTrading.Model
                 return null;
             }
         }
-    
 
-    /// <summary>
-    /// Speicher alle Trades in der Json Datei(siehe Property "path")
-    /// </summary>
-    /// <param name="allTrades">ObservableCollection mit den zu speichernden Trades</param>
-    /// <returns>True / False je nach erfolg</returns>
-    public bool saveTrades(ObservableCollection<Trade> allTrades)
-    {
-        try
+        /// <summary>
+        /// Speicher alle Trades in der Json Datei(siehe Property "path")
+        /// </summary>
+        /// <param name="allTrades">ObservableCollection mit den zu speichernden Trades</param>
+        /// <returns>True / False je nach erfolg</returns>
+        public async Task<bool> saveTradesAsync(ObservableCollection<Trade> allTrades)
         {
-            using (StreamWriter w = new StreamWriter(PathWithFile, false))
+            try
             {
-                string json = JsonConvert.SerializeObject(allTrades);
-                w.Write(json);
-            }
+                using (StreamWriter w = new StreamWriter(PathWithFile, false))
+                {
+                    string json = JsonConvert.SerializeObject(allTrades);
+                    await w.WriteAsync(json);
+                }
 
-            return true;
+                return true;
+            }
+            catch (AuthenticationException ae)
+            {
+                MessageBox.Show(ae.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
         }
-        catch (AuthenticationException ae)
-        {
-            MessageBox.Show(ae.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
-        }
-        catch (Exception e)
-        {
-            MessageBox.Show(e.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
-        }
-    }
 
         /// <summary>
         /// Set full Control to Everyone
