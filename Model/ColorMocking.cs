@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Windows.Media;
 
 namespace RLTrading.Model
@@ -11,13 +8,13 @@ namespace RLTrading.Model
     /// </summary>
     public static class ColorMocking
     {
-        private static List<Color> Colors;
+        private static List<Color> colors;
 
-        public static List<Color> getColors()
+        public static List<Color> GetColors()
         {
-            if (Colors is null)
+            if (colors is null)
             {
-                Colors = new()
+                colors = new()
                 {
                     new Color("Default", Brushes.Transparent),
                     new Color("Black", Brushes.Black),
@@ -37,7 +34,7 @@ namespace RLTrading.Model
                 };
             }
 
-            return Colors;
+            return colors;
         }
     }
 }

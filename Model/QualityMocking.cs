@@ -1,11 +1,4 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using System.Windows.Navigation;
 
 namespace RLTrading.Model
 {
@@ -16,7 +9,7 @@ namespace RLTrading.Model
     {
         private static List<Quality> qualities;
 
-        public static List<Quality> getQuality()
+        public static List<Quality> GetQuality()
         {
             if (qualities is null)
             {

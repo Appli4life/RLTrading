@@ -10,7 +10,7 @@ namespace RLTrading.Model
         /// <summary>
         /// True = Blueprint / False = Kein Blueprint
         /// </summary>
-        public bool Blueprint { get; set; }
+        public bool Blueprint { get; set; } = false;
 
         /// <summary>
         /// Anzahl
@@ -38,42 +38,19 @@ namespace RLTrading.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Farbe des Item
-        /// </summary>
-        private Color color;
-
-        /// <summary>
         /// Accsessor der Farbe
         /// </summary>
-        public Color Color
-        {
-            get => color;
-            set => color = value;
-        }
-
-        /// <summary>
-        /// Zertifizierung des Item
-        /// </summary>
-        private Certification certification = CertificationMocking.getCertifications()[0];
+        public Color Color { get; set; }
 
         /// <summary>
         /// Accsessor der Zertifizierung 
         /// </summary>
-        public Certification Certification
-        {
-            get => certification;
-            set => certification = value;
-        }
-
-        /// <summary>
-        /// Qualität des Item
-        /// </summary>
-        private Quality quality = QualityMocking.getQuality()[4];
+        public Certification Certification { get; set; } = CertificationMocking.GetCertifications()[0];
 
         /// <summary>
         /// Accsessor der Qualität 
         /// </summary>
-        public Quality Quality { get; set; }
+        public Quality Quality { get; set; } = QualityMocking.GetQuality()[4];
 
         #endregion
 

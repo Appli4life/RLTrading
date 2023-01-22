@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.ObjectModel;
 
 namespace RLTrading.Model
@@ -28,23 +28,23 @@ namespace RLTrading.Model
         /// <summary>
         /// Alle erhaltenen Credits
         /// </summary>
-        public int gotCredits { get; set; } = 0;
+        public int GotCredits { get; set; } = 0;
 
         /// <summary>
         /// Alle verlorenen Credits
         /// </summary>
-        public int lostCredits { get; set; } = 0;
+        public int LostCredits { get; set; } = 0;
 
         /// <summary>
         /// Alle verkauften Items
         /// </summary>
-        public ObservableCollection<Item> soldItems = new();
+        public ObservableCollection<Item> SoldItems = new();
 
 
         /// <summary>
         /// Alle gekauften Items
         /// </summary>
-        public ObservableCollection<Item> boughtItems = new();
+        public ObservableCollection<Item> BoughtItems = new();
 
         #endregion
 
@@ -55,7 +55,7 @@ namespace RLTrading.Model
         /// </summary>
         public Trade()
         {
-            
+
         }
 
         #endregion

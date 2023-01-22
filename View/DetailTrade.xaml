@@ -28,7 +28,7 @@
             <StackPanel>
                 <DockPanel Margin="0,5,0,0" DockPanel.Dock="Top" LastChildFill="False">
                     <Label DockPanel.Dock="Left" FontSize="20" FontWeight="Bold" Background="Transparent" Content="Gegeben:" />
-                    <Label VerticalContentAlignment="Center" FontSize="15" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Content="{Binding Path=Trade.lostCredits, Mode=OneWay}" />
+                    <Label VerticalContentAlignment="Center" FontSize="15" HorizontalContentAlignment="Right"  Width="100" Height="30" DockPanel.Dock="Right" Content="{Binding Path=Trade.LostCredits, Mode=OneWay}" />
                     <Label DockPanel.Dock="Right" Content="Credits:" VerticalContentAlignment="Center" />
                 </DockPanel>
                 <ListBox Background="Transparent" BorderBrush="Transparent" SelectionMode="Single" ItemsSource="{Binding Path=SoldItems, Mode=OneWay}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">

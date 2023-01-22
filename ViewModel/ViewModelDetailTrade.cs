@@ -26,8 +26,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> SoldItems
         {
-            get => this.Trade.soldItems;
-            set => this.SetProperty(ref this.Trade.soldItems, value);
+            get => this.Trade.SoldItems;
+            set => this.SetProperty(ref this.Trade.SoldItems, value);
         }
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> GotItems
         {
-            get => this.Trade.boughtItems;
-            set => this.SetProperty(ref this.Trade.boughtItems, value);
+            get => this.Trade.BoughtItems;
+            set => this.SetProperty(ref this.Trade.BoughtItems, value);
         }
 
         #endregion

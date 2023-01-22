@@ -57,7 +57,7 @@
                         <Image Width="30" Height="30" Source="../pic/logo.png"></Image>
                         <Label Style="{StaticResource LableCr}" Content="{Binding Trader}"/>
 
-                        <ListBox Background="Transparent" BorderBrush="Transparent" ItemsSource="{Binding Path=boughtItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox Background="Transparent" BorderBrush="Transparent" ItemsSource="{Binding Path=BoughtItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <ListBox.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <WrapPanel Orientation="Horizontal"  IsItemsHost="True" Background="Transparent" />
@@ -87,7 +87,7 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
 
-                        <ListBox Background="Transparent" ItemsSource="{Binding Path=soldItems}">
+                        <ListBox Background="Transparent" ItemsSource="{Binding Path=SoldItems}">
 
                         </ListBox>
                     </StackPanel>

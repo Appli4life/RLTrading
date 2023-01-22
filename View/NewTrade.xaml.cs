@@ -13,12 +13,12 @@ namespace RLTrading
             this.InitializeComponent();
             var data = new ViewModelNewTrade();
             this.DataContext = data;
-            foreach (var content in data.gegebenContents)
+            foreach (var content in data.GegebenContents)
             {
                 content.DataContext = this.DataContext;
             }
 
-            foreach (var content in data.bekommenContents)
+            foreach (var content in data.BekommenContents)
             {
                 content.DataContext = this.DataContext;
             }

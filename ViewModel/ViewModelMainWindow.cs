@@ -1,15 +1,9 @@
-﻿
+
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Net.Mime;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
-using RLTrading.ViewModel;
 using RLTrading.Model;
 using RLTrading.Utility;
 using RLTrading.View;
@@ -46,7 +40,7 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Collection von allen ContentControls
         /// </summary>
-        public ObservableCollection<ContentControl> contents = new();
+        public ObservableCollection<ContentControl> Contents = new();
 
         /// <summary>
         /// AllTrade ContentControl
@@ -56,12 +50,12 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// NewTrade ContentControl
         /// </summary>
-        public NewTrade newTrade = new();
+        public NewTrade NewTrade = new();
 
         /// <summary>
         /// DetailTrade ContentControl
         /// </summary>
-        public DetailTrade detailTrade = new();
+        public DetailTrade DetailTrade = new();
 
         /// <summary>
         /// Aktueller Content im ContentControl
@@ -93,11 +87,11 @@ namespace RLTrading.ViewModel
             NewTradeSwitch = new RelayCommand(param => Execute_NewTrade(), param => canExecute_NewTrade());
             SaveCommand = new RelayCommand(param => Execute_SaveTrade(), param => CanExecute_SaveTrade());
 
-            contents.Add(allTrade);
-            contents.Add(newTrade);
-            contents.Add(detailTrade);
+            Contents.Add(allTrade);
+            Contents.Add(NewTrade);
+            Contents.Add(DetailTrade);
 
-            Content = contents[0];
+            Content = Contents[0];
             this.tradeRepository = new JsonTradeRepository();
         }
 
@@ -110,7 +104,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_SaveTrade()
         {
-            var datacontext = (ViewModelNewTrade)newTrade.DataContext;
+            var datacontext = (ViewModelNewTrade)NewTrade.DataContext;
             var datacontextall = (ViewModelAllTrade)allTrade.DataContext;
             
             datacontext.EditTrade.Date = DateTime.Now;
@@ -129,7 +123,7 @@ namespace RLTrading.ViewModel
             datacontext.SoldItems.Add(new Item());
             datacontext.GotItems.Add(new Item());
 
-            Content = contents[0];
+            Content = Contents[0];
         }
 
         /// <summary>
@@ -138,7 +132,7 @@ namespace RLTrading.ViewModel
         /// <returns>True / False</returns>
         public bool CanExecute_SaveTrade()
         {
-            if (currentContent == newTrade)
+            if (currentContent == NewTrade)
             {
                 return true;
             }
@@ -187,7 +181,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_AllTrade()
         {
-           Content = contents[0];
+           Content = Contents[0];
         }
 
         /// <summary>
@@ -211,9 +205,9 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_NewTrade()
         {
-            this.newTrade = new NewTrade();
-            contents[1] = newTrade;
-            Content = contents[1];
+            this.NewTrade = new NewTrade();
+            Contents[1] = NewTrade;
+            Content = Contents[1];
         }
 
         /// <summary>

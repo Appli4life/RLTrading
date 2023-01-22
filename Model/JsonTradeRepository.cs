@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Security.AccessControl;
 using System.Security.Authentication;
 using System.Security.Principal;
@@ -14,12 +13,12 @@ namespace RLTrading.Model
     {
         private readonly JsonFormater jsonFormater;
 
-        private string Path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+        private string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
                             @"\RLTrading\data";
         /// <summary>
         /// Pfad bis und mit Json Datei
         /// </summary>
-        private string PathWithFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+        private string pathWithFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
                                             @"\RLTrading\data\Trades.json";
 
         public JsonTradeRepository()
@@ -30,21 +29,21 @@ namespace RLTrading.Model
         public JsonTradeRepository(string path, string fileName = "Trades.json")
         : this()
         {
-            this.Path = path;
-            this.PathWithFile = path + @"\" + fileName;
+            this.path = path;
+            this.pathWithFile = path + @"\" + fileName;
         }
 
-        public ObservableCollection<Trade> loadTrades()
+        public ObservableCollection<Trade> LoadTrades()
         {
             try
             {
-                if (!File.Exists(PathWithFile))
+                if (!File.Exists(pathWithFile))
                 {
-                    GrantAccess(Path);
-                    var f = File.Create(PathWithFile);
+                    GrantAccess(path);
+                    var f = File.Create(pathWithFile);
                     f.Close();
                 }
-                using (var r = new StreamReader(PathWithFile))
+                using (var r = new StreamReader(pathWithFile))
                 {
                     var json = r.ReadToEnd();
                     if (json == "")
@@ -67,7 +66,7 @@ namespace RLTrading.Model
         {
             try
             {
-                using (var w = new StreamWriter(PathWithFile, false))
+                using (var w = new StreamWriter(pathWithFile, false))
                 {
                     var json = jsonFormater.SerializeTrade(trades);
                     w.Write(json);

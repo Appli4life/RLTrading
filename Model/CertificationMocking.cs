@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace RLTrading.Model
 {
@@ -10,33 +10,27 @@ namespace RLTrading.Model
 
         private static List<Certification> certifications;
 
-        public static List<Certification> getCertifications()
+        public static List<Certification> GetCertifications()
         {
-
-            if (certifications is null)
+            return certifications ??= new()
             {
-                certifications = new()
-                {
-                    new Certification("None"),
-                    new Certification("Striker"),
-                    new Certification("Sweeper"),
-                    new Certification("Tactician"),
-                    new Certification("Acrobat"),
-                    new Certification("Aviator"),
-                    new Certification("Goalkeeper"),
-                    new Certification("Guardian"),
-                    new Certification("Juggler"),
-                    new Certification("Playmaker"),
-                    new Certification("Scorer"),
-                    new Certification("Show-Off"),
-                    new Certification("Sniper"),
-                    new Certification("Turtle"),
-                    new Certification("Paragon"),
-                    new Certification("Victor")
-                };
-            }
-
-            return certifications;
+                new Certification("None"),
+                new Certification("Striker"),
+                new Certification("Sweeper"),
+                new Certification("Tactician"),
+                new Certification("Acrobat"),
+                new Certification("Aviator"),
+                new Certification("Goalkeeper"),
+                new Certification("Guardian"),
+                new Certification("Juggler"),
+                new Certification("Playmaker"),
+                new Certification("Scorer"),
+                new Certification("Show-Off"),
+                new Certification("Sniper"),
+                new Certification("Turtle"),
+                new Certification("Paragon"),
+                new Certification("Victor")
+            };
         }
 
     }

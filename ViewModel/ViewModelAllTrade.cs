@@ -1,14 +1,8 @@
-﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using RLTrading.ViewModel;
 using RLTrading.Model;
 using RLTrading.Utility;
-using RLTrading.View;
 
 namespace RLTrading.ViewModel
 {
@@ -19,7 +13,7 @@ namespace RLTrading.ViewModel
     {
         #region Property
 
-        public IEnumerable<Color> AllBrushes => ColorMocking.getColors();
+        public IEnumerable<Color> AllBrushes => ColorMocking.GetColors();
 
         /// <summary>
         /// Selected Trade in datagrid
@@ -85,7 +79,7 @@ namespace RLTrading.ViewModel
             SearchItemBtn = new RelayCommand(param => Execute_SearchItem(), param => CanExecute_SearchItem());
             SearchClear = new RelayCommand(param => Execute_SearchClear(), param => CanExecute_SearchClear());
             tradeRepository = new JsonTradeRepository();
-            AllTrades = tradeRepository.loadTrades();
+            AllTrades = tradeRepository.LoadTrades();
         }
 
         #endregion
@@ -99,12 +93,12 @@ namespace RLTrading.ViewModel
         public void OnEdit()
         {
             var mainDatacontext = (ViewModelMainWindow)Application.Current.MainWindow.DataContext;
-            mainDatacontext.Content = mainDatacontext.contents[1];
-            var newTradeDataContext = (ViewModelNewTrade)mainDatacontext.newTrade.DataContext;
+            mainDatacontext.Content = mainDatacontext.Contents[1];
+            var newTradeDataContext = (ViewModelNewTrade)mainDatacontext.NewTrade.DataContext;
 
             newTradeDataContext.EditTrade = SelectedTrade;
-            newTradeDataContext.SoldItems = new(SelectedTrade.soldItems);
-            newTradeDataContext.GotItems = new(SelectedTrade.boughtItems);
+            newTradeDataContext.SoldItems = new(SelectedTrade.SoldItems);
+            newTradeDataContext.GotItems = new(SelectedTrade.BoughtItems);
         }
 
 
@@ -117,11 +111,11 @@ namespace RLTrading.ViewModel
         private void Execute_DetailTrade()
         {
             var dataContext = (ViewModelMainWindow)Application.Current.MainWindow.DataContext;
-            var data = (ViewModelDetailTrade)dataContext.detailTrade.DataContext;
-            dataContext.Content = dataContext.contents[2];
+            var data = (ViewModelDetailTrade)dataContext.DetailTrade.DataContext;
+            dataContext.Content = dataContext.Contents[2];
             data.Trade = SelectedTrade;
-            data.GotItems = new ObservableCollection<Item>(SelectedTrade.boughtItems);
-            data.SoldItems = new ObservableCollection<Item>(SelectedTrade.soldItems);
+            data.GotItems = new ObservableCollection<Item>(SelectedTrade.BoughtItems);
+            data.SoldItems = new ObservableCollection<Item>(SelectedTrade.SoldItems);
         }
 
         /// <summary>

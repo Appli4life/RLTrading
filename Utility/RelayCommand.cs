@@ -17,19 +17,19 @@ namespace RLTrading.Utility
 
         // Die Delegates, hier private, weil nur die Methoden Execute und CanExecute relevant sind.
         // Die Zuweisung der Funktionalität erfolgt im Konstruktor
-        private Action<object> _execute = null;
-        private Predicate<object> _canExecute = null;
+        private Action<object> execute = null;
+        private Predicate<object> canExecute = null;
 
         #region ICommand Members
 
         public bool CanExecute(object parameter)
         {
-            return (this._canExecute == null) ? true : this._canExecute(parameter);
+            return (this.canExecute == null) ? true : this.canExecute(parameter);
         }
 
         public void Execute(object parameter)
         {
-            this._execute(parameter);
+            this.execute(parameter);
         }
 
         #endregion
@@ -41,8 +41,8 @@ namespace RLTrading.Utility
             {
                 throw new ArgumentNullException("Der Execute-Parameter darf nicht null sein");
             }
-            this._execute = execute;
-            this._canExecute = canExecute;
+            this.execute = execute;
+            this.canExecute = canExecute;
         }
 
         public RelayCommand(Action<object> execute)

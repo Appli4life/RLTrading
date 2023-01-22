@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Controls;
 using RLTrading.Model;
 using RLTrading.Utility;
@@ -17,22 +18,22 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Collection von gegeben ContentControls
         /// </summary>
-        public ObservableCollection<ContentControl> gegebenContents = new();
+        public ObservableCollection<ContentControl> GegebenContents = new();
 
         /// <summary>
         /// Aktueller gegeben Content
         /// </summary>
-        private ContentControl CurrentGegebenContent;
+        private ContentControl currentGegebenContent;
 
         /// <summary>
         /// Collection von bekommen ContentControls
         /// </summary>
-        public ObservableCollection<ContentControl> bekommenContents = new();
+        public ObservableCollection<ContentControl> BekommenContents = new();
 
         /// <summary>
         /// Aktueller bekommen Content
         /// </summary>
-        private ContentControl CurrentBekommenContent;
+        private ContentControl currentBekommenContent;
 
         /// <summary>
         /// ContentControl für alle gegebenen Items
@@ -59,8 +60,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ContentControl CurrentGContent
         {
-            get => this.CurrentGegebenContent;
-            set => this.SetProperty(ref this.CurrentGegebenContent, value);
+            get => this.currentGegebenContent;
+            set => this.SetProperty(ref this.currentGegebenContent, value);
         }
 
         /// <summary>
@@ -68,8 +69,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ContentControl CurrentBContent
         {
-            get => this.CurrentBekommenContent;
-            set => this.SetProperty(ref this.CurrentBekommenContent, value);
+            get => this.currentBekommenContent;
+            set => this.SetProperty(ref this.currentBekommenContent, value);
         }
 
         #endregion
@@ -84,17 +85,17 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Alle Farben für Items
         /// </summary>
-        public IEnumerable<Color> AllBrushes => ColorMocking.getColors();
+        public IEnumerable<Color> AllBrushes => ColorMocking.GetColors();
 
         /// <summary>
         /// Alle Zertifizierungen für Items
         /// </summary>
-        public IEnumerable<Certification> AllCertifications => CertificationMocking.getCertifications();
+        public IEnumerable<Certification> AllCertifications => CertificationMocking.GetCertifications();
 
         /// <summary>
         /// Alle Qualitäten für Items
         /// </summary>
-        public IEnumerable<Quality> AllQualities => QualityMocking.getQuality();
+        public IEnumerable<Quality> AllQualities => QualityMocking.GetQuality();
 
         /// <summary>
         /// Accessor für neuer Trade
@@ -110,8 +111,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> SoldItems
         {
-            get => this.EditTrade.soldItems;
-            set => this.SetProperty(ref this.EditTrade.soldItems, value);
+            get => this.EditTrade.SoldItems;
+            set => this.SetProperty(ref this.EditTrade.SoldItems, value);
         }
 
         /// <summary>
@@ -119,19 +120,19 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> GotItems
         {
-            get => this.EditTrade.boughtItems;
-            set => this.SetProperty(ref this.EditTrade.boughtItems, value);
+            get => this.EditTrade.BoughtItems;
+            set => this.SetProperty(ref this.EditTrade.BoughtItems, value);
         }
 
         /// <summary>
         /// Gegeben Item Hinzufügen
         /// </summary>
-        public RelayCommand soldItemAdd { get; set; }
+        public RelayCommand SoldItemAdd { get; set; }
 
         /// <summary>
         /// Bekommen Item Hinzufügen
         /// </summary>
-        public RelayCommand gotItemAdd { get; set; }
+        public RelayCommand GotItemAdd { get; set; }
 
         /// <summary>
         /// Selected item in Listbox ( für beide )
@@ -202,19 +203,19 @@ namespace RLTrading.ViewModel
             this.AnwendenG = new RelayCommand(param => this.Execute_AnwendenG(), param => this.CanExecute_AnwendenG());
 
             //Sold
-            this.soldItemAdd = new RelayCommand(param => this.Execute_soldItemAdd(), param => this.CanExecute_soldItemAdd());
+            this.SoldItemAdd = new RelayCommand(param => this.Execute_soldItemAdd(), param => this.CanExecute_soldItemAdd());
 
             //Got
-            this.gotItemAdd = new RelayCommand(param => this.Execute_gotItemAdd(), param => this.CanExecute_gotItemAdd());
+            this.GotItemAdd = new RelayCommand(param => this.Execute_gotItemAdd(), param => this.CanExecute_gotItemAdd());
 
-            this.gegebenContents.Add(this.gegebenAlle);
-            this.gegebenContents.Add(this.gegebenEdit);
+            this.GegebenContents.Add(this.gegebenAlle);
+            this.GegebenContents.Add(this.gegebenEdit);
 
-            this.bekommenContents.Add(this.bekommenAlle);
-            this.bekommenContents.Add(this.bekommenEdit);
+            this.BekommenContents.Add(this.bekommenAlle);
+            this.BekommenContents.Add(this.bekommenEdit);
 
-            this.CurrentGContent = this.gegebenContents[0];
-            this.CurrentBContent = this.bekommenContents[0];
+            this.CurrentGContent = this.GegebenContents[0];
+            this.CurrentBContent = this.BekommenContents[0];
         }
 
         #endregion
@@ -226,7 +227,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_AnwendenB()
         {
-            this.CurrentBContent = this.bekommenContents[0];
+            this.CurrentBContent = this.BekommenContents[0];
         }
 
         /// <summary>
@@ -248,7 +249,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_AnwendenG()
         {
-            this.CurrentGContent = this.gegebenContents[0];
+            this.CurrentGContent = this.GegebenContents[0];
         }
 
         /// <summary>

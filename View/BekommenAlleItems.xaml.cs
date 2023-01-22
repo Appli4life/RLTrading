@@ -17,7 +17,7 @@ namespace RLTrading.View
         private void MenuItem_OnClick(object sender, RoutedEventArgs e)
         {
             var dataContext = (ViewModelNewTrade)this.DataContext;
-            dataContext.CurrentBContent = dataContext.bekommenContents[1];
+            dataContext.CurrentBContent = dataContext.BekommenContents[1];
             dataContext.BEditItem = dataContext.SelectedItem;
         }
 
