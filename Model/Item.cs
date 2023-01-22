@@ -1,6 +1,3 @@
-﻿using System;
-using Newtonsoft.Json;
-
 namespace RLTrading.Model
 {
     /// <summary>
@@ -13,7 +10,7 @@ namespace RLTrading.Model
         /// <summary>
         /// True = Blueprint / False = Kein Blueprint
         /// </summary>
-        public bool Blueprint { get; set; } = false;
+        public bool Blueprint { get; set; }
 
         /// <summary>
         /// Anzahl
@@ -25,29 +22,20 @@ namespace RLTrading.Model
         /// </summary>
         public int Count
         {
-            get => count;
+            get => this.count;
             set
             {
                 if (value > 0)
                 {
-                    count = value;
+                    this.count = value;
                 }
             }
-        }      
-
-        /// <summary>
-        /// Name des Item
-        /// </summary>
-        private string name = "Fennec";
+        }
 
         /// <summary>
         /// Accsessor Name
         /// </summary>
-        public string Name
-        {
-            get => name;
-            set => name = value;
-        }
+        public string Name { get; set; }
 
         /// <summary>
         /// Farbe des Item
@@ -85,11 +73,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Accsessor der Qualität 
         /// </summary>
-        public Quality Quality
-        {
-            get => quality;
-            set => quality = value;
-        }
+        public Quality Quality { get; set; }
 
         #endregion
 

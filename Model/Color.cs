@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace RLTrading.Model
 {
@@ -42,8 +37,8 @@ namespace RLTrading.Model
         /// <param name="name">Name</param>
         public Color(string name, SolidColorBrush brush)
         {
-            Name = name;
-            Brush = brush;
+            this.Name = name;
+            this.Brush = brush;
         }
 
         #endregion

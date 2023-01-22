@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using RLTrading.Model;
-using RLTrading.Utility;
 
 namespace RLTrading.ViewModel
 {
@@ -23,8 +17,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public Trade Trade
         {
-            get => trade;
-            set => SetProperty(ref trade, value);
+            get => this.trade;
+            set => this.SetProperty(ref this.trade, value);
         }
 
         /// <summary>
@@ -32,8 +26,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> SoldItems
         {
-            get => Trade.soldItems;
-            set => SetProperty(ref Trade.soldItems, value);
+            get => this.Trade.soldItems;
+            set => this.SetProperty(ref this.Trade.soldItems, value);
         }
 
         /// <summary>
@@ -41,8 +35,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> GotItems
         {
-            get => Trade.boughtItems;
-            set => SetProperty(ref Trade.boughtItems, value);
+            get => this.Trade.boughtItems;
+            set => this.SetProperty(ref this.Trade.boughtItems, value);
         }
 
         #endregion

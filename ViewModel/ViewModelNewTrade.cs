@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Controls;
-using System.Windows.Media;
 using RLTrading.Model;
 using RLTrading.Utility;
 using RLTrading.View;
-using RLTrading.ViewModel;
 using Color = RLTrading.Model.Color;
 
 namespace RLTrading.ViewModel
@@ -68,8 +59,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ContentControl CurrentGContent
         {
-            get => CurrentGegebenContent;
-            set => SetProperty(ref CurrentGegebenContent, value);
+            get => this.CurrentGegebenContent;
+            set => this.SetProperty(ref this.CurrentGegebenContent, value);
         }
 
         /// <summary>
@@ -77,8 +68,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ContentControl CurrentBContent
         {
-            get => CurrentBekommenContent;
-            set => SetProperty(ref CurrentBekommenContent, value);
+            get => this.CurrentBekommenContent;
+            set => this.SetProperty(ref this.CurrentBekommenContent, value);
         }
 
         #endregion
@@ -110,8 +101,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public Trade EditTrade
         {
-            get => currentTrade;
-            set => SetProperty(ref currentTrade, value);
+            get => this.currentTrade;
+            set => this.SetProperty(ref this.currentTrade, value);
         }
 
         /// <summary>
@@ -119,8 +110,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> SoldItems
         {
-            get => EditTrade.soldItems;
-            set => SetProperty(ref EditTrade.soldItems, value);
+            get => this.EditTrade.soldItems;
+            set => this.SetProperty(ref this.EditTrade.soldItems, value);
         }
 
         /// <summary>
@@ -128,8 +119,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ObservableCollection<Item> GotItems
         {
-            get => EditTrade.boughtItems;
-            set => SetProperty(ref EditTrade.boughtItems, value);
+            get => this.EditTrade.boughtItems;
+            set => this.SetProperty(ref this.EditTrade.boughtItems, value);
         }
 
         /// <summary>
@@ -162,8 +153,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public Item SelectedItem
         {
-            get => selectedItem;
-            set => SetProperty(ref selectedItem, value);
+            get => this.selectedItem;
+            set => this.SetProperty(ref this.selectedItem, value);
         }
 
         /// <summary>
@@ -171,8 +162,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public Item GEditItem
         {
-            get => editedGItem;
-            set => SetProperty(ref editedGItem, value);
+            get => this.editedGItem;
+            set => this.SetProperty(ref this.editedGItem, value);
         }
 
         /// <summary>
@@ -180,8 +171,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         public Item BEditItem
         {
-            get => editedBItem;
-            set => SetProperty(ref editedBItem, value);
+            get => this.editedBItem;
+            set => this.SetProperty(ref this.editedBItem, value);
         }
 
         /// <summary>
@@ -204,26 +195,26 @@ namespace RLTrading.ViewModel
         /// </summary>
         public ViewModelNewTrade()
         {
-            SoldItems.Add(new Item());
-            GotItems.Add(new Item());
+            this.SoldItems.Add(new Item());
+            this.GotItems.Add(new Item());
 
-            AnwendenB = new RelayCommand(param => Execute_AnwendenB(), param => CanExecute_AnwendenB());
-            AnwendenG = new RelayCommand(param => Execute_AnwendenG(), param => CanExecute_AnwendenG());
+            this.AnwendenB = new RelayCommand(param => this.Execute_AnwendenB(), param => this.CanExecute_AnwendenB());
+            this.AnwendenG = new RelayCommand(param => this.Execute_AnwendenG(), param => this.CanExecute_AnwendenG());
 
             //Sold
-            soldItemAdd = new RelayCommand(param => Execute_soldItemAdd(), param => CanExecute_soldItemAdd());
+            this.soldItemAdd = new RelayCommand(param => this.Execute_soldItemAdd(), param => this.CanExecute_soldItemAdd());
 
             //Got
-            gotItemAdd = new RelayCommand(param => Execute_gotItemAdd(), param => CanExecute_gotItemAdd());
+            this.gotItemAdd = new RelayCommand(param => this.Execute_gotItemAdd(), param => this.CanExecute_gotItemAdd());
 
-            gegebenContents.Add(gegebenAlle);
-            gegebenContents.Add(gegebenEdit);
+            this.gegebenContents.Add(this.gegebenAlle);
+            this.gegebenContents.Add(this.gegebenEdit);
 
-            bekommenContents.Add(bekommenAlle);
-            bekommenContents.Add(bekommenEdit);
+            this.bekommenContents.Add(this.bekommenAlle);
+            this.bekommenContents.Add(this.bekommenEdit);
 
-            CurrentGContent = gegebenContents[0];
-            CurrentBContent = bekommenContents[0];
+            this.CurrentGContent = this.gegebenContents[0];
+            this.CurrentBContent = this.bekommenContents[0];
         }
 
         #endregion
@@ -235,7 +226,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_AnwendenB()
         {
-            CurrentBContent = bekommenContents[0];
+            this.CurrentBContent = this.bekommenContents[0];
         }
 
         /// <summary>
@@ -257,7 +248,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_AnwendenG()
         {
-            CurrentGContent = gegebenContents[0];
+            this.CurrentGContent = this.gegebenContents[0];
         }
 
         /// <summary>
@@ -279,7 +270,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_soldItemAdd()
         {
-            SoldItems.Add(new Item());
+            this.SoldItems.Add(new Item());
         }
 
         /// <summary>
@@ -288,7 +279,7 @@ namespace RLTrading.ViewModel
         /// <returns>True / False</returns>
         public bool CanExecute_soldItemAdd()
         {
-            if (SoldItems.Count < 12)
+            if (this.SoldItems.Count < 12)
             {
                 return true;
             }
@@ -301,7 +292,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         public void Execute_gotItemAdd()
         {
-            GotItems.Add(new Item());
+            this.GotItems.Add(new Item());
         }
 
         /// <summary>
@@ -310,7 +301,7 @@ namespace RLTrading.ViewModel
         /// <returns>True / False</returns>
         public bool CanExecute_gotItemAdd()
         {
-            if (GotItems.Count < 12)
+            if (this.GotItems.Count < 12)
             {
                 return true;
             }
