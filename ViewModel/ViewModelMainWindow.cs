@@ -67,6 +67,7 @@ namespace RLTrading.ViewModel
         /// Aktueller Content im ContentControl
         /// </summary>
         private ContentControl currentContent;
+        private readonly ITradeRepository tradeRepository;
 
         /// <summary>
         /// Accessor für Aktueller ContentControl
@@ -97,6 +98,7 @@ namespace RLTrading.ViewModel
             contents.Add(detailTrade);
 
             Content = contents[0];
+            this.tradeRepository = new JsonTradeRepository();
         }
 
         #endregion
@@ -109,8 +111,17 @@ namespace RLTrading.ViewModel
         public void Execute_SaveTrade()
         {
             var datacontext = (ViewModelNewTrade)newTrade.DataContext;
+            var datacontextall = (ViewModelAllTrade)allTrade.DataContext;
+            
             datacontext.EditTrade.Date = DateTime.Now;
-            TradeMocking.allTrades.Add(datacontext.EditTrade);
+
+            if (datacontextall.AllTrades.Contains(datacontext.EditTrade))
+            {
+                datacontextall.AllTrades.Remove(datacontext.EditTrade);
+            }
+
+            datacontextall.AllTrades.Add(datacontext.EditTrade);
+            tradeRepository.SaveTrades(datacontextall.AllTrades);
 
             datacontext.EditTrade = new Trade();
             datacontext.SoldItems = new ObservableCollection<Item>();
@@ -119,7 +130,6 @@ namespace RLTrading.ViewModel
             datacontext.GotItems.Add(new Item());
 
             Content = contents[0];
-
         }
 
         /// <summary>
@@ -137,13 +147,13 @@ namespace RLTrading.ViewModel
 
         private void WantSave()
         {
-            if (Content == newTrade)
-            {
-                if (MessageBoxResult.Yes == MessageBox.Show("Möchten Sie den Aktuellen Trade Speichern?\nDer Trade wird gelöscht, wenn Sie diesen gerade bearbeiten!", "Trade offen", MessageBoxButton.YesNoCancel, MessageBoxImage.Question))
-                {
-                    Execute_SaveTrade();
-                }
-            }
+            //if (Content == newTrade)
+            //{
+            //    if (MessageBoxResult.Yes == MessageBox.Show("Möchten Sie den Aktuellen Trade Speichern?\nDer Trade wird gelöscht, wenn Sie diesen gerade bearbeiten!", "Trade offen", MessageBoxButton.YesNoCancel, MessageBoxImage.Question))
+            //    {
+            //        Execute_SaveTrade();
+            //    }
+            //}
         }
 
         /// <summary>
@@ -177,8 +187,7 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_AllTrade()
         {
-            WantSave();
-            Content = contents[0];
+           Content = contents[0];
         }
 
         /// <summary>
@@ -202,6 +211,8 @@ namespace RLTrading.ViewModel
         /// </summary>
         private void Execute_NewTrade()
         {
+            this.newTrade = new NewTrade();
+            contents[1] = newTrade;
             Content = contents[1];
         }
 
@@ -224,13 +235,13 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Save Command Execute
         /// </summary>
-        private void Execute_Save()
-        {
-            if (TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades))
-            {
-                MessageBox.Show("Erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
-            }
-        }
+        //private void Execute_Save()
+        //{
+        //    if (TradeMocking.TradeSaver.saveTrades(TradeMocking.allTrades))
+        //    {
+        //        MessageBox.Show("Erfolgreich gespeichert", "Erfolg", MessageBoxButton.OK, MessageBoxImage.None);
+        //    }
+        //}
 
         /// <summary>
         /// Save Command can Execute

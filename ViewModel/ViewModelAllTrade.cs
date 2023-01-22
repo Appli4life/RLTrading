@@ -19,7 +19,7 @@ namespace RLTrading.ViewModel
     {
         #region Property
 
-        public ObservableCollection<Color> AllBrushes => new(ColorMocking.Colors);
+        public IEnumerable<Color> AllBrushes => ColorMocking.getColors();
 
         /// <summary>
         /// Selected Trade in datagrid
@@ -30,6 +30,8 @@ namespace RLTrading.ViewModel
         /// Das zu suchende Item
         /// </summary>
         private Item searchItem;
+
+        private readonly ITradeRepository tradeRepository;
 
         /// <summary>
         /// Accessor für Suchendes Item
@@ -62,13 +64,13 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Search zurücksetzen Command
         /// </summary>
-        public RelayCommand SearchClear{ get; set; }
+        public RelayCommand SearchClear { get; set; }
 
         /// <summary>
-        /// Accessor für alle Trade Collection
+        /// Alle Trade Collection
         /// </summary>
-        public ObservableCollection<Trade> AllTrades => TradeMocking.allTrades;
-       
+        public ObservableCollection<Trade> AllTrades { get; set; }
+
 
         #endregion
 
@@ -82,11 +84,30 @@ namespace RLTrading.ViewModel
             DetailTrade = new RelayCommand(param => Execute_DetailTrade(), param => CanExecute_DetailTrade());
             SearchItemBtn = new RelayCommand(param => Execute_SearchItem(), param => CanExecute_SearchItem());
             SearchClear = new RelayCommand(param => Execute_SearchClear(), param => CanExecute_SearchClear());
-            AllBrushes.Add(new Color("Any", null));
-
+            tradeRepository = new JsonTradeRepository();
+            AllTrades = tradeRepository.loadTrades();
         }
 
         #endregion
+
+        public void OnDelete()
+        {
+            AllTrades.Remove(SelectedTrade);
+            tradeRepository.SaveTrades(AllTrades);
+        }
+
+        public void OnEdit()
+        {
+            var mainDatacontext = (ViewModelMainWindow)Application.Current.MainWindow.DataContext;
+            mainDatacontext.Content = mainDatacontext.contents[1];
+            var newTradeDataContext = (ViewModelNewTrade)mainDatacontext.newTrade.DataContext;
+
+            newTradeDataContext.EditTrade = SelectedTrade;
+            newTradeDataContext.SoldItems = new(SelectedTrade.soldItems);
+            newTradeDataContext.GotItems = new(SelectedTrade.boughtItems);
+        }
+
+
 
         #region Command Methoden
 

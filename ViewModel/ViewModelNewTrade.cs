@@ -93,17 +93,17 @@ namespace RLTrading.ViewModel
         /// <summary>
         /// Alle Farben für Items
         /// </summary>
-        public ObservableCollection<Color> AllBrushes => new(ColorMocking.Colors);
+        public IEnumerable<Color> AllBrushes => ColorMocking.getColors();
 
         /// <summary>
         /// Alle Zertifizierungen für Items
         /// </summary>
-        public ObservableCollection<Certification> AllCertifications => new(CertificationMocking.Certifications);
+        public IEnumerable<Certification> AllCertifications => CertificationMocking.getCertifications();
 
         /// <summary>
         /// Alle Qualitäten für Items
         /// </summary>
-        public ObservableCollection<Quality> AllQualities => new(QualityMocking.Qualities);
+        public IEnumerable<Quality> AllQualities => QualityMocking.getQuality();
 
         /// <summary>
         /// Accessor für neuer Trade

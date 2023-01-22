@@ -11,31 +11,37 @@ namespace RLTrading.Model
     /// </summary>
     public static class CertificationMocking
     {
-        #region Property
 
-        /// <summary>
-        /// Liste mit Zertifizierungen
-        /// </summary>
-        public static readonly List<Certification> Certifications = new()
+        private static List<Certification> certifications;
+
+        public static List<Certification> getCertifications()
+        {
+
+            if (certifications is null)
             {
-                new Certification("None"),
-                new Certification("Striker"),
-                new Certification("Sweeper"),
-                new Certification("Tactician"),
-                new Certification("Acrobat"),
-                new Certification("Aviator"),
-                new Certification("Goalkeeper"),
-                new Certification("Guardian"),
-                new Certification("Juggler"),
-                new Certification("Playmaker"),
-                new Certification("Scorer"),
-                new Certification("Show-Off"),
-                new Certification("Sniper"),
-                new Certification("Turtle"),
-                new Certification("Paragon"),
-                new Certification("Victor")
-            };
+                certifications = new()
+                {
+                    new Certification("None"),
+                    new Certification("Striker"),
+                    new Certification("Sweeper"),
+                    new Certification("Tactician"),
+                    new Certification("Acrobat"),
+                    new Certification("Aviator"),
+                    new Certification("Goalkeeper"),
+                    new Certification("Guardian"),
+                    new Certification("Juggler"),
+                    new Certification("Playmaker"),
+                    new Certification("Scorer"),
+                    new Certification("Show-Off"),
+                    new Certification("Sniper"),
+                    new Certification("Turtle"),
+                    new Certification("Paragon"),
+                    new Certification("Victor")
+                };
+            }
 
-        #endregion
+            return certifications;
+        }
+
     }
 }

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RLTrading.Model;
-
+using Newtonsoft.Json;
 
 namespace RLTrading.Model
 {
@@ -23,7 +18,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Anzahl
         /// </summary>
-        public int count { get; set; } = 1;
+        private int count { get; set; } = 1;
 
         /// <summary>
         /// Anzahlt der Items Accessor
@@ -33,7 +28,7 @@ namespace RLTrading.Model
             get => count;
             set
             {
-                if (Count > 0)
+                if (value > 0)
                 {
                     count = value;
                 }
@@ -57,7 +52,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Farbe des Item
         /// </summary>
-        private Color color = ColorMocking.Colors[0];
+        private Color color;
 
         /// <summary>
         /// Accsessor der Farbe
@@ -71,7 +66,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Zertifizierung des Item
         /// </summary>
-        private Certification certification = CertificationMocking.Certifications[0];
+        private Certification certification = CertificationMocking.getCertifications()[0];
 
         /// <summary>
         /// Accsessor der Zertifizierung 
@@ -85,7 +80,7 @@ namespace RLTrading.Model
         /// <summary>
         /// Qualität des Item
         /// </summary>
-        private Quality quality = QualityMocking.Qualities[4];
+        private Quality quality = QualityMocking.getQuality()[4];
 
         /// <summary>
         /// Accsessor der Qualität 
@@ -99,6 +94,7 @@ namespace RLTrading.Model
         #endregion
 
         #region Ctor
+
         /// <summary>
         /// Ctor
         /// </summary>
@@ -107,25 +103,7 @@ namespace RLTrading.Model
 
         }
 
-        /// <summary>
-        /// Ctor
-        /// </summary>
-        /// <param name="name">Name</param>
-        /// <param name="color">Farbe</param>
-        /// <param name="certification">Zertifizierung</param>
-        /// <param name="quality">Qualität</param>
-        /// <param name="blueprint">Blueprint Y/N</param>
-        /// <param name="count">Anzahl</param>
-        public Item(string name, Color color, Certification certification, Quality quality, int count, bool blueprint = false)
-        {
-            Name = name;
-            Color = color;
-            Certification = certification;
-            Quality = quality;
-            Blueprint = blueprint;
-            Count = count;
-        }
-
         #endregion
     }
+
 }
